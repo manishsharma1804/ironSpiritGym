@@ -322,6 +322,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initModals();
     initHorizontalCarousels();
     initDesktopMap();
+    initFloatingFeedbackTab();
 
     // Trigger GSAP ScrollTrigger animations on all sections and cards
     setTimeout(initScrollAnimations, 100);
@@ -692,12 +693,21 @@ document.addEventListener('DOMContentLoaded', () => {
       whatsapps = [{ number: contact.whatsapp, label: 'WhatsApp Desk', message: contact.whatsappMessage || 'Hi Iron Spirit Gym! I am interested in joining.' }];
     }
 
-    // 1. Social Channels & Email Binding in Contact Section
+    // 1. Social Channels & Email Binding in Contact Section & Hero
     if (state.gymInfo.socials) {
       const { instagram, facebook, youtube } = state.gymInfo.socials;
 
       const heroInsta = document.getElementById('hero-instagram-link');
-      if (heroInsta && instagram) heroInsta.setAttribute('href', instagram);
+      if (heroInsta) {
+        if (instagram) {
+          heroInsta.setAttribute('href', instagram);
+          heroInsta.setAttribute('target', '_blank');
+          heroInsta.setAttribute('rel', 'noopener noreferrer');
+          heroInsta.style.display = 'inline-flex';
+        } else {
+          heroInsta.style.display = 'none';
+        }
+      }
 
       const contactInsta = document.getElementById('contact-instagram-link');
       if (contactInsta) {
@@ -743,76 +753,70 @@ document.addEventListener('DOMContentLoaded', () => {
     } else if (emailLink) {
       emailLink.style.display = 'none';
     }
+    // 3. WhatsApp & Phone Line Selection Handlers (Modal Drawer)
+    function triggerWhatsAppModal(e) {
+      if (e) e.preventDefault();
+      const cardsHtml = whatsapps.map(w => {
+        const link = `https://wa.me/${w.number}?text=${encodeURIComponent(w.message || contact.whatsappMessage || '')}`;
+        return `
+          <div class="contact-modal-card">
+            <div class="contact-modal-card-info">
+              <span class="contact-modal-card-label">${w.label || 'WhatsApp Desk'}</span>
+              <span class="contact-modal-card-num">+${w.number}</span>
+            </div>
+            <div class="contact-modal-actions">
+              <a href="${link}" target="_blank" rel="noopener noreferrer" class="contact-modal-btn-act whatsapp-bg">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+                <span>Chat on WhatsApp</span>
+              </a>
+              <button type="button" class="contact-modal-btn-copy" data-copy="+${w.number}" data-msg="WhatsApp number copied!">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"></rect><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"></path></svg>
+                <span>Copy</span>
+              </button>
+            </div>
+          </div>
+        `;
+      }).join('');
+      openContactModal('Choose WhatsApp Line', cardsHtml);
+    }
 
-    // 3. Setup WhatsApp Button & Bottom Sheet Drawer
-    const primaryWa = whatsapps[0] || { number: '919835124789', message: 'Hi Iron Spirit Gym!' };
-    const defaultWaUrl = `https://wa.me/${primaryWa.number}?text=${encodeURIComponent(primaryWa.message || contact.whatsappMessage || '')}`;
+    function triggerPhoneModal(e) {
+      if (e) e.preventDefault();
+      const cardsHtml = phones.map(p => {
+        const telLink = `tel:${p.number.replace(/\s+/g, '')}`;
+        return `
+          <div class="contact-modal-card">
+            <div class="contact-modal-card-info">
+              <span class="contact-modal-card-label">${p.label || 'Front Desk'}</span>
+              <span class="contact-modal-card-num">${p.number}</span>
+            </div>
+            <div class="contact-modal-actions">
+              <a href="${telLink}" class="contact-modal-btn-act">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+                <span>Call Now</span>
+              </a>
+              <button type="button" class="contact-modal-btn-copy" data-copy="${p.number}" data-msg="Phone number copied!">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"></rect><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"></path></svg>
+                <span>Copy</span>
+              </button>
+            </div>
+          </div>
+        `;
+      }).join('');
+      openContactModal('Choose Phone Line', cardsHtml);
+    }
 
-    // Update static whatsapp links across site (hero, floating button, bottom nav)
-    document.querySelectorAll('.whatsapp-link').forEach(el => {
-      el.setAttribute('href', defaultWaUrl);
-      el.setAttribute('target', '_blank');
-      el.setAttribute('rel', 'noopener noreferrer');
+    // Attach click listeners to all WhatsApp buttons across the site
+    // (Top Nav Talk to Us, Mobile Bottom Nav Talk to Us, Sidebar CTA, Contact Section WhatsApp)
+    document.querySelectorAll('.whatsapp-link, .nav-whatsapp-cta, .bottom-nav-fixed-wa, .sidebar-wa-btn, #contact-main-whatsapp-btn').forEach(el => {
+      el.addEventListener('click', triggerWhatsAppModal);
     });
 
-    const mainWaBtn = document.getElementById('contact-main-whatsapp-btn');
-    if (mainWaBtn) {
-      mainWaBtn.addEventListener('click', (e) => {
-        e.preventDefault();
-        const cardsHtml = whatsapps.map(w => {
-          const link = `https://wa.me/${w.number}?text=${encodeURIComponent(w.message || contact.whatsappMessage || '')}`;
-          return `
-            <div class="contact-modal-card">
-              <div class="contact-modal-card-info">
-                <span class="contact-modal-card-label">${w.label || 'WhatsApp Desk'}</span>
-                <span class="contact-modal-card-num">+${w.number}</span>
-              </div>
-              <div class="contact-modal-actions">
-                <a href="${link}" target="_blank" rel="noopener noreferrer" class="contact-modal-btn-act whatsapp-bg">
-                  <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
-                  <span>Chat on WhatsApp</span>
-                </a>
-                <button type="button" class="contact-modal-btn-copy" data-copy="+${w.number}" data-msg="WhatsApp number copied!">
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"></rect><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"></path></svg>
-                  <span>Copy</span>
-                </button>
-              </div>
-            </div>
-          `;
-        }).join('');
-        openContactModal('Choose WhatsApp Line', cardsHtml);
-      });
-    }
-
-    // 4. Setup Call Front Desk Button & Bottom Sheet Drawer
-    const mainCallBtn = document.getElementById('contact-main-call-btn');
-    if (mainCallBtn) {
-      mainCallBtn.addEventListener('click', (e) => {
-        e.preventDefault();
-        const cardsHtml = phones.map(p => {
-          const telLink = `tel:${p.number.replace(/\s+/g, '')}`;
-          return `
-            <div class="contact-modal-card">
-              <div class="contact-modal-card-info">
-                <span class="contact-modal-card-label">${p.label || 'Front Desk'}</span>
-                <span class="contact-modal-card-num">${p.number}</span>
-              </div>
-              <div class="contact-modal-actions">
-                <a href="${telLink}" class="contact-modal-btn-act">
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
-                  <span>Call Now</span>
-                </a>
-                <button type="button" class="contact-modal-btn-copy" data-copy="${p.number}" data-msg="Phone number copied!">
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"></rect><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"></path></svg>
-                  <span>Copy</span>
-                </button>
-              </div>
-            </div>
-          `;
-        }).join('');
-        openContactModal('Choose Phone Line', cardsHtml);
-      });
-    }
+    // Attach click listeners to all Call buttons across the site
+    // (Sidebar Call button, Contact Section Call Front Desk)
+    document.querySelectorAll('.call-link, .sidebar-call-btn, #contact-main-call-btn').forEach(el => {
+      el.addEventListener('click', triggerPhoneModal);
+    });
 
     // 5. Address & Timings
     const addressDisplayEl = document.getElementById('contact-address-display');
@@ -821,8 +825,12 @@ document.addEventListener('DOMContentLoaded', () => {
     const timingsWeekdayEl = document.getElementById('timings-weekday-display');
     if (timingsWeekdayEl) timingsWeekdayEl.textContent = timings.weekdays.slots;
 
-    const timingsSundayEl = document.getElementById('timings-sunday-display');
-    if (timingsSundayEl) timingsSundayEl.textContent = timings.sunday.slots;
+    // 6. Floating Feedback / Google Review Tab Link Binding
+    const feedbackTab = document.getElementById('floating-feedback-tab');
+    const googleReviewUrl = state.gymInfo?.socials?.googleReview || state.gymInfo?.googleReview || state.gymInfo?.feedbackUrl || 'https://maps.google.com/?q=Iron+Spirit+Gym+Kokar+Chowk+Ranchi';
+    if (feedbackTab) {
+      feedbackTab.setAttribute('href', googleReviewUrl);
+    }
   }
 
   // 5. Render Offers (Continuous Marquee Announcement Bar & Launch Offer Popup)
@@ -861,20 +869,20 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     const offerModal = document.getElementById('offer-modal');
-    const hasPopupImg = popup && (popup.imageDesktop || popup.imageMobile || popup.image || popup.desktopImage || popup.mobileImage);
+    const desktopImg = (popup?.imageDesktop || popup?.desktopImage || popup?.image || '').trim();
+    const mobileImg = (popup?.imageMobile || popup?.mobileImage || popup?.image || '').trim();
+    const hasPopupImg = Boolean(desktopImg || mobileImg);
+
     if (offerModal && popup && hasPopupImg && popup.isActive !== false) {
       const imgEl = document.getElementById('offer-popup-img');
       const sourceDesktop = document.getElementById('offer-popup-source-desktop');
       const linkEl = document.getElementById('offer-popup-link');
 
-      const desktopImg = popup.imageDesktop || popup.desktopImage || popup.image || 'bannerPc.png';
-      const mobileImg = popup.imageMobile || popup.mobileImage || popup.image || 'banner.png';
-
-      if (sourceDesktop) {
+      if (sourceDesktop && desktopImg) {
         sourceDesktop.srcset = desktopImg;
       }
       if (imgEl) {
-        imgEl.src = mobileImg;
+        imgEl.src = mobileImg || desktopImg;
         imgEl.alt = popup.alt || 'Special Gym Launch Offer';
       }
 
@@ -889,6 +897,11 @@ document.addEventListener('DOMContentLoaded', () => {
           openModal('offer-modal');
         }, 2500);
       }
+    } else if (offerModal) {
+      const imgEl = document.getElementById('offer-popup-img');
+      const sourceDesktop = document.getElementById('offer-popup-source-desktop');
+      if (imgEl) imgEl.removeAttribute('src');
+      if (sourceDesktop) sourceDesktop.removeAttribute('srcset');
     }
   }
 
@@ -1251,9 +1264,6 @@ document.addEventListener('DOMContentLoaded', () => {
           <h3 class="amenity-title">${zone.title}</h3>
           <div class="amenity-tagline">${zone.tagline}</div>
           <p class="amenity-desc">${zone.description}</p>
-          <ul class="amenity-highlights">
-            ${zone.highlights.map(h => `<li>${h}</li>`).join('')}
-          </ul>
         </div>
       </article>
     `;
@@ -1382,8 +1392,52 @@ document.addEventListener('DOMContentLoaded', () => {
       `;
     }
 
+    function renderVerifiedStamp(uniqueKey = '') {
+      const topArcId = `stamp-top-${uniqueKey}`;
+      const botArcId = `stamp-bot-${uniqueKey}`;
+      const clipId = `stamp-clip-${uniqueKey}`;
+      return `
+        <div class="mag-verified-stamp" aria-label="Officially Verified Coach Seal">
+          <svg viewBox="0 0 120 120" class="mag-stamp-svg">
+            <defs>
+              <!-- Top Arc tightly calibrated to r=29 for minimal top/bottom padding -->
+              <path id="${topArcId}" d="M 31,60 A 29,29 0 1,1 89,60" fill="none" />
+              <!-- Bottom Arc tightly calibrated to r=29 for minimal top/bottom padding -->
+              <path id="${botArcId}" d="M 89,60 A 29,29 0 0,1 31,60" fill="none" />
+              <!-- Clip path for center logo circle -->
+              <clipPath id="${clipId}">
+                <circle cx="60" cy="60" r="24" />
+              </clipPath>
+            </defs>
+
+            <!-- Outer Concentric Borders (Ultra-Tight & Compact) -->
+            <circle cx="60" cy="60" r="38" fill="none" stroke="currentColor" stroke-width="1.8" stroke-dasharray="3 1.5" />
+            <circle cx="60" cy="60" r="34.5" fill="none" stroke="currentColor" stroke-width="1.0" />
+
+            <!-- Circular Top Text (IRON SPIRIT RANCHI) -->
+            <text font-size="4.3" font-weight="900" letter-spacing="0.7" fill="currentColor">
+              <textPath href="#${topArcId}" startOffset="50%" text-anchor="middle">★ IRON SPIRIT RANCHI ★</textPath>
+            </text>
+
+            <!-- Circular Bottom Text (VERIFIED COACH) -->
+            <text font-size="4.5" font-weight="900" letter-spacing="1.1" fill="currentColor">
+              <textPath href="#${botArcId}" startOffset="50%" text-anchor="middle">★ VERIFIED COACH ★</textPath>
+            </text>
+
+            <!-- Inner Concentric Border Ring -->
+            <circle cx="60" cy="60" r="26.5" fill="none" stroke="currentColor" stroke-width="1.0" />
+
+            <!-- Center Core Medallion with top_logo.png -->
+            <circle cx="60" cy="60" r="24" fill="#181c24" />
+            <image href="top_logo.png" xlink:href="top_logo.png" x="36" y="36" width="48" height="48" clip-path="url(#${clipId})" preserveAspectRatio="xMidYMid meet" class="mag-stamp-logo-img" />
+          </svg>
+        </div>
+      `;
+    }
+
     function buildRightPageHTML(t, idx, total, isInteractive = true) {
       if (!t) return '';
+      const stampKey = `${idx}-${isInteractive ? 'main' : 'flip'}`;
       return `
         <div class="mag-right-content">
           <div class="mag-watermark-logo" aria-hidden="true"></div>
@@ -1411,6 +1465,8 @@ document.addEventListener('DOMContentLoaded', () => {
           <ul class="mag-list">
             ${(t.certifications || []).map(c => `<li><span class="check-mark">✓</span> ${c}</li>`).join('')}
           </ul>
+
+          ${renderVerifiedStamp(stampKey)}
 
           <div class="mag-action-row">
             <div class="mag-pagination-controls">
@@ -1486,6 +1542,9 @@ document.addEventListener('DOMContentLoaded', () => {
           <ul class="mag-list">
             ${(coach.certifications || []).map(c => `<li><span class="check-mark">✓</span> ${c}</li>`).join('')}
           </ul>
+          <div style="display: flex; justify-content: center; margin-top: 14px;">
+            ${renderVerifiedStamp('drawer')}
+          </div>
         `;
       }
       backdrop.classList.add('active');
@@ -2321,7 +2380,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function renderPreviewItems() {
       let items = getFilteredItems(activeGalleryCategory);
-      items = items.slice(0, 6);
+      items = items.slice(0, 8);
       currentPreviewItemsCount = items.length;
 
       previewGrid.innerHTML = items.map(item => {
@@ -3101,6 +3160,34 @@ document.addEventListener('DOMContentLoaded', () => {
       setTimeout(updateBtnState, 800);
       setTimeout(updateBtnState, 1500);
     });
+  }
+
+  // 17. Floating Feedback / Google Review Tab (Visible after scrolling past hero)
+  function initFloatingFeedbackTab() {
+    const tab = document.getElementById('floating-feedback-tab');
+    const heroSection = document.getElementById('hero');
+    if (!tab) return;
+
+    if (heroSection && 'IntersectionObserver' in window) {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (!entry.isIntersecting) {
+            tab.classList.add('is-visible');
+          } else {
+            tab.classList.remove('is-visible');
+          }
+        });
+      }, { threshold: 0.15 });
+      observer.observe(heroSection);
+    } else {
+      window.addEventListener('scroll', () => {
+        if (window.scrollY > 350) {
+          tab.classList.add('is-visible');
+        } else {
+          tab.classList.remove('is-visible');
+        }
+      }, { passive: true });
+    }
   }
 
   // Master Boot

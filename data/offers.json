@@ -1,11 +1,12 @@
 {
   "isActive": true,
   "showBanner": true,
-  "bannerText": "GRAND OPENING PRIVILEGE: Special Launch Offer for Kokar Branch • Tap to View",
+  "badge": "COMING SOON",
+  "bannerText": "🔥 RANCHI GET READY! Something Big is Lifting Soon in Kokar • Early Bird Pre-Bookings Open • Tap to View",
   "popup": {
     "imageDesktop": "bannerPc.png",
     "imageMobile": "banner.png",
-    "alt": "Special Gym Offer Banner",
-    "link": "https://wa.me/919835124789?text=Hi%20Iron%20Spirit%20Gym!%20I%20want%20to%20know%20more%20about%20the%20special%20offer."
+    "alt": "Iron Spirit Gym Ranchi - Coming Soon Launch Offer",
+    "link": "https://wa.me/919835124789?text=Hi%20Iron%20Spirit%20Gym!%20I%20want%20to%20pre-book%20for%20the%20Grand%20Opening%20at%20Kokar,%20Ranchi."
   }
 }

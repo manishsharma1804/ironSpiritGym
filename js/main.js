@@ -573,13 +573,14 @@ document.addEventListener('DOMContentLoaded', () => {
       return;
     }
 
-    const { bannerText, popup } = state.offers;
+    const { bannerText, badge, popup } = state.offers;
+    const badgeLabel = badge || 'COMING SOON';
 
     const marqueeTrack = document.getElementById('announcement-marquee-track');
     if (topBar && marqueeTrack && bannerText) {
       const singleItem = `
         <div class="announcement-marquee-item">
-          <span class="announcement-badge">LIMITED OFFER</span>
+          <span class="announcement-badge">${badgeLabel}</span>
           <span class="announcement-text">${bannerText}</span>
           <span class="announcement-dot" aria-hidden="true"></span>
         </div>

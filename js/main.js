@@ -651,6 +651,7 @@ document.addEventListener('DOMContentLoaded', () => {
         document.body.style.right = '0';
         document.body.style.width = '100%';
         document.body.style.overflow = 'hidden';
+        document.body.classList.add('modal-open');
       }
       openCount++;
     }
@@ -665,6 +666,7 @@ document.addEventListener('DOMContentLoaded', () => {
         document.body.style.right = '';
         document.body.style.width = '';
         document.body.style.overflow = '';
+        document.body.classList.remove('modal-open');
         window.scrollTo(0, y);
       }
     }

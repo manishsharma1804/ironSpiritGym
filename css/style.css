@@ -6019,42 +6019,125 @@ ul#card-list li:nth-child(8), ul#card-list li:nth-child(8) .card {
   border-color: var(--red);
 }
 
-/* Offer Modal Spec */
-.offer-coupon-pill {
+/* Offer Poster Image Modal (Clean, Tight-Fit Borderless Poster Banner) */
+.offer-image-modal-backdrop {
+  background: rgba(6, 8, 10, 0.85) !important;
+  backdrop-filter: blur(16px) !important;
+  -webkit-backdrop-filter: blur(16px) !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  padding: 16px !important;
+}
+
+.offer-image-dialog {
+  position: relative;
+  display: inline-flex !important;
+  align-items: center;
+  justify-content: center;
+  width: auto !important;
+  max-width: min(920px, 92vw) !important;
+  margin: auto;
+  border-radius: 20px;
+  overflow: visible;
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  padding: 0 !important;
+  transform: scale(0.92) translateY(16px);
+  transition: transform 0.4s var(--ease-smooth);
+}
+
+.modal-backdrop.open .offer-image-dialog {
+  transform: scale(1) translateY(0);
+}
+
+.offer-image-wrapper {
+  display: block;
+  position: relative;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 24px 70px rgba(0, 0, 0, 0.85), 0 0 0 1px rgba(255, 255, 255, 0.15);
+  background: transparent !important;
+  cursor: pointer;
+  line-height: 0;
+  width: auto !important;
+  max-width: min(920px, 92vw) !important;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.offer-image-wrapper:hover {
+  transform: scale(1.012);
+  box-shadow: 0 28px 80px rgba(0, 0, 0, 0.95), 0 0 0 1.5px rgba(232, 43, 53, 0.5);
+}
+
+.offer-poster-img {
+  width: auto !important;
+  height: auto !important;
+  max-width: min(900px, 90vw) !important;
+  max-height: 88vh !important;
+  object-fit: contain;
+  display: block;
+  border-radius: 20px;
+}
+
+.offer-image-close-btn {
+  position: absolute;
+  top: -14px;
+  right: -14px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: #0f1317;
+  border: 1.5px solid rgba(255, 255, 255, 0.25);
+  color: #ffffff;
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  background: var(--surface2);
-  border: 1px dashed var(--red);
-  border-radius: var(--radius-md);
-  padding: 12px 18px;
-  margin: 18px 0;
-}
-
-.coupon-code {
-  font-family: var(--font-display);
-  font-size: 1.2rem;
-  font-weight: 800;
-  letter-spacing: 0.08em;
-  color: var(--red);
-}
-
-.copy-btn {
-  background: var(--red-muted);
-  border: 1px solid var(--border-red);
-  color: var(--red);
-  font-size: 0.72rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  padding: 6px 12px;
-  border-radius: var(--radius-sm);
+  justify-content: center;
   cursor: pointer;
-  transition: all var(--transition-fast);
+  z-index: 10;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.6);
+  transition: all 0.22s ease;
+  -webkit-tap-highlight-color: transparent;
 }
 
-.copy-btn:hover {
-  background: var(--red);
+.offer-image-close-btn svg {
+  stroke: #ffffff;
+  transition: transform 0.2s ease;
+}
+
+.offer-image-close-btn:hover,
+.offer-image-close-btn:active {
+  background: var(--red, #e82b35);
+  border-color: var(--red, #e82b35);
   color: #ffffff;
+  transform: scale(1.1);
+}
+
+.offer-image-close-btn:hover svg {
+  transform: rotate(90deg);
+}
+
+@media (max-width: 768px) {
+  .offer-image-dialog {
+    max-width: 88vw !important;
+    width: auto !important;
+  }
+  .offer-poster-img {
+    max-width: 86vw !important;
+    max-height: 78vh !important;
+    border-radius: 16px;
+  }
+  .offer-image-wrapper {
+    border-radius: 16px;
+  }
+  .offer-image-close-btn {
+    top: -10px;
+    right: -8px;
+    width: 32px;
+    height: 32px;
+  }
 }
 
 

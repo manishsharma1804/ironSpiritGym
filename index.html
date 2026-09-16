@@ -1029,38 +1029,21 @@
     </div>
   </div>
 
-  <!-- PROMOTIONAL LAUNCH OFFER MODAL (BUTTERY SMOOTH) -->
-  <div id="offer-modal" class="modal-backdrop" role="dialog" aria-modal="true">
-    <div class="modal-dialog">
-      <button class="modal-close-btn" aria-label="Close Promo Modal">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+  <!-- PROMOTIONAL LAUNCH OFFER MODAL (RESPONSIVE IMAGE POSTER POPUP) -->
+  <div id="offer-modal" class="modal-backdrop offer-image-modal-backdrop" role="dialog" aria-modal="true" aria-label="Special Offer">
+    <div class="offer-image-dialog">
+      <button class="modal-close-btn offer-image-close-btn" aria-label="Close Promo Modal">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
       </button>
-      <div class="section-eyebrow" id="offer-popup-badge" style="margin-bottom: 12px;">Grand Opening Exclusive</div>
-      <h2 id="offer-popup-title" style="font-size: 1.85rem; margin-bottom: 6px;">Founding Member Privilege</h2>
-      <div id="offer-popup-subtitle" style="color: var(--red); font-weight: 700; margin-bottom: 14px;">Kokar's Newest High-Performance Gym</div>
-      
-      <p id="offer-popup-desc" style="font-size: 0.92rem; line-height: 1.6; margin-bottom: 16px;">
-        Be one of the first 50 athletes to step into Iron Spirit Gym Kokar. Unlock a flat 35% discount on our Annual Elite Pass.
-      </p>
-
-      <div class="offer-coupon-pill">
-        <div>
-          <small style="display: block; font-size: 0.72rem; color: var(--text-muted);">EXCLUSIVE PROMO CODE</small>
-          <span id="offer-coupon-code" class="coupon-code">KOKAR35</span>
-        </div>
-        <button id="copy-coupon-btn" class="copy-btn">Copy Code</button>
-      </div>
-
-      <ul id="offer-perks-list" class="amenity-highlights" style="margin-bottom: 24px;"></ul>
-
-      <div style="display: flex; flex-direction: column; gap: 10px;">
-        <a id="offer-claim-btn" href="#" class="btn btn-whatsapp" style="width: 100%;">
-          Claim 35% Off on WhatsApp ↗
-        </a>
-        <div id="offer-validity-text" style="font-size: 0.75rem; color: var(--text-muted); text-align: center;">
-          Limited to the first 50 registrations only
-        </div>
-      </div>
+      <a id="offer-popup-link" href="#" target="_blank" rel="noopener noreferrer" class="offer-image-wrapper" aria-label="Claim Special Gym Offer">
+        <picture id="offer-popup-picture">
+          <source id="offer-popup-source-desktop" media="(min-width: 769px)" srcset="bannerPc.png" />
+          <img id="offer-popup-img" src="banner.png" alt="Special Gym Offer Banner" class="offer-poster-img" />
+        </picture>
+      </a>
     </div>
   </div>
 

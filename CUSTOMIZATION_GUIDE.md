@@ -108,13 +108,16 @@ File: `data/gym-info.json`
 
 ---
 
-## 🎁 3. Announcement Bar & Discount Popup (`data/offers.json`)
+## 🎁 3. Announcement Bar & Discount Image Poster Popup (`data/offers.json`)
 
 File: `data/offers.json`
 
 - **Offer on/off karna:** `"isActive": true` (on) ya `false` (off).
-- **Top Bar Text:** `"bannerText": "Founding Member Offer: Flat 35% Off..."`
-- **Promo Code:** `"couponCode": "KOKAR35"`
+- **Top Bar Text:** `"bannerText": "GRAND OPENING PRIVILEGE: Special Launch Offer..."`
+- **Desktop Banner Image:** `"imageDesktop": "bannerPc.png"` (Laptop/PC screens ke liye wide/landscape banner).
+- **Mobile Banner Image:** `"imageMobile": "banner.png"` (Phone screens ke liye vertical/portrait poster).
+- **Image Tap Link (WhatsApp/Contact):** `"link": "https://wa.me/919835124789?text=..."` (Jab user banner pe click karega toh ye link khulega).
+- **Har Visit pe Show:** Yeh popup automatically har visit/page reload par 2.5s ke baad smooth animation ke saath open hota hai.
 
 ---
 

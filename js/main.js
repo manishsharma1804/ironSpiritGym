@@ -596,32 +596,31 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const offerModal = document.getElementById('offer-modal');
     if (offerModal && popup) {
-      document.getElementById('offer-popup-badge').textContent = popup.badge;
-      document.getElementById('offer-popup-title').textContent = popup.title;
-      document.getElementById('offer-popup-subtitle').textContent = popup.subtitle;
-      document.getElementById('offer-popup-desc').textContent = popup.description;
-      document.getElementById('offer-coupon-code').textContent = popup.couponCode;
-      document.getElementById('offer-validity-text').textContent = popup.validity;
+      const imgEl = document.getElementById('offer-popup-img');
+      const sourceDesktop = document.getElementById('offer-popup-source-desktop');
+      const linkEl = document.getElementById('offer-popup-link');
 
-      const claimWaUrl = `https://wa.me/${state.gymInfo?.contact?.whatsapp || '919835124789'}?text=${encodeURIComponent(popup.whatsappPrefill)}`;
-      const claimBtn = document.getElementById('offer-claim-btn');
-      if (claimBtn) {
-        claimBtn.setAttribute('href', claimWaUrl);
-        claimBtn.setAttribute('target', '_blank');
+      const desktopImg = popup.imageDesktop || popup.desktopImage || popup.image || 'bannerPc.png';
+      const mobileImg = popup.imageMobile || popup.mobileImage || popup.image || 'banner.png';
+
+      if (sourceDesktop) {
+        sourceDesktop.srcset = desktopImg;
+      }
+      if (imgEl) {
+        imgEl.src = mobileImg;
+        imgEl.alt = popup.alt || 'Special Gym Launch Offer';
       }
 
-      const perksContainer = document.getElementById('offer-perks-list');
-      if (perksContainer && popup.perks) {
-        perksContainer.innerHTML = popup.perks
-          .map(perk => `<li><span class="check-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#e82b35" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span> ${perk}</li>`)
-          .join('');
+      if (linkEl) {
+        const fallbackWa = `https://wa.me/${state.gymInfo?.contact?.whatsapp || '919835124789'}?text=${encodeURIComponent('Hi Iron Spirit Gym! I am interested in the special offer.')}`;
+        linkEl.href = popup.link || fallbackWa;
       }
 
-      const dismissed = localStorage.getItem('ironspirit_offer_dismissed');
-      if (!dismissed) {
+      // Show offer poster popup on every visit / reload (skip if vault is directly requested)
+      if (!window.location.hash.includes('#gallery-vault')) {
         setTimeout(() => {
           openModal('offer-modal');
-        }, 3500);
+        }, 2500);
       }
     }
   }
@@ -1766,9 +1765,6 @@ document.addEventListener('DOMContentLoaded', () => {
     if (modal) {
       modal.classList.remove('open');
       ModalManager.close(modalId, opts);
-      if (modalId === 'offer-modal') {
-        localStorage.setItem('ironspirit_offer_dismissed', 'true');
-      }
     }
   }
 

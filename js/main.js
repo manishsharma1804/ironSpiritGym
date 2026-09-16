@@ -322,6 +322,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initHeaderScrollState();
     initModals();
     initHorizontalCarousels();
+    initDesktopMap();
 
     // Trigger GSAP ScrollTrigger animations on all sections and cards
     setTimeout(initScrollAnimations, 100);
@@ -355,6 +356,12 @@ document.addEventListener('DOMContentLoaded', () => {
   // 3. GSAP ScrollTrigger Orchestration (Ultra-Smooth 60fps Mobile Optimized)
   function initScrollAnimations() {
     if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') return;
+
+    // Optimize ScrollTrigger for mobile URL bar collapse & prevent jitter
+    ScrollTrigger.config({
+      ignoreMobileResize: true,
+      autoRefreshEvents: 'visibilitychange,DOMContentLoaded,load'
+    });
 
     // Refresh ScrollTrigger state after dynamic content injection
     ScrollTrigger.refresh();
@@ -580,46 +587,92 @@ document.addEventListener('DOMContentLoaded', () => {
     }, 2200);
   }
 
-  // Modal handlers for Contact Action Sheet
-  const contactActionBackdrop = document.getElementById('contact-action-backdrop');
-  const contactActionClose = document.getElementById('contact-action-close');
-  const contactActionTitle = document.getElementById('contact-action-title');
-  const contactActionBody = document.getElementById('contact-action-body');
+  // Contact Bottom Sheet Drawer Handlers (Mobile & PC)
+  const contactModalBackdrop = document.getElementById('contact-modal-backdrop');
+  const contactModalSheet = document.getElementById('contact-modal-sheet');
+  const contactModalTitle = document.getElementById('contact-modal-title');
+  const contactModalContent = document.getElementById('contact-modal-content');
+  const contactModalClose = document.getElementById('contact-modal-close');
 
-  function openContactActionModal(title, cardsHtml) {
-    if (!contactActionBackdrop || !contactActionBody) return;
-    if (contactActionTitle) contactActionTitle.textContent = title;
-    contactActionBody.innerHTML = cardsHtml;
+  function openContactModal(title, cardsHtml) {
+    if (!contactModalBackdrop || !contactModalSheet || !contactModalContent) return;
+    if (contactModalTitle) contactModalTitle.textContent = title;
+    contactModalContent.innerHTML = cardsHtml;
 
-    // Attach copy button click listeners inside modal
-    contactActionBody.querySelectorAll('.btn-act-copy').forEach(btn => {
-      btn.addEventListener('click', () => {
+    // Wire copy buttons inside modal
+    contactModalContent.querySelectorAll('.contact-modal-btn-copy').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        e.stopPropagation();
         const copyVal = btn.getAttribute('data-copy');
         const copyMsg = btn.getAttribute('data-msg') || 'Copied to clipboard!';
         copyToClipboard(copyVal, copyMsg);
       });
     });
 
-    contactActionBackdrop.classList.add('open');
+    contactModalBackdrop.classList.add('active');
+    contactModalBackdrop.setAttribute('aria-hidden', 'false');
+    requestAnimationFrame(() => {
+      contactModalSheet.classList.add('active');
+    });
     document.body.classList.add('modal-open');
   }
 
-  function closeContactActionModal() {
-    if (!contactActionBackdrop) return;
-    contactActionBackdrop.classList.remove('open');
-    document.body.classList.remove('modal-open');
+  function closeContactModal() {
+    if (!contactModalBackdrop || !contactModalSheet) return;
+    contactModalSheet.classList.remove('active');
+    setTimeout(() => {
+      contactModalBackdrop.classList.remove('active');
+      contactModalBackdrop.setAttribute('aria-hidden', 'true');
+      document.body.classList.remove('modal-open');
+    }, 280);
   }
 
-  if (contactActionClose) {
-    contactActionClose.addEventListener('click', closeContactActionModal);
+  if (contactModalClose) {
+    contactModalClose.addEventListener('click', closeContactModal);
   }
-  if (contactActionBackdrop) {
-    contactActionBackdrop.addEventListener('click', (e) => {
-      if (e.target === contactActionBackdrop) closeContactActionModal();
+  if (contactModalBackdrop) {
+    contactModalBackdrop.addEventListener('click', (e) => {
+      if (e.target === contactModalBackdrop) closeContactModal();
     });
   }
 
-  // 4. Render Gym Global Info (Supports Multiple Phones & WhatsApps + Action Sheet)
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && contactModalBackdrop && contactModalBackdrop.classList.contains('active')) {
+      closeContactModal();
+    }
+  });
+
+  // Desktop-Only Dynamic Google Map Embed (Zero Mobile Network/Render Overhead)
+  function initDesktopMap() {
+    const mapContainer = document.getElementById('map-container');
+    if (!mapContainer) return;
+    const mapSrc = mapContainer.getAttribute('data-map-src');
+    if (!mapSrc) return;
+
+    function checkAndMountMap() {
+      const isDesktop = window.innerWidth > 768;
+      const existingIframe = mapContainer.querySelector('iframe');
+      if (isDesktop && !existingIframe) {
+        const iframe = document.createElement('iframe');
+        iframe.src = mapSrc;
+        iframe.title = 'Iron Spirit Gym Location Kokar Ranchi';
+        iframe.loading = 'lazy';
+        iframe.referrerPolicy = 'no-referrer-when-downgrade';
+        iframe.setAttribute('aria-label', 'Map view of Iron Spirit Gym in Kokar Ranchi');
+        mapContainer.insertBefore(iframe, mapContainer.firstChild);
+      } else if (!isDesktop && existingIframe) {
+        existingIframe.remove();
+      }
+    }
+
+    checkAndMountMap();
+    window.addEventListener('resize', () => {
+      clearTimeout(window._mapResizeTimer);
+      window._mapResizeTimer = setTimeout(checkAndMountMap, 200);
+    }, { passive: true });
+  }
+
+  // 4. Render Gym Global Info (Supports Multiple Phones & WhatsApps + Bottom Sheet Drawer)
   function renderGymInfo() {
     if (!state.gymInfo) return;
     const { contact, location, timings } = state.gymInfo;
@@ -678,93 +731,25 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     }
 
-    // 2. Email Interactive Action Button
-    const emailBtn = document.getElementById('contact-email-btn');
-    if (contact.email && emailBtn) {
-      emailBtn.style.display = 'inline-flex';
-      emailBtn.setAttribute('data-email', contact.email);
-
-      emailBtn.addEventListener('click', () => {
-        const mail = contact.email;
-        const cardHtml = `
-          <div class="contact-action-card">
-            <div class="contact-action-card-header">
-              <span class="contact-action-card-label">Official Email</span>
-            </div>
-            <div class="contact-action-card-val">${mail}</div>
-            <div class="contact-action-btns-row">
-              <a href="mailto:${mail}" class="btn-act-primary">
-                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><rect width="20" height="16" x="2" y="4" rx="2"></rect><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path></svg>
-                <span>Open Mail App</span>
-              </a>
-              <button type="button" class="btn-act-copy" data-copy="${mail}" data-msg="Email address copied!">
-                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"></rect><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"></path></svg>
-                <span>Copy</span>
-              </button>
-            </div>
-          </div>
-        `;
-        openContactActionModal('Email Options', cardHtml);
-      });
-    } else if (emailBtn) {
-      emailBtn.style.display = 'none';
+    // 2. Email Link in Contact Section
+    const emailLink = document.getElementById('contact-email-link');
+    const emailDisplay = document.getElementById('contact-email-display');
+    if (contact.email) {
+      if (emailLink) {
+        emailLink.setAttribute('href', `mailto:${contact.email}`);
+        emailLink.setAttribute('title', contact.email);
+        emailLink.style.display = 'inline-flex';
+      }
+      if (emailDisplay) emailDisplay.textContent = 'Email';
+    } else if (emailLink) {
+      emailLink.style.display = 'none';
     }
 
-    // 3. Setup Main "Call Front Desk" Button in Contact Section
-    const mainCallBtn = document.getElementById('contact-main-call-btn');
-    if (mainCallBtn) {
-      mainCallBtn.addEventListener('click', (e) => {
-        e.preventDefault();
-        if (phones.length === 1) {
-          const num = phones[0].number;
-          const cardHtml = `
-            <div class="contact-action-card">
-              <div class="contact-action-card-header">
-                <span class="contact-action-card-label">${phones[0].label || 'Front Desk'}</span>
-              </div>
-              <div class="contact-action-card-val">${num}</div>
-              <div class="contact-action-btns-row">
-                <a href="tel:${num.replace(/\s+/g, '')}" class="btn-act-primary">
-                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
-                  <span>Call Now</span>
-                </a>
-                <button type="button" class="btn-act-copy" data-copy="${num}" data-msg="Phone number copied!">
-                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"></rect><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"></path></svg>
-                  <span>Copy</span>
-                </button>
-              </div>
-            </div>
-          `;
-          openContactActionModal('Call Front Desk', cardHtml);
-        } else if (phones.length > 1) {
-          const cardsHtml = phones.map(p => `
-            <div class="contact-action-card">
-              <div class="contact-action-card-header">
-                <span class="contact-action-card-label">${p.label || 'Desk'}</span>
-              </div>
-              <div class="contact-action-card-val">${p.number}</div>
-              <div class="contact-action-btns-row">
-                <a href="tel:${p.number.replace(/\s+/g, '')}" class="btn-act-primary">
-                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
-                  <span>Call Now</span>
-                </a>
-                <button type="button" class="btn-act-copy" data-copy="${p.number}" data-msg="Phone number copied!">
-                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"></rect><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"></path></svg>
-                  <span>Copy</span>
-                </button>
-              </div>
-            </div>
-          `).join('');
-          openContactActionModal('Choose Phone Line', cardsHtml);
-        }
-      });
-    }
-
-    // 4. Setup WhatsApp Links & Main WhatsApp Button in Contact Section
+    // 3. Setup WhatsApp Button & Bottom Sheet Drawer
     const primaryWa = whatsapps[0] || { number: '919835124789', message: 'Hi Iron Spirit Gym!' };
     const defaultWaUrl = `https://wa.me/${primaryWa.number}?text=${encodeURIComponent(primaryWa.message || contact.whatsappMessage || '')}`;
 
-    // Update static whatsapp links (like hero / floating / pinned nav button)
+    // Update static whatsapp links across site (hero, floating button, bottom nav)
     document.querySelectorAll('.whatsapp-link').forEach(el => {
       el.setAttribute('href', defaultWaUrl);
       el.setAttribute('target', '_blank');
@@ -775,32 +760,58 @@ document.addEventListener('DOMContentLoaded', () => {
     if (mainWaBtn) {
       mainWaBtn.addEventListener('click', (e) => {
         e.preventDefault();
-        if (whatsapps.length <= 1) {
-          window.open(defaultWaUrl, '_blank', 'noopener,noreferrer');
-        } else {
-          const cardsHtml = whatsapps.map(w => {
-            const link = `https://wa.me/${w.number}?text=${encodeURIComponent(w.message || contact.whatsappMessage || '')}`;
-            return `
-              <div class="contact-action-card">
-                <div class="contact-action-card-header">
-                  <span class="contact-action-card-label">${w.label || 'WhatsApp Desk'}</span>
-                </div>
-                <div class="contact-action-card-val">+${w.number}</div>
-                <div class="contact-action-btns-row">
-                  <a href="${link}" target="_blank" rel="noopener noreferrer" class="btn-act-primary whatsapp-bg">
-                    <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
-                    <span>Chat on WhatsApp</span>
-                  </a>
-                  <button type="button" class="btn-act-copy" data-copy="+${w.number}" data-msg="WhatsApp number copied!">
-                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"></rect><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"></path></svg>
-                    <span>Copy</span>
-                  </button>
-                </div>
+        const cardsHtml = whatsapps.map(w => {
+          const link = `https://wa.me/${w.number}?text=${encodeURIComponent(w.message || contact.whatsappMessage || '')}`;
+          return `
+            <div class="contact-modal-card">
+              <div class="contact-modal-card-info">
+                <span class="contact-modal-card-label">${w.label || 'WhatsApp Desk'}</span>
+                <span class="contact-modal-card-num">+${w.number}</span>
               </div>
-            `;
-          }).join('');
-          openContactActionModal('Choose WhatsApp Line', cardsHtml);
-        }
+              <div class="contact-modal-actions">
+                <a href="${link}" target="_blank" rel="noopener noreferrer" class="contact-modal-btn-act whatsapp-bg">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+                  <span>Chat on WhatsApp</span>
+                </a>
+                <button type="button" class="contact-modal-btn-copy" data-copy="+${w.number}" data-msg="WhatsApp number copied!">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"></rect><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"></path></svg>
+                  <span>Copy</span>
+                </button>
+              </div>
+            </div>
+          `;
+        }).join('');
+        openContactModal('Choose WhatsApp Line', cardsHtml);
+      });
+    }
+
+    // 4. Setup Call Front Desk Button & Bottom Sheet Drawer
+    const mainCallBtn = document.getElementById('contact-main-call-btn');
+    if (mainCallBtn) {
+      mainCallBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        const cardsHtml = phones.map(p => {
+          const telLink = `tel:${p.number.replace(/\s+/g, '')}`;
+          return `
+            <div class="contact-modal-card">
+              <div class="contact-modal-card-info">
+                <span class="contact-modal-card-label">${p.label || 'Front Desk'}</span>
+                <span class="contact-modal-card-num">${p.number}</span>
+              </div>
+              <div class="contact-modal-actions">
+                <a href="${telLink}" class="contact-modal-btn-act">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+                  <span>Call Now</span>
+                </a>
+                <button type="button" class="contact-modal-btn-copy" data-copy="${p.number}" data-msg="Phone number copied!">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"></rect><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"></path></svg>
+                  <span>Copy</span>
+                </button>
+              </div>
+            </div>
+          `;
+        }).join('');
+        openContactModal('Choose Phone Line', cardsHtml);
       });
     }
 
@@ -818,16 +829,19 @@ document.addEventListener('DOMContentLoaded', () => {
   // 5. Render Offers (Continuous Marquee Announcement Bar & Launch Offer Popup)
   function renderOffers() {
     const topBar = document.getElementById('top-announcement-bar');
-    if (!state.offers || !state.offers.isActive) {
+    if (!state.offers || state.offers.isActive === false) {
       if (topBar) topBar.style.display = 'none';
       return;
     }
 
-    const { bannerText, badge, popup } = state.offers;
+    const { bannerText, badge, popup, showBanner } = state.offers;
     const badgeLabel = badge || 'COMING SOON';
 
+    // Strictly check showBanner: if showBanner is false, hide the announcement marquee bar
+    const isBannerVisible = showBanner !== false;
+
     const marqueeTrack = document.getElementById('announcement-marquee-track');
-    if (topBar && marqueeTrack && bannerText) {
+    if (topBar && marqueeTrack && bannerText && isBannerVisible) {
       const singleItem = `
         <div class="announcement-marquee-item">
           <span class="announcement-badge">${badgeLabel}</span>
@@ -843,10 +857,13 @@ document.addEventListener('DOMContentLoaded', () => {
       topBar.addEventListener('click', () => {
         topBar.classList.toggle('is-paused');
       });
+    } else if (topBar) {
+      topBar.style.display = 'none';
     }
 
     const offerModal = document.getElementById('offer-modal');
-    if (offerModal && popup) {
+    const hasPopupImg = popup && (popup.imageDesktop || popup.imageMobile || popup.image || popup.desktopImage || popup.mobileImage);
+    if (offerModal && popup && hasPopupImg && popup.isActive !== false) {
       const imgEl = document.getElementById('offer-popup-img');
       const sourceDesktop = document.getElementById('offer-popup-source-desktop');
       const linkEl = document.getElementById('offer-popup-link');
@@ -956,19 +973,41 @@ document.addEventListener('DOMContentLoaded', () => {
   })();
 
   // =========================================================================
-  // UNIVERSAL SEAMLESS INFINITE MOBILE CAROUSEL ENGINE
+  // UNIVERSAL SEAMLESS INFINITE MOBILE CAROUSEL ENGINE (STATIONARY AUTO-SCROLL)
   // =========================================================================
+  // Global Page Scroll Idle Tracker (Ensures auto-scroll only triggers when stationary on section)
+  let isPageScrolling = false;
+  let pageScrollEndTimer = null;
+  const registeredCarousels = [];
+
+  function handleGlobalPageScroll() {
+    isPageScrolling = true;
+    registeredCarousels.forEach(c => {
+      if (c && c.onPageScroll) c.onPageScroll();
+    });
+    clearTimeout(pageScrollEndTimer);
+    pageScrollEndTimer = setTimeout(() => {
+      isPageScrolling = false;
+      registeredCarousels.forEach(c => {
+        if (c && c.onPageIdle) c.onPageIdle();
+      });
+    }, 700);
+  }
+
+  window.addEventListener('scroll', handleGlobalPageScroll, { passive: true });
+
   function setupInfiniteMobileTrack(track, totalCount, options = {}) {
     if (!track || totalCount <= 0) return null;
 
     let isUserTouching = false;
     let autoScrollInterval = null;
     let isBoundaryAdjusting = false;
-    let isSectionInView = true;
+    let isSectionInView = false;
     let isSwiping = false;
     let touchStartX = 0;
     let touchStartY = 0;
     let scrollTimeout = null;
+    let stationaryTimer = null;
 
     const {
       onActiveChange,
@@ -1017,7 +1056,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function checkBoundaryLoop() {
-      if (window.innerWidth > 768 || isBoundaryAdjusting) return;
+      if (window.innerWidth > 768 || isBoundaryAdjusting || isUserTouching || isPageScrolling) return;
       const cards = track.children;
       if (cards.length < totalCount * 3) return;
 
@@ -1037,7 +1076,7 @@ document.addEventListener('DOMContentLoaded', () => {
           track.scrollLeft = target;
           track.style.scrollBehavior = 'smooth';
         }
-        setTimeout(() => { isBoundaryAdjusting = false; }, 60);
+        setTimeout(() => { isBoundaryAdjusting = false; }, 80);
       }
       // If user scrolled into set 3 (right copy)
       else if (closest >= totalCount * 2) {
@@ -1049,12 +1088,12 @@ document.addEventListener('DOMContentLoaded', () => {
           track.scrollLeft = target;
           track.style.scrollBehavior = 'smooth';
         }
-        setTimeout(() => { isBoundaryAdjusting = false; }, 60);
+        setTimeout(() => { isBoundaryAdjusting = false; }, 80);
       }
     }
 
     function stepForward() {
-      if (window.innerWidth > 768 || isUserTouching || !isSectionInView || isBoundaryAdjusting) return;
+      if (window.innerWidth > 768 || isUserTouching || !isSectionInView || isPageScrolling || isBoundaryAdjusting) return;
       const cards = track.children;
       if (!cards.length) return;
       const current = getClosestIndex();
@@ -1066,7 +1105,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function startAutoScroll() {
       stopAutoScroll();
-      if (!autoScroll || window.innerWidth > 768 || isUserTouching || !isSectionInView) return;
+      if (!autoScroll || window.innerWidth > 768 || isUserTouching || !isSectionInView || isPageScrolling) return;
       autoScrollInterval = setInterval(stepForward, autoScrollDelay);
     }
 
@@ -1075,12 +1114,29 @@ document.addEventListener('DOMContentLoaded', () => {
         clearInterval(autoScrollInterval);
         autoScrollInterval = null;
       }
+      if (stationaryTimer) {
+        clearTimeout(stationaryTimer);
+        stationaryTimer = null;
+      }
     }
 
-    function resetAutoScroll() {
+    function scheduleStationaryAutoScroll(delay = 1200) {
       stopAutoScroll();
-      if (!isUserTouching && isSectionInView) {
-        startAutoScroll();
+      if (!autoScroll || window.innerWidth > 768 || isUserTouching || !isSectionInView || isPageScrolling) return;
+      stationaryTimer = setTimeout(() => {
+        if (!isUserTouching && isSectionInView && !isPageScrolling) {
+          startAutoScroll();
+        }
+      }, delay);
+    }
+
+    function onPageScroll() {
+      stopAutoScroll();
+    }
+
+    function onPageIdle() {
+      if (isSectionInView && !isUserTouching && !isPageScrolling) {
+        scheduleStationaryAutoScroll(1000);
       }
     }
 
@@ -1108,8 +1164,10 @@ document.addEventListener('DOMContentLoaded', () => {
       isUserTouching = false;
       setTimeout(() => {
         isSwiping = false;
-      }, 60);
-      setTimeout(resetAutoScroll, 2000);
+      }, 80);
+      if (isSectionInView && !isPageScrolling) {
+        scheduleStationaryAutoScroll(2500);
+      }
     }, { passive: true });
 
     track.addEventListener('scroll', () => {
@@ -1119,8 +1177,10 @@ document.addEventListener('DOMContentLoaded', () => {
         onActiveChange(realIdx);
       }
       clearTimeout(scrollTimeout);
-      scrollTimeout = setTimeout(checkBoundaryLoop, 140);
-      resetAutoScroll();
+      scrollTimeout = setTimeout(checkBoundaryLoop, 150);
+      if (!isPageScrolling && !isUserTouching && isSectionInView) {
+        scheduleStationaryAutoScroll(3000);
+      }
     }, { passive: true });
 
     track.addEventListener('mouseenter', () => {
@@ -1130,7 +1190,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     track.addEventListener('mouseleave', () => {
       isUserTouching = false;
-      resetAutoScroll();
+      if (isSectionInView && !isPageScrolling) {
+        scheduleStationaryAutoScroll(1200);
+      }
     });
 
     if (sectionId) {
@@ -1138,14 +1200,16 @@ document.addEventListener('DOMContentLoaded', () => {
       if (sec && 'IntersectionObserver' in window) {
         const observer = new IntersectionObserver((entries) => {
           entries.forEach(entry => {
-            isSectionInView = entry.isIntersecting;
+            isSectionInView = entry.isIntersecting && entry.intersectionRatio >= 0.35;
             if (isSectionInView) {
-              resetAutoScroll();
+              if (!isPageScrolling && !isUserTouching) {
+                scheduleStationaryAutoScroll(1200);
+              }
             } else {
               stopAutoScroll();
             }
           });
-        }, { threshold: 0.15 });
+        }, { threshold: [0, 0.35, 0.7] });
         observer.observe(sec);
       }
     }
@@ -1159,13 +1223,18 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     }, { passive: true });
 
-    return {
+    const handler = {
       initPosition,
       stepForward,
       isSwiping: () => isSwiping,
       stopAutoScroll,
-      startAutoScroll
+      startAutoScroll,
+      onPageScroll,
+      onPageIdle
     };
+
+    registeredCarousels.push(handler);
+    return handler;
   }
 
   // 6. Render Amenities (Integrated Training Zones)
@@ -1807,6 +1876,36 @@ document.addEventListener('DOMContentLoaded', () => {
       const p2 = reviewVideo.play();
       if (p2 !== undefined) p2.catch(() => {});
     }
+
+    // Performance Optimization: Pause video playback when offscreen (avoids mobile GPU & CPU throttling)
+    if ('IntersectionObserver' in window) {
+      if (whyUsVideo) {
+        const whyUsObs = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              const p = whyUsVideo.play();
+              if (p !== undefined) p.catch(() => {});
+            } else {
+              whyUsVideo.pause();
+            }
+          });
+        }, { threshold: 0.1 });
+        whyUsObs.observe(whyUsVideo);
+      }
+      if (reviewVideo) {
+        const revObs = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              const p = reviewVideo.play();
+              if (p !== undefined) p.catch(() => {});
+            } else {
+              reviewVideo.pause();
+            }
+          });
+        }, { threshold: 0.1 });
+        revObs.observe(reviewVideo);
+      }
+    }
   }
 
   function initTestimonialsSlider() {
@@ -2242,9 +2341,12 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     }
 
-    // Mobile Auto-Scroll Mechanism
+    // Mobile Auto-Scroll Mechanism (Stationary Only)
+    let isGalleryInView = false;
+    let galleryStationaryTimer = null;
+
     function stepMobileAutoScroll() {
-      if (window.innerWidth > 768 || isUserInteracting || currentPreviewItemsCount <= 1) return;
+      if (window.innerWidth > 768 || isUserInteracting || currentPreviewItemsCount <= 1 || isPageScrolling || !isGalleryInView) return;
       const firstCard = previewGrid.querySelector('.gallery-card');
       if (!firstCard) return;
 
@@ -2261,7 +2363,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function startMobileAutoScroll() {
       stopMobileAutoScroll();
-      if (window.innerWidth <= 768) {
+      if (window.innerWidth <= 768 && !isUserInteracting && !isPageScrolling && isGalleryInView) {
         mobileAutoScrollTimer = setInterval(stepMobileAutoScroll, 3500);
       }
     }
@@ -2271,11 +2373,20 @@ document.addEventListener('DOMContentLoaded', () => {
         clearInterval(mobileAutoScrollTimer);
         mobileAutoScrollTimer = null;
       }
+      if (galleryStationaryTimer) {
+        clearTimeout(galleryStationaryTimer);
+        galleryStationaryTimer = null;
+      }
     }
 
-    function resetMobileAutoScroll() {
+    function scheduleGalleryStationaryAutoScroll(delay = 1200) {
       stopMobileAutoScroll();
-      startMobileAutoScroll();
+      if (window.innerWidth > 768 || isUserInteracting || isPageScrolling || !isGalleryInView) return;
+      galleryStationaryTimer = setTimeout(() => {
+        if (!isUserInteracting && !isPageScrolling && isGalleryInView) {
+          startMobileAutoScroll();
+        }
+      }, delay);
     }
 
     // User touch / interaction handlers (pauses on swipe, resumes after idle)
@@ -2289,8 +2400,10 @@ document.addEventListener('DOMContentLoaded', () => {
       if (resumeTimeout) clearTimeout(resumeTimeout);
       resumeTimeout = setTimeout(() => {
         isUserInteracting = false;
-        startMobileAutoScroll();
-      }, 4000);
+        if (isGalleryInView && !isPageScrolling) {
+          scheduleGalleryStationaryAutoScroll(2500);
+        }
+      }, 80);
     }, { passive: true });
 
     // IntersectionObserver to only auto-scroll when section is in viewport
@@ -2299,30 +2412,37 @@ document.addEventListener('DOMContentLoaded', () => {
       if (gallerySection) {
         const observer = new IntersectionObserver((entries) => {
           entries.forEach(entry => {
-            if (entry.isIntersecting) {
-              startMobileAutoScroll();
+            isGalleryInView = entry.isIntersecting && entry.intersectionRatio >= 0.3;
+            if (isGalleryInView) {
+              if (!isPageScrolling && !isUserInteracting) {
+                scheduleGalleryStationaryAutoScroll(1200);
+              }
             } else {
               stopMobileAutoScroll();
             }
           });
-        }, { threshold: 0.2 });
+        }, { threshold: [0, 0.3, 0.7] });
         observer.observe(gallerySection);
       }
-    } else {
-      startMobileAutoScroll();
     }
+
+    registeredCarousels.push({
+      onPageScroll: () => stopMobileAutoScroll(),
+      onPageIdle: () => {
+        if (isGalleryInView && !isUserInteracting && !isPageScrolling) {
+          scheduleGalleryStationaryAutoScroll(1000);
+        }
+      }
+    });
 
     window.addEventListener('resize', () => {
       if (window.innerWidth > 768) {
         stopMobileAutoScroll();
-      } else {
-        startMobileAutoScroll();
       }
     }, { passive: true });
 
     populateFilterCounts();
     renderPreviewItems();
-    startMobileAutoScroll();
   }
 
   function initGalleryModal() {

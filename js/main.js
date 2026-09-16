@@ -352,7 +352,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  // 3. GSAP ScrollTrigger Orchestration (Snappy 60fps, re-triggers on scroll up/down)
+  // 3. GSAP ScrollTrigger Orchestration (Ultra-Smooth 60fps Mobile Optimized)
   function initScrollAnimations() {
     if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') return;
 
@@ -364,17 +364,18 @@ document.addEventListener('DOMContentLoaded', () => {
     if (headers.length) {
       headers.forEach(header => {
         gsap.fromTo(header,
-          { opacity: 0, y: 30 },
+          { opacity: 0, y: 28 },
           {
             opacity: 1,
             y: 0,
-            duration: 0.75,
+            duration: 0.7,
             ease: 'power2.out',
             force3D: true,
             scrollTrigger: {
               trigger: header,
               start: 'top 88%',
-              toggleActions: 'play reverse play reverse'
+              toggleActions: 'play none none none',
+              once: true
             }
           }
         );
@@ -389,19 +390,20 @@ document.addEventListener('DOMContentLoaded', () => {
       if (!items.length) return;
 
       gsap.fromTo(items,
-        { opacity: 0, y: 36, scale: 0.98 },
+        { opacity: 0, y: 32, scale: 0.98 },
         {
           opacity: 1,
           y: 0,
           scale: 1,
-          duration: 0.75,
-          stagger: 0.08,
+          duration: 0.7,
+          stagger: 0.06,
           ease: 'power2.out',
           force3D: true,
           scrollTrigger: {
             trigger: container,
             start: startOffset,
-            toggleActions: 'play reverse play reverse'
+            toggleActions: 'play none none none',
+            once: true
           }
         }
       );
@@ -414,17 +416,18 @@ document.addEventListener('DOMContentLoaded', () => {
     const magStage = document.querySelector('.magazine-stage');
     if (magStage && typeof gsap !== 'undefined') {
       gsap.fromTo(magStage,
-        { opacity: 0, y: 35 },
+        { opacity: 0, y: 30 },
         {
           opacity: 1,
           y: 0,
-          duration: 0.85,
+          duration: 0.75,
           ease: 'power2.out',
           force3D: true,
           scrollTrigger: {
             trigger: magStage,
             start: 'top 85%',
-            toggleActions: 'play reverse play reverse'
+            toggleActions: 'play none none none',
+            once: true
           }
         }
       );
@@ -435,55 +438,58 @@ document.addEventListener('DOMContentLoaded', () => {
     if (whyUsGrid) {
       if (document.querySelector('.why-us-content')) {
         gsap.fromTo('.why-us-content',
-          { opacity: 0, x: -25 },
+          { opacity: 0, x: -20 },
           {
             opacity: 1,
             x: 0,
-            duration: 0.75,
+            duration: 0.7,
             ease: 'power2.out',
             force3D: true,
             scrollTrigger: {
               trigger: whyUsGrid,
               start: 'top 85%',
-              toggleActions: 'play reverse play reverse'
+              toggleActions: 'play none none none',
+              once: true
             }
           }
         );
       }
       if (document.querySelectorAll('.why-gallery-card').length) {
         gsap.fromTo('.why-gallery-card',
-          { opacity: 0, scale: 0.95, y: 20 },
+          { opacity: 0, scale: 0.96, y: 18 },
           {
             opacity: 1,
             scale: 1,
             y: 0,
-            duration: 0.75,
-            stagger: 0.08,
+            duration: 0.7,
+            stagger: 0.06,
             ease: 'power2.out',
             force3D: true,
             scrollTrigger: {
               trigger: whyUsGrid,
               start: 'top 85%',
-              toggleActions: 'play reverse play reverse'
+              toggleActions: 'play none none none',
+              once: true
             }
           }
         );
       }
       if (document.querySelector('.why-center-badge')) {
         gsap.fromTo('.why-center-badge',
-          { opacity: 0, scale: 0.7, rotate: -15 },
+          { opacity: 0, scale: 0.75, rotate: -10 },
           {
             opacity: 1,
             scale: 1,
             rotate: 0,
-            duration: 0.8,
-            delay: 0.15,
-            ease: 'back.out(1.5)',
+            duration: 0.75,
+            delay: 0.1,
+            ease: 'back.out(1.4)',
             force3D: true,
             scrollTrigger: {
               trigger: whyUsGrid,
               start: 'top 85%',
-              toggleActions: 'play reverse play reverse'
+              toggleActions: 'play none none none',
+              once: true
             }
           }
         );
@@ -493,17 +499,18 @@ document.addEventListener('DOMContentLoaded', () => {
     const contactGrid = document.querySelector('.contact-grid');
     if (contactGrid) {
       gsap.fromTo(contactGrid,
-        { opacity: 0, y: 35 },
+        { opacity: 0, y: 30 },
         {
           opacity: 1,
           y: 0,
-          duration: 0.8,
+          duration: 0.75,
           ease: 'power2.out',
           force3D: true,
           scrollTrigger: {
             trigger: contactGrid,
             start: 'top 85%',
-            toggleActions: 'play reverse play reverse'
+            toggleActions: 'play none none none',
+            once: true
           }
         }
       );
@@ -512,17 +519,18 @@ document.addEventListener('DOMContentLoaded', () => {
     const testSlider = document.querySelector('.testimonial-slider');
     if (testSlider) {
       gsap.fromTo(testSlider,
-        { opacity: 0, y: 30 },
+        { opacity: 0, y: 28 },
         {
           opacity: 1,
           y: 0,
-          duration: 0.8,
+          duration: 0.75,
           ease: 'power2.out',
           force3D: true,
           scrollTrigger: {
             trigger: testSlider,
             start: 'top 88%',
-            toggleActions: 'play reverse play reverse'
+            toggleActions: 'play none none none',
+            once: true
           }
         }
       );
@@ -2508,12 +2516,22 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // 14c. App-Like Mobile Bottom Navigation (ScrollSpy & Interactive Tabs)
+  // 14c. App-Like Mobile Bottom Navigation (Zero-Lag ScrollSpy & Auto-Centering Tabs)
   function initMobileBottomNav() {
     const bottomNav = document.getElementById('mobile-bottom-nav');
     if (!bottomNav) return;
 
     const navItems = bottomNav.querySelectorAll('.bottom-nav-item');
+    const scrollTrack = bottomNav.querySelector('.bottom-nav-scroll-track');
+
+    function scrollTabIntoView(activeItem) {
+      if (!scrollTrack || !activeItem) return;
+      const itemLeft = activeItem.offsetLeft;
+      const itemWidth = activeItem.offsetWidth;
+      const trackWidth = scrollTrack.clientWidth;
+      const targetScroll = itemLeft - (trackWidth / 2) + (itemWidth / 2);
+      scrollTrack.scrollTo({ left: Math.max(0, targetScroll), behavior: 'smooth' });
+    }
 
     // Click behavior
     navItems.forEach(item => {
@@ -2534,50 +2552,60 @@ document.addEventListener('DOMContentLoaded', () => {
         if (this.getAttribute('href')?.startsWith('#')) {
           navItems.forEach(nav => nav.classList.remove('active'));
           this.classList.add('active');
+          scrollTabIntoView(this);
         }
       });
     });
 
-    // ScrollSpy to highlight active tab based on viewport scroll
-    const sections = [
-      { id: 'hero', target: document.getElementById('hero') },
-      { id: 'why-us', target: document.getElementById('why-us') },
-      { id: 'facilities', target: document.getElementById('facilities') },
-      { id: 'memberships', target: document.getElementById('memberships') },
-      { id: 'coaches', target: document.getElementById('coaches') },
-      { id: 'gallery', target: document.getElementById('gallery') },
-      { id: 'testimonials', target: document.getElementById('testimonials') },
-      { id: 'contact', target: document.getElementById('contact') }
-    ];
+    // Efficient ScrollSpy with cached section boundaries (Zero forced synchronous reflow)
+    const sectionIds = ['hero', 'why-us', 'facilities', 'memberships', 'coaches', 'gallery', 'testimonials', 'contact'];
+    let cachedSections = [];
 
+    function updateSectionCache() {
+      cachedSections = sectionIds.map(id => {
+        const target = document.getElementById(id);
+        if (!target) return null;
+        const rect = target.getBoundingClientRect();
+        const top = rect.top + window.scrollY;
+        return { id, top, height: target.offsetHeight };
+      }).filter(Boolean);
+    }
+
+    updateSectionCache();
+    window.addEventListener('resize', updateSectionCache, { passive: true });
+
+    let activeSectionId = 'hero';
     let ticking = false;
+
     window.addEventListener('scroll', () => {
       if (!ticking) {
         window.requestAnimationFrame(() => {
-          const scrollPos = window.scrollY + 220;
+          const scrollPos = window.scrollY + 200;
           let currentSection = 'hero';
 
-          sections.forEach(({ id, target }) => {
-            if (target) {
-              const top = target.offsetTop;
-              const height = target.offsetHeight;
-              if (scrollPos >= top && scrollPos < top + height) {
-                currentSection = id;
-              }
+          for (let i = 0; i < cachedSections.length; i++) {
+            const sec = cachedSections[i];
+            if (scrollPos >= sec.top - 60 && scrollPos < sec.top + sec.height) {
+              currentSection = sec.id;
+              break;
             }
-          });
+          }
 
-          navItems.forEach(item => {
-            if (item.dataset.section) {
+          if (currentSection !== activeSectionId) {
+            activeSectionId = currentSection;
+            let activeItem = null;
+            navItems.forEach(item => {
               if (item.dataset.section === currentSection) {
-                if (!item.classList.contains('active')) {
-                  item.classList.add('active');
-                }
+                item.classList.add('active');
+                activeItem = item;
               } else {
                 item.classList.remove('active');
               }
+            });
+            if (activeItem) {
+              scrollTabIntoView(activeItem);
             }
-          });
+          }
           ticking = false;
         });
         ticking = true;

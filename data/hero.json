@@ -12,8 +12,8 @@
   },
   "slides": [
     {
-      "type": "logo",
-      "src": "main_logo.png",
+      "type": "image",
+      "src": "hero.png",
       "alt": "Iron Spirit Gym Official Emblem"
     },
     {

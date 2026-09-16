@@ -1,0 +1,1270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  
+  <script>
+    if (window.location.hash === '#gallery-vault') {
+      document.documentElement.classList.add('init-vault-open');
+    }
+  </script>
+  
+  <!-- SEO Best Practices & Meta Information -->
+  <title>Iron Spirit Gym | Unisex Fitness & Strength Gym in Kokar, Ranchi</title>
+  <meta name="description" content="Iron Spirit Gym is a dedicated unisex fitness and strength gym in Kokar, Ranchi. Equipped with quality free weights, strength machines, cardio stations, and helpful trainer guidance." />
+  <meta name="keywords" content="Iron Spirit Gym, Unisex Gym Kokar Ranchi, Gyms in Ranchi, Best Unisex Gym in Kokar, Fitness Gym Ranchi, Weightlifting Kokar" />
+  <meta name="author" content="Iron Spirit Gym" />
+  <meta name="theme-color" content="#0b0c10" />
+  <link rel="icon" type="image/png" href="logo.png" />
+
+  <!-- OpenGraph Social Sharing -->
+  <meta property="og:title" content="Iron Spirit Gym | Unisex Fitness & Strength Gym in Kokar, Ranchi" />
+  <meta property="og:description" content="Dedicated unisex fitness gym in Kokar, Ranchi with complete free weights, machines, cardio stations, and daily workout guidance." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=1200&q=80" />
+
+  <!-- Schema.org JSON-LD LocalBusiness -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ExerciseGym",
+    "name": "Iron Spirit Gym",
+    "image": "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=1200&q=80",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Plot No. 42, Near Kokar Industrial Area, Kokar Chowk",
+      "addressLocality": "Ranchi",
+      "addressRegion": "Jharkhand",
+      "postalCode": "834001",
+      "addressCountry": "IN"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": "23.3768",
+      "longitude": "85.3524"
+    },
+    "telephone": "+919835124789",
+    "priceRange": "₹1,999 - ₹14,999"
+  }
+  </script>
+
+  <!-- Google Fonts: Outfit & Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <!-- FIXED AMBIENT BACKGROUND CANVAS (ZERO MOBILE SCROLL LAG) -->
+  <div class="fixed-bg-canvas" aria-hidden="true"></div>
+
+  <!-- PRELOADER (ELEGANT LOGO FADE IN / FADE OUT) -->
+  <div class="preloader" id="preloader">
+    <div class="loader-container">
+      <!-- Ambient Radial Crimson Energy Glow -->
+      <div class="loader-ambient-glow"></div>
+
+      <!-- Clean Logo Fade In / Fade Out Wrapper -->
+      <div class="loader-logo-wrap">
+        <img src="top_logo.png" alt="Iron Spirit Gym" class="loader-fade-logo" />
+      </div>
+
+      <!-- Status Tracker -->
+      <div class="loader-status-wrap">
+        <div class="loader-progress-track">
+          <div class="loader-progress-bar-fill"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Smooth Preloader Dismissal (Fixed Min-Display Time + Silky Fade-out) -->
+  <script>
+    (function(){
+      const preloader = document.getElementById("preloader");
+      if (!preloader) return;
+
+      // If user directly accessed gallery vault hash, dismiss immediately without wait
+      if (window.location.hash === '#gallery-vault') {
+        preloader.classList.add("hide");
+        preloader.style.display = "none";
+        return;
+      }
+
+      const minDisplayTime = 1200; // Fixed duration in ms (gives enough time for smooth logo animation)
+      const startTime = performance.now();
+      let hasDismissed = false;
+
+      function dismissPreloader(){
+        if (hasDismissed) return;
+        hasDismissed = true;
+
+        const elapsed = performance.now() - startTime;
+        const remaining = Math.max(0, minDisplayTime - elapsed);
+
+        setTimeout(() => {
+          preloader.classList.add("hide");
+          setTimeout(() => {
+            if (preloader.parentNode) {
+              preloader.style.display = "none";
+            }
+          }, 700);
+        }, remaining);
+      }
+
+      if (document.readyState === "complete") {
+        dismissPreloader();
+      } else {
+        window.addEventListener("load", dismissPreloader, { once: true });
+        // Fallback safety timeout
+        setTimeout(dismissPreloader, 3000);
+      }
+    })();
+  </script>
+
+  <!-- Fixed Top Header Group (Announcement Bar + Frosted Glass Navbar) -->
+  <!-- Fixed Top Header Group (Marquee Announcement Bar + Frosted Glass Navbar) -->
+  <div class="fixed-top-header-group">
+    <!-- Top Announcement Bar (Only for Announcement with smooth continuous horizontal scrolling, click/tap to pause) -->
+    <div id="top-announcement-bar" class="top-announcement" style="display: none;" title="Click / Tap to Pause Scrolling" role="region" aria-label="Announcements">
+      <div class="announcement-marquee-wrapper">
+        <div class="announcement-marquee-track" id="announcement-marquee-track">
+          <!-- Dynamically populated with continuous looping announcement text -->
+        </div>
+      </div>
+    </div>
+
+    <!-- Professional Site Header (Frosted Glass & Official hero_logo.png) -->
+    <header class="site-header">
+      <div class="container navbar">
+        <a href="#hero" class="brand-logo" aria-label="Iron Spirit Gym Homepage">
+          <img src="top_logo.png" alt="Iron Spirit Gym Logo" class="header-logo-img" />
+          <div class="brand-text">
+            <span class="brand-name">iron <span class="red-text">spirit</span></span>
+            <span class="brand-sub">Unisex Gym, Ranchi</span>
+          </div>
+        </a>
+
+        <ul id="nav-links" class="nav-links">
+          <li><a href="#why-us">Why Us</a></li>
+          <li><a href="#facilities">Training Zones</a></li>
+          <li><a href="#memberships">Plans</a></li>
+          <li><a href="#coaches">Coaches</a></li>
+          <li><a href="#gallery">Gallery</a></li>
+          <li><a href="#testimonials">Stories</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+
+        <div class="nav-actions">
+          <a href="https://wa.me/919835124789" target="_blank" class="nav-whatsapp-cta whatsapp-link" aria-label="Talk to Us on WhatsApp">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+            <span>Talk to Us</span>
+          </a>
+          <button id="hamburger-btn" class="hamburger-btn" aria-label="Open Navigation Sidebar">
+            <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="3" y1="12" x2="21" y2="12"></line>
+              <line x1="3" y1="6" x2="21" y2="6"></line>
+              <line x1="3" y1="18" x2="21" y2="18"></line>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </header>
+  </div>
+
+  <!-- MOBILE SLIDE-OUT NAVIGATION SIDEBAR DRAWER -->
+  <div id="mobile-sidebar-backdrop" class="sidebar-backdrop" aria-hidden="true"></div>
+  <aside id="mobile-sidebar" class="mobile-sidebar-drawer" aria-label="Mobile Navigation Sidebar">
+    <div class="sidebar-header">
+      <a href="#hero" class="brand-logo sidebar-brand" aria-label="Iron Spirit Gym">
+        <img src="top_logo.png" alt="Iron Spirit Gym Logo" class="header-logo-img sidebar-logo-img" />
+        <div class="brand-text">
+          <span class="brand-name">iron <span class="red-text">spirit</span></span>
+          <span class="brand-sub">Unisex Gym, Ranchi</span>
+        </div>
+      </a>
+      <button id="sidebar-close-btn" class="sidebar-close-btn" aria-label="Close Navigation Sidebar">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+      </button>
+    </div>
+
+    <div class="sidebar-body">
+      <nav class="sidebar-nav">
+        <ul class="sidebar-nav-list">
+          <li>
+            <a href="#hero" class="sidebar-link">
+              <span class="sidebar-link-icon">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+              </span>
+              <span class="sidebar-link-text">Home</span>
+            </a>
+          </li>
+          <li>
+            <a href="#why-us" class="sidebar-link">
+              <span class="sidebar-link-icon">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              </span>
+              <span class="sidebar-link-text">Why Us</span>
+            </a>
+          </li>
+          <li>
+            <a href="#facilities" class="sidebar-link">
+              <span class="sidebar-link-icon">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6.5 6.5 11 11"/><path d="m21 21-1-1"/><path d="m3 3 1 1"/><path d="m18 22 4-4"/><path d="m2 6 4-4"/><path d="m3 10 7-7"/><path d="m14 21 7-7"/></svg>
+              </span>
+              <span class="sidebar-link-text">Training Zones</span>
+            </a>
+          </li>
+          <li>
+            <a href="#memberships" class="sidebar-link">
+              <span class="sidebar-link-icon">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="14" x="2" y="5" rx="2"/><line x1="2" x2="22" y1="10" y2="10"/></svg>
+              </span>
+              <span class="sidebar-link-text">Memberships</span>
+            </a>
+          </li>
+          <li>
+            <a href="#coaches" class="sidebar-link">
+              <span class="sidebar-link-icon">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+              </span>
+              <span class="sidebar-link-text">Coaches</span>
+            </a>
+          </li>
+          <li>
+            <a href="#gallery" class="sidebar-link">
+              <span class="sidebar-link-icon">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="3" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+              </span>
+              <span class="sidebar-link-text">Photo & Video Gallery</span>
+            </a>
+          </li>
+          <li>
+            <a href="#testimonials" class="sidebar-link">
+              <span class="sidebar-link-icon">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+              </span>
+              <span class="sidebar-link-text">Stories</span>
+            </a>
+          </li>
+          <li>
+            <a href="#contact" class="sidebar-link">
+              <span class="sidebar-link-icon">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+              </span>
+              <span class="sidebar-link-text">Location & Contact</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+
+      <div class="sidebar-cta-section">
+        <div class="sidebar-contact-buttons">
+          <a href="https://wa.me/919835124789" target="_blank" class="btn btn-whatsapp sidebar-wa-btn whatsapp-link">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+            WhatsApp
+          </a>
+          <a href="tel:+919835124789" class="btn btn-outline-light sidebar-call-btn call-link">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+            Call Desk
+          </a>
+        </div>
+        <div class="sidebar-gym-status">
+          <span class="live-dot"></span>
+          <span>Kokar, Ranchi • Open 5:30 AM - 10:00 PM</span>
+        </div>
+      </div>
+    </div>
+  </aside>
+
+  <main id="main-content">
+    <!-- HERO IMMERSIVE SECTION -->
+    <section id="hero" class="hero-immersive-section" aria-label="Iron Spirit Gym Hero Presentation">
+      <!-- Full-Bleed Media Slider (Underneath Content) -->
+      <div class="hero-media-slider" id="hero-media-slider">
+        <!-- Slide 1: Default Brand Graphic on the Right (Atmospheric Crimson Background) -->
+        <div class="hero-slide active" data-slide="0">
+          <div class="hero-slide-bg-canvas"></div>
+          <div class="hero-slide-halo" aria-hidden="true"></div>
+          <div class="hero-slide-logo-container">
+            <img
+              src="main_logo.png"
+              alt="Iron Spirit Gym Official Emblem"
+              class="hero-seamless-logo"
+            />
+          </div>
+        </div>
+
+        <!-- Slide 2: Full-Bleed High-Performance Video -->
+        <div class="hero-slide" data-slide="1">
+          <video class="hero-bg-media hero-bg-video" loop muted playsinline preload="auto">
+            <source src="hero.mp4" type="video/mp4" />
+          </video>
+        </div>
+      </div>
+
+      <!-- Cinematic Gradient Overlay for Peak Contrast & Text Legibility -->
+      <div class="hero-overlay-gradient"></div>
+
+      <!-- Foreground Content Container -->
+      <div class="container hero-container">
+        <div class="hero-content">
+          <h1 class="hero-title">
+            Transform Your <span class="gold-gradient">Fitness</span>
+          </h1>
+
+          <p class="hero-description">
+            Ranchi's dedicated unisex fitness gym in Kokar. Fully equipped with free weights, guided machines, cardio stations, and helpful trainers for your daily workouts.
+          </p>
+
+          <div class="hero-cta-group">
+            <a href="#memberships" class="btn btn-primary hero-btn-main">
+              <span>Explore Memberships</span>
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+            </a>
+            <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" class="hero-btn-insta" id="hero-instagram-link" aria-label="Iron Spirit Gym on Instagram" title="Follow us on Instagram">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Minimalist Slider Navigation (Dots & Next/Prev) -->
+      <div class="hero-slider-controls">
+        <button class="hero-control-btn prev-btn" id="hero-prev-btn" aria-label="Previous Slide">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"></polyline></svg>
+        </button>
+        <div class="hero-slider-dots" id="hero-slider-dots">
+          <button class="hero-dot active" data-index="0" aria-label="Slide 1"></button>
+          <button class="hero-dot" data-index="1" aria-label="Slide 2"></button>
+          <button class="hero-dot" data-index="2" aria-label="Slide 3"></button>
+          <button class="hero-dot" data-index="3" aria-label="Slide 4"></button>
+        </div>
+        <button class="hero-control-btn next-btn" id="hero-next-btn" aria-label="Next Slide">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
+        </button>
+      </div>
+
+      <!-- Mobile Down Scroll Arrow Indicator -->
+      <a href="#why-us" class="hero-scroll-down" aria-label="Scroll down to why choose us">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+      </a>
+    </section>
+
+    <!-- WHY CHOOSE US / WHY TRAIN HERE SECTION (FROM USER REFERENCE) -->
+    <section id="why-us" class="why-us-section">
+      <div class="container">
+        <div class="why-us-grid">
+          <!-- Left Column: Content & Features Timeline -->
+          <div class="why-us-content">
+            <div class="section-header-left" data-watermark="WHY US">
+              <div class="section-eyebrow">
+                <span id="why-eyebrow-text">Why Train Here</span>
+              </div>
+              <h2 class="section-title" id="why-title-text">
+                TRANSFORM YOUR FITNESS WITH<br>
+                <span>THE RIGHT</span> APPROACH
+              </h2>
+              <p class="why-main-desc" id="why-desc-text">
+                We create a fitness experience built around your goals, guided by expert trainers and a motivating community. Whether it's fat loss, strength gains, or better wellness, our focused approach helps you train with clarity, consistency, and real progress.
+              </p>
+            </div>
+
+            <div class="why-timeline-wrap" id="why-features-container">
+              <!-- Item 01 -->
+              <div class="why-feature-item">
+                <div class="why-step-col">
+                  <div class="why-step-circle">01</div>
+                  <div class="why-step-line"></div>
+                </div>
+                <div class="why-step-content">
+                  <h4>Tailored Training Plans</h4>
+                  <p>We build every workout around your goals and fitness level, helping you train with purpose, structure, confidence, and consistency.</p>
+                </div>
+              </div>
+
+              <!-- Item 02 -->
+              <div class="why-feature-item">
+                <div class="why-step-col">
+                  <div class="why-step-circle">02</div>
+                  <div class="why-step-line"></div>
+                </div>
+                <div class="why-step-content">
+                  <h4>Goal-Focused Results</h4>
+                  <p>Everything we do is designed to keep you progressing, whether you're aiming for fat loss, strength, endurance, or overall fitness.</p>
+                </div>
+              </div>
+
+              <!-- Item 03 -->
+              <div class="why-feature-item">
+                <div class="why-step-col">
+                  <div class="why-step-circle">03</div>
+                  </div>
+                <div class="why-step-content">
+                  <h4>Advanced Equipment</h4>
+                  <p>We offer modern gym equipment, from cardio machines to free weights, built to support every style of training.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right Column: Athletic Workout Animation Video (Synchronized with Reviews) -->
+          <div class="why-us-animation-wrapper" aria-hidden="true">
+            <div class="why-us-video-container">
+              <video id="why-us-video" class="why-us-video" autoplay muted loop playsinline preload="auto">
+                <source src="animations/Man doing barbell curl.mp4" type="video/mp4" />
+              </video>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FACILITY & AMENITIES SECTION -->
+    <section id="facilities" class="amenities-section">
+      <div class="container">
+        <div class="section-header" data-watermark="FACILITIES">
+          <div class="section-eyebrow">
+            <span>Equipped Training Space</span>
+          </div>
+          <h2 class="section-title">TRAINING: <span>EQUIPMENT & ZONES</span></h2>
+          <p class="section-subtitle">
+            Spacious workout floor in Kokar, Ranchi equipped with complete free weights, guided muscle machines, and cardio stations.
+          </p>
+        </div>
+
+        <!-- Single-Row Carousel Track with Clean Next & Previous Controls -->
+        <div class="carousel-wrapper" data-carousel="amenities">
+          <button class="carousel-nav-btn prev" aria-label="Previous Zone" data-target="amenities-container">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
+          </button>
+          <div id="amenities-container" class="carousel-track">
+            <div class="skeleton-card">
+              <div class="skeleton-box skeleton-img"></div>
+              <div class="skeleton-box skeleton-pill"></div>
+              <div class="skeleton-box skeleton-title"></div>
+              <div class="skeleton-box skeleton-line"></div>
+              <div class="skeleton-box skeleton-line short"></div>
+            </div>
+            <div class="skeleton-card">
+              <div class="skeleton-box skeleton-img"></div>
+              <div class="skeleton-box skeleton-pill"></div>
+              <div class="skeleton-box skeleton-title"></div>
+              <div class="skeleton-box skeleton-line"></div>
+              <div class="skeleton-box skeleton-line short"></div>
+            </div>
+            <div class="skeleton-card">
+              <div class="skeleton-box skeleton-img"></div>
+              <div class="skeleton-box skeleton-pill"></div>
+              <div class="skeleton-box skeleton-title"></div>
+              <div class="skeleton-box skeleton-line"></div>
+              <div class="skeleton-box skeleton-line short"></div>
+            </div>
+          </div>
+          <button class="carousel-nav-btn next" aria-label="Next Zone" data-target="amenities-container">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- MEMBERSHIP PRICING SECTION -->
+    <section id="memberships" class="pricing-section">
+      <div class="container">
+        <div class="section-header" data-watermark="MEMBERSHIP">
+          <div class="section-eyebrow">
+            <span>Transparent Pricing</span>
+          </div>
+          <h2 class="section-title">MEMBERSHIP: <span>PLANS & FEES</span></h2>
+          <p class="section-subtitle">
+            Honest pricing with no hidden charges. All memberships grant full access to free weights, machines, cardio, and daily floor guidance.
+          </p>
+        </div>
+
+        <!-- Single-Row Carousel Track with Clean Next & Previous Controls -->
+        <div class="carousel-wrapper" data-carousel="plans">
+          <button class="carousel-nav-btn prev" aria-label="Previous Plan" data-target="plans-container">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
+          </button>
+          <div id="plans-container" class="carousel-track pricing-track">
+            <div class="skeleton-card">
+              <div class="skeleton-box skeleton-title"></div>
+              <div class="skeleton-box skeleton-line short"></div>
+              <div class="skeleton-box skeleton-title" style="height: 48px; width: 60%;"></div>
+              <div class="skeleton-box skeleton-line"></div>
+              <div class="skeleton-box skeleton-line"></div>
+              <div class="skeleton-box skeleton-button"></div>
+            </div>
+            <div class="skeleton-card">
+              <div class="skeleton-box skeleton-title"></div>
+              <div class="skeleton-box skeleton-line short"></div>
+              <div class="skeleton-box skeleton-title" style="height: 48px; width: 60%;"></div>
+              <div class="skeleton-box skeleton-line"></div>
+              <div class="skeleton-box skeleton-line"></div>
+              <div class="skeleton-box skeleton-button"></div>
+            </div>
+            <div class="skeleton-card">
+              <div class="skeleton-box skeleton-title"></div>
+              <div class="skeleton-box skeleton-line short"></div>
+              <div class="skeleton-box skeleton-title" style="height: 48px; width: 60%;"></div>
+              <div class="skeleton-box skeleton-line"></div>
+              <div class="skeleton-box skeleton-line"></div>
+              <div class="skeleton-box skeleton-button"></div>
+            </div>
+          </div>
+          <button class="carousel-nav-btn next" aria-label="Next Plan" data-target="plans-container">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- CERTIFIED COACHES SECTION -->
+    <section id="coaches" class="trainers-section">
+      <div class="container">
+        <div class="section-header" data-watermark="COACHES">
+          <div class="section-eyebrow">
+            <span>Helpful Mentorship</span>
+          </div>
+          <h2 class="section-title">COACHES WHO CARE: <span>THE MENTORS</span></h2>
+          <p class="section-subtitle">
+            Credentialed instruction with zero casual bro-science. Our certified coaches hold ACE, K11, and CSCS credentials with a proven safety record.
+          </p>
+        </div>
+
+        <!-- Pure CSS 3D Modern Magazine Spread (High-Definition Athletic Dossier) -->
+        <div class="magazine-stage">
+          <div class="magazine-spread" id="magazine-spread" tabindex="0" role="region" aria-label="Coaches Magazine Dossier">
+            <!-- Left Static Page (Cover Portrait) -->
+            <div class="magazine-page page-left" id="mag-left-page">
+              <div class="mag-left-content">
+                <img src="https://images.unsplash.com/photo-1567013127542-490d757e51fc?auto=format&fit=crop&w=800&q=85" alt="Arjun Mehta" class="mag-full-photo" loading="eager" />
+                <div class="mag-photo-overlay"></div>
+                <div class="mag-photo-top-badge">
+                  <span class="mag-badge-exp">8+ Years Experience</span>
+                </div>
+                <div class="mag-photo-bottom-info">
+                  <h3 class="mag-coach-name">Arjun Mehta</h3>
+                  <div class="mag-coach-role-wrap">
+                    <span class="mag-coach-role">Strength &amp; Conditioning Coach</span>
+                    <span class="mag-inline-info-icon" title="View Credentials &amp; Bio" aria-label="View Info">
+                      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
+                    </span>
+                  </div>
+                  <div class="mag-coach-branch">📍 Kokar, Ranchi</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Center Spine Fold Line & Depth Gradient -->
+            <div class="magazine-spine"></div>
+
+            <!-- Right Static Page (Credentials Sheet) -->
+            <div class="magazine-page page-right" id="mag-right-page">
+              <div class="mag-right-content">
+                <div class="mag-watermark-logo" aria-hidden="true"></div>
+                <div class="mag-meta-top">
+                  <span class="mag-tag-accent">CREDENTIALS &amp; SPECIALTIES</span>
+                  <a href="#" class="mag-insta-icon" target="_blank" rel="noopener" title="Arjun Mehta on Instagram" aria-label="Instagram">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+                  </a>
+                </div>
+                <p class="mag-coach-bio">Specialized in natural bodybuilding mechanics and heavy compound lifts. Mentored over 300 athletes to hit lifetime PRs safely.</p>
+                <div class="mag-block-title"><span>🎯</span> Core Specialties</div>
+                <ul class="mag-list">
+                  <li>Powerlifting &amp; Squat/Bench/Deadlift</li>
+                  <li>Hypertrophy Programming</li>
+                  <li>Injury Prehab</li>
+                </ul>
+                <div class="mag-block-title"><span>📜</span> Accredited Certifications</div>
+                <ul class="mag-list">
+                  <li><span class="check-mark">✓</span> ACE Certified Personal Trainer</li>
+                  <li><span class="check-mark">✓</span> K11 Certified Master Trainer</li>
+                  <li><span class="check-mark">✓</span> Powerlifting Specialist</li>
+                </ul>
+                <div class="mag-action-row">
+                  <div class="mag-pagination-controls">
+                    <button class="mag-page-arrow-btn prev" data-dir="prev" aria-label="Previous Coach" disabled title="Previous Coach">
+                      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"></polyline></svg>
+                    </button>
+                    <span class="mag-coach-counter">1/4</span>
+                    <button class="mag-page-arrow-btn next" data-dir="next" aria-label="Next Coach" title="Next Coach">
+                      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- 3D Turning Sheet (Hardware Accelerated 3D Page Flip) -->
+            <div class="magazine-flipper" id="mag-flipper" aria-hidden="true">
+              <div class="flipper-face flipper-front" id="flipper-front"></div>
+              <div class="flipper-face flipper-back" id="flipper-back"></div>
+              <div class="flipper-shadow" id="flipper-shadow"></div>
+            </div>
+          </div>
+
+          <!-- Ambient Floating Desk Shadow -->
+          <div class="magazine-desk-shadow"></div>
+        </div>
+
+        <!-- Modern Horizontal Swipe Carousel for Mobile (Peek Preview + Auto-Scroll) -->
+        <div class="coaches-mobile-carousel" id="coaches-mobile-carousel">
+          <div class="carousel-track coaches-track" id="coaches-track">
+            <!-- Dynamically populated by JS from state.trainers -->
+          </div>
+          <!-- Minimalist Mobile Counter Pill -->
+          <div class="coaches-mobile-indicator">
+            <span class="coaches-counter-badge" id="coaches-counter-badge">1 / 4</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROFESSIONAL GALLERY & MEDIA VAULT SECTION -->
+    <section id="gallery" class="gallery-section">
+      <div class="container">
+        <div class="section-header" data-watermark="VAULT">
+          <div class="section-eyebrow">
+            <span>Visual Experience & Media Vault</span>
+          </div>
+          <h2 class="section-title">INSIDE IRON SPIRIT: <span>PHOTO & VIDEO VAULT</span></h2>
+          <p class="section-subtitle">
+            Explore our state-of-the-art training floor, heavy iron racks, real athlete workout reels, and championship wins in Ranchi.
+          </p>
+        </div>
+
+        <!-- Filter Category Tabs with Transparent Next/Prev Scroll Chevrons -->
+        <div class="gallery-filter-wrapper">
+          <button class="gallery-filter-arrow prev" id="gallery-filter-prev" aria-label="Previous Category">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
+          </button>
+          <div class="gallery-filter-bar" id="gallery-filter-bar">
+            <button class="gallery-filter-btn active" data-filter="all">All Media</button>
+            <button class="gallery-filter-btn" data-filter="gym">Gym & Equipment</button>
+            <button class="gallery-filter-btn" data-filter="videos">Workout Videos</button>
+            <button class="gallery-filter-btn" data-filter="achievements">Achievements & Trophies</button>
+            <button class="gallery-filter-btn" data-filter="events">Community & Events</button>
+          </div>
+          <button class="gallery-filter-arrow next" id="gallery-filter-next" aria-label="Next Category">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+          </button>
+        </div>
+
+        <!-- Featured Gallery Cards Grid (Responsive Grid on Desktop / Snap Carousel on Mobile) -->
+        <div class="gallery-grid" id="gallery-preview-grid">
+          <!-- Populated dynamically via JS / gallery.json -->
+          <div class="skeleton-card" style="height: 280px; border-radius: 18px;"></div>
+          <div class="skeleton-card" style="height: 280px; border-radius: 18px;"></div>
+          <div class="skeleton-card" style="height: 280px; border-radius: 18px;"></div>
+          <div class="skeleton-card" style="height: 280px; border-radius: 18px;"></div>
+          <div class="skeleton-card" style="height: 280px; border-radius: 18px;"></div>
+          <div class="skeleton-card" style="height: 280px; border-radius: 18px;"></div>
+        </div>
+
+        <!-- View Full Gallery CTA Button -->
+        <div class="gallery-cta-wrapper">
+          <button class="btn btn-primary gallery-view-more-btn" id="open-full-gallery-btn">
+            <span class="btn-text-desktop">Explore Full Media Vault (12+)</span>
+            <span class="btn-text-mobile">View Full Gallery (12+)</span>
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- TESTIMONIALS (ORBITAL MEMBER STORIES — THE VOID) -->
+    <section id="testimonials" class="testimonials-section">
+      <div class="container">
+        <div class="section-header" data-watermark="REVIEWS">
+          <div class="section-eyebrow">
+            <span>Member Reviews</span>
+          </div>
+          <h2 class="section-title">INSPIRING JOURNEYS: <span>CLIENT STORIES</span></h2>
+          <p class="section-subtitle">
+            Real experiences from everyday people building strength, discipline, and confidence at Iron Spirit Kokar.
+          </p>
+        </div>
+
+        <div class="void-wrapper">
+          <div class="void" id="void">
+            <!-- Left Side Athletic Animation Video (Random per session) -->
+            <div class="void-left-video-container" aria-hidden="true">
+              <video id="void-left-video" class="void-left-video" autoplay muted loop playsinline preload="auto">
+                <source src="animations/Man doing barbell curl.mp4" type="video/mp4" />
+              </video>
+              <div class="void-left-video-overlay"></div>
+            </div>
+
+            <div class="crop">
+              <ul id="card-list" style="--void-count: 6;">
+                <li>
+                  <div class="card">
+                    <div class="card-inner">
+                      <div class="card-header">
+                        <img class="card-avatar" src="https://i.pravatar.cc/100?img=47" alt="Ananya Verma" />
+                        <div class="card-user-info">
+                          <strong class="model-name">Ananya Verma</strong>
+                          <span class="card-role">Functional Fitness</span>
+                        </div>
+                      </div>
+                      <div class="card-stars">★★★★★</div>
+                      <p class="card-quote">"The trainers make you feel comfortable from day one. Lost 8kg and love my workouts!"</p>
+                    </div>
+                  </div>
+                </li>
+                <li>
+                  <div class="card">
+                    <div class="card-inner">
+                      <div class="card-header">
+                        <img class="card-avatar" src="https://i.pravatar.cc/100?img=12" alt="Rahul Kumar" />
+                        <div class="card-user-info">
+                          <strong class="model-name">Rahul Kumar</strong>
+                          <span class="card-role">Strength Athlete</span>
+                        </div>
+                      </div>
+                      <div class="card-stars">★★★★★</div>
+                      <p class="card-quote">"Unisex community is motivating and Olympic equipment is unmatched in Ranchi."</p>
+                    </div>
+                  </div>
+                </li>
+                <li>
+                  <div class="card">
+                    <div class="card-inner">
+                      <div class="card-header">
+                        <img class="card-avatar" src="https://i.pravatar.cc/100?img=44" alt="Sneha Gupta" />
+                        <div class="card-user-info">
+                          <strong class="model-name">Sneha Gupta</strong>
+                          <span class="card-role">Transformation Member</span>
+                        </div>
+                      </div>
+                      <div class="card-stars">★★★★★</div>
+                      <p class="card-quote">"Certified coaches helped correct my posture and build real strength safely."</p>
+                    </div>
+                  </div>
+                </li>
+                <li>
+                  <div class="card">
+                    <div class="card-inner">
+                      <div class="card-header">
+                        <img class="card-avatar" src="https://i.pravatar.cc/100?img=60" alt="Vikram Singh" />
+                        <div class="card-user-info">
+                          <strong class="model-name">Vikram Singh</strong>
+                          <span class="card-role">Powerlifter • Kokar</span>
+                        </div>
+                      </div>
+                      <div class="card-stars">★★★★★</div>
+                      <p class="card-quote">"Hit a 210kg deadlift PR under coach guidance! Clean hygienic space."</p>
+                    </div>
+                  </div>
+                </li>
+                <li>
+                  <div class="card">
+                    <div class="card-inner">
+                      <div class="card-header">
+                        <img class="card-avatar" src="https://i.pravatar.cc/100?img=32" alt="Pooja Mishra" />
+                        <div class="card-user-info">
+                          <strong class="model-name">Pooja Mishra</strong>
+                          <span class="card-role">Morning Batch</span>
+                        </div>
+                      </div>
+                      <div class="card-stars">★★★★★</div>
+                      <p class="card-quote">"Safe, empowering, and respectful environment. The steam room is pure bliss."</p>
+                    </div>
+                  </div>
+                </li>
+                <li>
+                  <div class="card">
+                    <div class="card-inner">
+                      <div class="card-header">
+                        <img class="card-avatar" src="https://i.pravatar.cc/100?img=53" alt="Amit Sharma" />
+                        <div class="card-user-info">
+                          <strong class="model-name">Amit Sharma</strong>
+                          <span class="card-role">IT Consultant</span>
+                        </div>
+                      </div>
+                      <div class="card-stars">★★★★★</div>
+                      <p class="card-quote">"Desk job was killing my lower back. 4 months here and I'm totally pain-free!"</p>
+                    </div>
+                  </div>
+                </li>
+              </ul>
+              <div class="last-circle"></div>
+              <div class="second-circle"></div>
+            </div>
+            <div class="mask"></div>
+            <div class="center-circle" id="void-center-circle">
+              <div class="center-circle-watermark" aria-hidden="true"></div>
+              <div class="center-circle-content">
+                <div class="center-circle-count" id="void-center-count">06+</div>
+                <div class="center-circle-label">Member Reviews</div>
+                <div class="center-circle-badge" id="void-center-rating">⭐ 5.0 / 5.0</div>
+              </div>
+            </div>
+          </div>
+          <p class="void-instruction-hint">💡 Tap any review card to read full story</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQS ACCORDION SECTION -->
+    <section id="faqs" class="faqs-section">
+      <div class="container">
+        <div class="section-header" data-watermark="FAQS">
+          <div class="section-eyebrow">
+            <span>Frequent Inquiries</span>
+          </div>
+          <h2 class="section-title">CLEAR ANSWERS: <span>EVERYTHING TO KNOW</span></h2>
+          <p class="section-subtitle">
+            Key details about our unisex community, membership freeze policies, private amenities, and beginner guidance.
+          </p>
+        </div>
+
+        <!-- Desktop FAQs Accordion -->
+        <div id="faqs-container" class="faqs-accordion">
+          <div class="skeleton-box" style="height: 64px; border-radius: var(--radius-md);"></div>
+          <div class="skeleton-box" style="height: 64px; border-radius: var(--radius-md);"></div>
+          <div class="skeleton-box" style="height: 64px; border-radius: var(--radius-md);"></div>
+          <div class="skeleton-box" style="height: 64px; border-radius: var(--radius-md);"></div>
+        </div>
+
+        <!-- Mobile FAQs Horizontal Carousel (Peek Preview + Infinite Loop) -->
+        <div class="faqs-mobile-carousel" id="faqs-mobile-carousel">
+          <div class="carousel-track faqs-track" id="faqs-track">
+            <!-- Populated dynamically from state.faqs -->
+          </div>
+          <div class="faqs-mobile-indicator">
+            <span class="faqs-counter-badge" id="faqs-counter-badge">1 / 6</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT & LOCATION SECTION (COMPACT MOBILE MAP) -->
+    <section id="contact" class="contact-section">
+      <div class="container">
+        <div class="section-header" data-watermark="LOCATION">
+          <div class="section-eyebrow">
+            <span>Location & Front Desk</span>
+          </div>
+          <h2 class="section-title">FIND OUR GYM: <span>KOKAR, RANCHI</span></h2>
+          <p class="section-subtitle">
+            Conveniently situated near Kokar Industrial Area, Kokar Chowk, Ranchi.
+          </p>
+        </div>
+
+        <div class="contact-grid">
+          <div class="contact-details-box">
+            <div class="contact-item-row">
+              <div class="contact-icon-clean">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+              </div>
+              <div class="contact-item-text">
+                <h4>Facility Location</h4>
+                <p id="contact-address-display">
+                  Plot No. 42, Near Kokar Industrial Area, Kokar Chowk, Ranchi, Jharkhand - 834001
+                </p>
+                <small style="color: var(--red); font-weight: 600;">Opposite Kokar Plaza • Dedicated Parking Available</small>
+              </div>
+            </div>
+
+            <div class="contact-item-row">
+              <div class="contact-icon-clean">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+              </div>
+              <div class="contact-item-text">
+                <h4>Continuous Operating Hours</h4>
+                <p><strong>Mon – Sat:</strong> <span id="timings-weekday-display">5:30 AM – 10:30 PM</span></p>
+                <p><strong>Sunday:</strong> <span id="timings-sunday-display">6:00 AM – 1:00 PM & 4:00 PM – 8:00 PM</span></p>
+              </div>
+            </div>
+
+            <div class="contact-item-row">
+              <div class="contact-icon-clean">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>
+              </div>
+              <div class="contact-item-text">
+                <h4>Direct Communication</h4>
+                <p>Phone: <a href="tel:+919835124789" class="call-link" id="contact-phone-display">+91 98351 24789</a></p>
+                <p>Email: contact@ironspiritgym.com</p>
+              </div>
+            </div>
+
+            <div class="contact-actions-row">
+              <a href="#" class="btn btn-whatsapp">
+                Chat on WhatsApp ↗
+              </a>
+              <a href="tel:+919835124789" class="btn btn-outline call-link">
+                Call Front Desk
+              </a>
+            </div>
+          </div>
+
+          <!-- Stylized Map View with Interactive Overlay -->
+          <div class="map-container">
+            <iframe 
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14652.884144673752!2d85.3458!3d23.3768!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39f4e195748807d9%3A0x86131499e90bf824!2sKokar%2C%20Ranchi%2C%20Jharkhand!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin" 
+              title="Iron Spirit Gym Location Kokar Ranchi"
+              loading="lazy" 
+              referrerpolicy="no-referrer-when-downgrade"
+              aria-label="Map view of Iron Spirit Gym in Kokar Ranchi"
+            ></iframe>
+            <a href="https://maps.google.com/?q=Kokar+Chowk+Ranchi+Jharkhand" target="_blank" rel="noopener" class="map-overlay-layer" aria-label="Open Iron Spirit Gym location in Google Maps">
+              <span class="map-overlay-pill">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                <span>Open in Google Maps</span>
+                <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+              </span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- SITE FOOTER (MINIMAL LUXURY BRAND FOOTER) -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-minimal-wrap">
+        <!-- Brand Identity -->
+        <a href="#hero" class="footer-brand" aria-label="Iron Spirit Gym">
+          <img src="top_logo.png" alt="Iron Spirit Gym Logo" class="footer-logo-img" />
+          <div class="footer-brand-text">
+            <span class="brand-name">iron <span class="red-text">spirit</span></span>
+            <span class="brand-sub">Unisex Gym • Kokar, Ranchi</span>
+          </div>
+        </a>
+
+        <!-- Quick Contact & Social Action Chips -->
+        <div class="footer-actions-row">
+          <a href="https://wa.me/919835124789" target="_blank" rel="noopener" class="footer-chip-btn whatsapp-link" aria-label="Chat on WhatsApp">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+            <span>WhatsApp</span>
+          </a>
+          <a href="tel:+919835124789" class="footer-chip-btn call-link" aria-label="Call Reception">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+            <span>Call Desk</span>
+          </a>
+          <a href="https://instagram.com" target="_blank" rel="noopener" class="footer-chip-btn" id="footer-instagram-link" aria-label="Instagram">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+            <span>Instagram</span>
+          </a>
+        </div>
+
+        <!-- Copyright Line & Privacy Link -->
+        <div class="footer-copyright-text">
+          © 2026 Iron Spirit Gym. All Rights Reserved. • <a href="privacy-policy.html" class="footer-legal-link">Privacy Policy</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- COACH INFO / CREDENTIALS BOTTOM SHEET DRAWER (MOBILE & DESKTOP) -->
+  <div class="coach-modal-backdrop" id="coach-modal-backdrop" aria-hidden="true">
+    <div class="coach-modal-sheet" id="coach-modal-sheet" role="dialog" aria-modal="true" aria-label="Coach Credentials">
+      <div class="coach-modal-handle"></div>
+      <div class="coach-modal-header">
+        <div class="coach-modal-title" id="coach-modal-title">Coach Profile</div>
+        <button class="coach-modal-close" id="coach-modal-close" aria-label="Close Details">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+        </button>
+      </div>
+      <div class="coach-modal-content" id="coach-modal-content"></div>
+    </div>
+  </div>
+
+  <!-- MEMBER REVIEW DETAIL BOTTOM SHEET DRAWER (MOBILE & DESKTOP) -->
+  <div class="review-modal-backdrop" id="review-modal-backdrop" aria-hidden="true">
+    <div class="review-modal-sheet" id="review-modal-sheet" role="dialog" aria-modal="true" aria-label="Member Review Details">
+      <div class="review-modal-handle"></div>
+      <div class="review-modal-header">
+        <div class="review-modal-title">Member Story</div>
+        <button class="review-modal-close" id="review-modal-close" aria-label="Close Review">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+        </button>
+      </div>
+      <div class="review-modal-content" id="review-modal-content"></div>
+      <div class="review-modal-nav">
+        <button class="review-modal-nav-btn prev-btn" id="review-modal-prev" aria-label="Previous Review">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><polyline points="15 18 9 12 15 6"></polyline></svg>
+          <span>Previous</span>
+        </button>
+        <span class="review-modal-counter" id="review-modal-counter">1/6</span>
+        <button class="review-modal-nav-btn next-btn" id="review-modal-next" aria-label="Next Review">
+          <span>Next</span>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><polyline points="9 18 15 12 9 6"></polyline></svg>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- FAQ ANSWER DETAIL BOTTOM SHEET DRAWER (MOBILE) -->
+  <div class="faq-modal-backdrop" id="faq-modal-backdrop" aria-hidden="true">
+    <div class="faq-modal-sheet" id="faq-modal-sheet" role="dialog" aria-modal="true" aria-label="FAQ Details">
+      <div class="faq-modal-handle"></div>
+      <div class="faq-modal-header">
+        <div class="faq-modal-title">FAQ Details</div>
+        <button class="faq-modal-close" id="faq-modal-close" aria-label="Close FAQ">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+        </button>
+      </div>
+      <div class="faq-modal-content" id="faq-modal-content"></div>
+      <div class="faq-modal-nav">
+        <button class="faq-modal-nav-btn prev-btn" id="faq-modal-prev" aria-label="Previous FAQ">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><polyline points="15 18 9 12 15 6"></polyline></svg>
+          <span>Previous</span>
+        </button>
+        <span class="faq-modal-counter" id="faq-modal-counter">1/6</span>
+        <button class="faq-modal-nav-btn next-btn" id="faq-modal-next" aria-label="Next FAQ">
+          <span>Next</span>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><polyline points="9 18 15 12 9 6"></polyline></svg>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- PROMOTIONAL LAUNCH OFFER MODAL (BUTTERY SMOOTH) -->
+  <div id="offer-modal" class="modal-backdrop" role="dialog" aria-modal="true">
+    <div class="modal-dialog">
+      <button class="modal-close-btn" aria-label="Close Promo Modal">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+      </button>
+      <div class="section-eyebrow" id="offer-popup-badge" style="margin-bottom: 12px;">Grand Opening Exclusive</div>
+      <h2 id="offer-popup-title" style="font-size: 1.85rem; margin-bottom: 6px;">Founding Member Privilege</h2>
+      <div id="offer-popup-subtitle" style="color: var(--red); font-weight: 700; margin-bottom: 14px;">Kokar's Newest High-Performance Gym</div>
+      
+      <p id="offer-popup-desc" style="font-size: 0.92rem; line-height: 1.6; margin-bottom: 16px;">
+        Be one of the first 50 athletes to step into Iron Spirit Gym Kokar. Unlock a flat 35% discount on our Annual Elite Pass.
+      </p>
+
+      <div class="offer-coupon-pill">
+        <div>
+          <small style="display: block; font-size: 0.72rem; color: var(--text-muted);">EXCLUSIVE PROMO CODE</small>
+          <span id="offer-coupon-code" class="coupon-code">KOKAR35</span>
+        </div>
+        <button id="copy-coupon-btn" class="copy-btn">Copy Code</button>
+      </div>
+
+      <ul id="offer-perks-list" class="amenity-highlights" style="margin-bottom: 24px;"></ul>
+
+      <div style="display: flex; flex-direction: column; gap: 10px;">
+        <a id="offer-claim-btn" href="#" class="btn btn-whatsapp" style="width: 100%;">
+          Claim 35% Off on WhatsApp ↗
+        </a>
+        <div id="offer-validity-text" style="font-size: 0.75rem; color: var(--text-muted); text-align: center;">
+          Limited to the first 50 registrations only
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+  <!-- IMMERSIVE FULL-SCREEN GALLERY VAULT VIEWER -->
+  <div id="full-gallery-modal" class="fullscreen-vault-view" role="dialog" aria-modal="true" aria-label="Full Media Gallery">
+    <!-- Top App Navigation Header with Cut Button on Right (No border/bg) -->
+    <header class="vault-view-header">
+      <div class="vault-header-left">
+        <div class="vault-header-title-box">
+          <span class="vault-header-eyebrow">IRON SPIRIT VAULT</span>
+          <h2 class="vault-header-title">Photos, Reels & Trophies</h2>
+        </div>
+      </div>
+
+      <div class="vault-header-right">
+        <button class="vault-back-cut-btn" id="close-full-gallery-btn" aria-label="Close Gallery View">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+    </header>
+
+    <!-- Category Filter Tabs Track (With Dynamic Item Counts) -->
+    <div class="vault-filter-strip">
+      <div class="vault-filter-track" id="gallery-modal-filter-bar">
+        <button class="vault-filter-chip active" data-filter="all">All Media</button>
+        <button class="vault-filter-chip" data-filter="gym">Gym & Equipment</button>
+        <button class="vault-filter-chip" data-filter="videos">Workout Videos</button>
+        <button class="vault-filter-chip" data-filter="achievements">Trophies & Wins</button>
+        <button class="vault-filter-chip" data-filter="events">Events & Meets</button>
+      </div>
+    </div>
+
+    <!-- Edge-to-Edge Native Photos App Grid -->
+    <main class="vault-scroll-content" id="vault-scroll-content">
+      <div class="vault-app-grid" id="gallery-full-grid">
+        <!-- Pre-rendered Skeleton Cards for Gallery Page -->
+        <div class="vault-skeleton-tile" aria-hidden="true"></div>
+        <div class="vault-skeleton-tile" aria-hidden="true"></div>
+        <div class="vault-skeleton-tile" aria-hidden="true"></div>
+        <div class="vault-skeleton-tile" aria-hidden="true"></div>
+        <div class="vault-skeleton-tile" aria-hidden="true"></div>
+        <div class="vault-skeleton-tile" aria-hidden="true"></div>
+        <div class="vault-skeleton-tile" aria-hidden="true"></div>
+        <div class="vault-skeleton-tile" aria-hidden="true"></div>
+      </div>
+
+      <!-- Native Pagination Bar -->
+      <div class="vault-pagination-wrap" id="vault-pagination-wrap" style="display: none;">
+        <button class="vault-page-nav-btn prev" id="vault-prev-page-btn" aria-label="Previous Page">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"></polyline></svg>
+          <span>Prev</span>
+        </button>
+        <div class="vault-page-numbers" id="vault-page-numbers"></div>
+        <button class="vault-page-nav-btn next" id="vault-next-page-btn" aria-label="Next Page">
+          <span>Next</span>
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
+        </button>
+      </div>
+    </main>
+  </div>
+
+  <!-- NATIVE GALLERY APP-LIKE FULLSCREEN LIGHTBOX -->
+  <div id="gallery-lightbox" class="app-lightbox-view" role="dialog" aria-modal="true" aria-label="Media Preview">
+    <!-- Top Floating App Bar with Counter on Left, Cut Button on Right (No border/bg) -->
+    <div class="lightbox-top-bar">
+      <div class="lightbox-top-left">
+        <span class="lightbox-app-counter" id="lightbox-counter">1 / 12</span>
+      </div>
+
+      <div class="lightbox-top-right">
+        <button class="lightbox-top-cut-btn" id="lightbox-close-btn" aria-label="Close Preview">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Previous & Next Floating Navigation Chevrons -->
+    <button class="lightbox-side-arrow prev" id="lightbox-prev-btn" aria-label="Previous Media">
+      <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
+    </button>
+    <button class="lightbox-side-arrow next" id="lightbox-next-btn" aria-label="Next Media">
+      <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+    </button>
+
+    <!-- Main Fullscreen Media Viewport -->
+    <div class="lightbox-viewport" id="lightbox-media-container"></div>
+
+    <!-- Bottom Floating Details Sheet -->
+    <div class="lightbox-bottom-sheet">
+      <h3 class="lightbox-app-title" id="lightbox-title"></h3>
+      <p class="lightbox-app-desc" id="lightbox-desc"></p>
+    </div>
+  </div>
+
+  <!-- APP-LIKE MOBILE BOTTOM NAVIGATION BAR (WHITE BG, SCROLLABLE TABS + FIXED RIGHT WHATSAPP) -->
+  <nav class="mobile-bottom-nav" id="mobile-bottom-nav" aria-label="Mobile Bottom Navigation">
+    <div class="bottom-nav-container">
+      <!-- Scrollable Navigation Tabs Track -->
+      <div class="bottom-nav-scroll-track">
+        <a href="#hero" class="bottom-nav-item active" data-section="hero">
+          <div class="bottom-nav-icon">
+            <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round">
+              <path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+              <polyline points="9 22 9 12 15 12 15 22"></polyline>
+            </svg>
+          </div>
+          <span class="bottom-nav-label">Home</span>
+        </a>
+
+        <a href="#why-us" class="bottom-nav-item" data-section="why-us">
+          <div class="bottom-nav-icon">
+            <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round">
+              <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+            </svg>
+          </div>
+          <span class="bottom-nav-label">Why Us</span>
+        </a>
+
+        <a href="#facilities" class="bottom-nav-item" data-section="facilities">
+          <div class="bottom-nav-icon">
+            <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M6 5v14M18 5v14M2 9v6M22 9v6M6 12h12M2 12h4M18 12h4"></path>
+            </svg>
+          </div>
+          <span class="bottom-nav-label">Zones</span>
+        </a>
+
+        <a href="#memberships" class="bottom-nav-item" data-section="memberships">
+          <div class="bottom-nav-icon">
+            <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="2" y="5" width="20" height="14" rx="2"></rect>
+              <line x1="2" y1="10" x2="22" y2="10"></line>
+            </svg>
+          </div>
+          <span class="bottom-nav-label">Plans</span>
+        </a>
+
+        <a href="#coaches" class="bottom-nav-item" data-section="coaches">
+          <div class="bottom-nav-icon">
+            <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path>
+              <circle cx="9" cy="7" r="4"></circle>
+              <path d="M22 21v-2a4 4 0 0 0-3-3.87"></path>
+              <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+            </svg>
+          </div>
+          <span class="bottom-nav-label">Coaches</span>
+        </a>
+
+        <a href="#gallery" class="bottom-nav-item" data-section="gallery">
+          <div class="bottom-nav-icon">
+            <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+              <circle cx="8.5" cy="8.5" r="1.5"></circle>
+              <polyline points="21 15 16 10 5 21"></polyline>
+            </svg>
+          </div>
+          <span class="bottom-nav-label">Gallery</span>
+        </a>
+
+        <a href="#testimonials" class="bottom-nav-item" data-section="testimonials">
+          <div class="bottom-nav-icon">
+            <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+            </svg>
+          </div>
+          <span class="bottom-nav-label">Stories</span>
+        </a>
+
+        <a href="#contact" class="bottom-nav-item" data-section="contact">
+          <div class="bottom-nav-icon">
+            <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+              <circle cx="12" cy="10" r="3"></circle>
+            </svg>
+          </div>
+          <span class="bottom-nav-label">Contact</span>
+        </a>
+      </div>
+
+      <!-- Pinned / Fixed WhatsApp Button on the Far Right -->
+      <a href="https://wa.me/919835124789" target="_blank" rel="noopener" class="bottom-nav-fixed-wa whatsapp-link" aria-label="Talk to Us on WhatsApp">
+        <div class="bottom-nav-icon">
+          <svg width="21" height="21" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
+          </svg>
+        </div>
+        <span class="bottom-nav-label">Talk to Us</span>
+      </a>
+    </div>
+  </nav>
+
+  <!-- GSAP & ScrollTrigger Animation Engine -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+  <!-- Main Application Logic -->
+  <script src="js/main.js"></script>
+</body>
+</html>

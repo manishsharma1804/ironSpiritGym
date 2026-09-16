@@ -1,0 +1,50 @@
+[
+  {
+    "id": "ananya-verma",
+    "quote": "The trainers make you feel comfortable from day one. As a beginner in Kokar, I lost 8kg and finally enjoy consistent workouts.",
+    "name": "Ananya Verma",
+    "role": "Member • Functional Fitness",
+    "avatar": "https://i.pravatar.cc/100?img=47",
+    "stars": 5
+  },
+  {
+    "id": "rahul-kumar",
+    "quote": "The unisex community is motivating, Olympic equipment is unmatched in Ranchi, and every single lifting session feels purposeful.",
+    "name": "Rahul Kumar",
+    "role": "Strength Athlete • 2 Yrs Member",
+    "avatar": "https://i.pravatar.cc/100?img=12",
+    "stars": 5
+  },
+  {
+    "id": "sneha-gupta",
+    "quote": "Started with zero lifting experience. Certified coaches helped me correct anterior pelvic tilt and build real strength safely.",
+    "name": "Sneha Gupta",
+    "role": "Transformation Member",
+    "avatar": "https://i.pravatar.cc/100?img=44",
+    "stars": 5
+  },
+  {
+    "id": "vikram-singh",
+    "quote": "Hit a 210kg deadlift PR under coach guidance! Clean hygienic space, power racks, and zero bro-science atmosphere.",
+    "name": "Vikram Singh",
+    "role": "Powerlifter • Kokar",
+    "avatar": "https://i.pravatar.cc/100?img=60",
+    "stars": 5
+  },
+  {
+    "id": "pooja-mishra",
+    "quote": "Safe, empowering, and respectful environment for women. The steam room and private lockers make daily workouts a breeze.",
+    "name": "Pooja Mishra",
+    "role": "Morning Batch Member",
+    "avatar": "https://i.pravatar.cc/100?img=32",
+    "stars": 5
+  },
+  {
+    "id": "amit-sharma",
+    "quote": "Desk job was killing my lower back. 4 months of mobility and functional rehab here and I am completely pain-free today.",
+    "name": "Amit Sharma",
+    "role": "IT Consultant • Kokar",
+    "avatar": "https://i.pravatar.cc/100?img=53",
+    "stars": 5
+  }
+]

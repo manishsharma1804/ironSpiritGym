@@ -1,0 +1,42 @@
+{
+  "eyebrow": "Why Train With Us",
+  "watermark": "WHY US",
+  "title": "REAL WORKOUTS.",
+  "titleHighlight": "GENUINE RESULTS.",
+  "description": "Iron Spirit Gym is built for real people in Kokar, Ranchi who want to stay fit and build strength. No complicated fluff — just quality weights, guided machines, attentive trainers who correct your form, and an energetic unisex environment.",
+  "features": [
+    {
+      "step": "01",
+      "title": "Beginner-Friendly Support",
+      "description": "Never feel lost in the gym. Our floor trainers help you learn proper exercise techniques, correct lifting postures, and give you a structured daily routine from day one."
+    },
+    {
+      "step": "02",
+      "title": "Complete Equipment Setup",
+      "description": "Everything you need for full-body progression — wide dumbbell range, squat stands, bench presses, lat pulldowns, leg press, cable crossover, and cardio treadmills."
+    },
+    {
+      "step": "03",
+      "title": "Respectful Unisex Environment",
+      "description": "A clean, safe, and positive atmosphere where male and female members train comfortably with good ventilation and energetic workout music."
+    }
+  ],
+  "gallery": [
+    {
+      "image": "https://images.unsplash.com/photo-1581009146145-b5ef050c2e1e?auto=format&fit=crop&w=700&q=80",
+      "alt": "Free weights and dumbbell training"
+    },
+    {
+      "image": "https://images.unsplash.com/photo-1518611012118-696072aa579a?auto=format&fit=crop&w=700&q=80",
+      "alt": "Functional and core conditioning"
+    },
+    {
+      "image": "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?auto=format&fit=crop&w=700&q=80",
+      "alt": "Helpful floor trainer guidance"
+    },
+    {
+      "image": "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=700&q=80",
+      "alt": "Clean and equipped unisex gym floor"
+    }
+  ]
+}

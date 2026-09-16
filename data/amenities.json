@@ -1,0 +1,72 @@
+[
+  {
+    "id": "free-weights",
+    "title": "Free Weights & Dumbbells Area",
+    "category": "Strength Zone",
+    "tagline": "Dumbbells, Barbells & Benches",
+    "description": "Equipped with everything you need for classic muscle building and strength progression. Features a wide range of dumbbells, Olympic & standard barbells, incline, flat, and decline benches, plus sturdy squat stands.",
+    "highlights": [
+      "Complete dumbbell rack (2.5kg to 35kg+)",
+      "Standard & Olympic barbells with plate sets",
+      "Flat, incline & decline bench press stations",
+      "Squat stands & rubberized lifting floor"
+    ],
+    "image": "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=1200&q=80"
+  },
+  {
+    "id": "strength-machines",
+    "title": "Muscle & Cable Machines",
+    "category": "Machine Zone",
+    "tagline": "Safe & Targeted Muscle Building",
+    "description": "Guided selectorized machines that let beginners and experienced lifters isolate every muscle group with proper form and zero joint stress. Ideal for chest, back, shoulders, arms, and legs.",
+    "highlights": [
+      "Lat pulldown & seated cable row station",
+      "Heavy leg press & quad/hamstring machines",
+      "Pec-fly / rear-delt machine & chest press",
+      "Multi-cable crossover station for arm & chest isolation"
+    ],
+    "image": "https://images.unsplash.com/photo-1581009146145-b5ef050c2e1e?auto=format&fit=crop&w=1200&q=80"
+  },
+  {
+    "id": "cardio-deck",
+    "title": "Cardio & Fat Loss Zone",
+    "category": "Cardio Zone",
+    "tagline": "Treadmills, Cross-Trainers & Cycles",
+    "description": "Dedicated aerobic machines designed to help you burn calories, improve stamina, and warm up effectively before weight training.",
+    "highlights": [
+      "Motorized incline treadmills for walking & running",
+      "Elliptical cross-trainers for smooth cardio",
+      "Stationary spin bikes for endurance",
+      "Easy-to-use speed and calorie burn tracking"
+    ],
+    "image": "https://images.unsplash.com/photo-1576678927484-cc907957088c?auto=format&fit=crop&w=1200&q=80"
+  },
+  {
+    "id": "core-functional",
+    "title": "Core, Warmup & Stretching Space",
+    "category": "Core Zone",
+    "tagline": "Abs, Flexibility & Conditioning",
+    "description": "A dedicated open floor area with mats and accessories for daily abdominal exercises, resistance band warmups, and post-workout cool down stretching.",
+    "highlights": [
+      "Cushioned mats for abs & core workouts",
+      "Battle ropes for high-energy conditioning",
+      "Kettlebells & resistance loop bands",
+      "Stretching and mobility accessories"
+    ],
+    "image": "https://images.unsplash.com/photo-1517838277536-f5f99be501cd?auto=format&fit=crop&w=1200&q=80"
+  },
+  {
+    "id": "unisex-ambience",
+    "title": "Friendly Unisex Ambience",
+    "category": "Gym Culture",
+    "tagline": "Comfortable, Safe & Motivating",
+    "description": "A clean, well-ventilated unisex workout floor where both male and female members can train comfortably with helpful floor guidance and energetic gym music.",
+    "highlights": [
+      "Safe & comfortable environment for men and women",
+      "Helpful floor trainers to demonstrate exercises",
+      "Well-ventilated hall with good air circulation",
+      "High-energy workout playlist to keep you pumped"
+    ],
+    "image": "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?auto=format&fit=crop&w=1200&q=80"
+  }
+]

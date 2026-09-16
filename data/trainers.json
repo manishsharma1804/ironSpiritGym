@@ -1,0 +1,59 @@
+[
+  {
+    "id": "arjun-mehta",
+    "name": "Arjun Mehta",
+    "role": "Strength & Conditioning Coach",
+    "experience": "8+ Years Experience",
+    "certifications": ["ACE Certified Personal Trainer", "K11 Certified Master Trainer", "Powerlifting Specialist"],
+    "specialties": ["Powerlifting & Squat/Bench/Deadlift", "Hypertrophy Programming", "Injury Prehab"],
+    "bio": "Specialized in natural bodybuilding mechanics and heavy compound lifts. Mentored over 300 athletes to hit lifetime PRs safely.",
+    "image": "https://images.unsplash.com/photo-1567013127542-490d757e51fc?auto=format&fit=crop&w=800&q=85",
+    "socials": {
+      "linkedin": "#",
+      "instagram": "#"
+    }
+  },
+  {
+    "id": "riya-sharma",
+    "name": "Riya Sharma",
+    "role": "Lead Functional Fitness Coach",
+    "experience": "6+ Years Experience",
+    "certifications": ["ISSA Certified Fitness Coach", "CrossFit Level 2 Coach", "Animal Flow Instructor"],
+    "specialties": ["Bodyweight Calisthenics", "Metabolic Conditioning & Fat Loss", "Women's Strength"],
+    "bio": "Passionate about building functional, athletic strength that translates outside the gym. Focused on core mastery and agility.",
+    "image": "https://images.unsplash.com/photo-1594381898411-846e7d193883?auto=format&fit=crop&w=800&q=85",
+    "socials": {
+      "linkedin": "#",
+      "instagram": "#"
+    }
+  },
+  {
+    "id": "kabir-singh",
+    "name": "Kabir Singh",
+    "role": "Personal Training Specialist",
+    "experience": "7+ Years Experience",
+    "certifications": ["CSCS Specialist", "Functional Movement Screen (FMS)", "Sports Nutritionist"],
+    "specialties": ["Postural Correction & Desk-job Rehab", "Shoulder & Lower-back Decompression", "Nutrition Roadmaps"],
+    "bio": "Helps working professionals and lifters eliminate chronic joint aches, fix anterior pelvic tilt, and build resilient kinetic chains.",
+    "image": "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?auto=format&fit=crop&w=800&q=85",
+    "socials": {
+      "linkedin": "#",
+      "instagram": "#"
+    }
+  },
+  {
+    "id": "tanya-verma",
+    "name": "Tanya Verma",
+    "role": "Mobility & Conditioning Coach",
+    "experience": "5+ Years Experience",
+    "certifications": ["ACE Certified Specialist", "Animal Flow Level 1", "Precision Nutrition Coach"],
+    "specialties": ["Athletic Conditioning & Agility", "Joint Prehab & Mobility", "Nutritional Periodization"],
+    "bio": "Dedicated to enhancing athletic longevity and functional range of motion through science-backed mobility drills and explosive conditioning.",
+    "image": "https://images.unsplash.com/photo-1518611012118-696072aa579a?auto=format&fit=crop&w=800&q=85",
+    "socials": {
+      "linkedin": "#",
+      "instagram": "#"
+    }
+  }
+]
+

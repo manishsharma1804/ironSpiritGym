@@ -1,0 +1,90 @@
+[
+  {
+    "id": "ppl-training-split",
+    "title": "The Ultimate 4-Day Push-Pull-Legs (PPL) Split for Natural Lifters",
+    "slug": "push-pull-legs-split-guide",
+    "category": "Training & Hypertrophy",
+    "readTime": "5 min read",
+    "date": "September 2026",
+    "author": "Coach Vikram Singh",
+    "image": "https://images.unsplash.com/photo-1581009146145-b5ef050c2e1e?auto=format&fit=crop&w=800&q=80",
+    "summary": "Why the classic 4-day hybrid PPL routine is the most sustainable frequency for building muscle while avoiding CNS burnout and joint fatigue.",
+    "content": [
+      "When embarking on a serious strength journey, consistency and smart recovery will always beat raw reckless volume. Most lifters follow high-volume 6-day splits that lead to systemic nervous system fatigue by week four. The 4-Day Hybrid Push-Pull-Legs split provides optimal stimulus with built-in recovery windows.",
+      "### Structure of the 4-Day Rotation:",
+      "- **Day 1 (Push)**: Flat Barbell Bench Press (4x6), Standing Overhead Press (3x8), Incline Dumbbell Flyes (3x12), Cable Triceps Pushdowns (4x12).",
+      "- **Day 2 (Pull)**: Conventional or Trap-Bar Deadlifts (3x5), Neutral-Grip Weighted Pull-Ups (4x6), Chest-Supported Dumbbell Rows (3x10), Incline Dumbbell Bicep Curls (3x12).",
+      "- **Day 3 (Rest / Active Recovery)**: 8,000 steps, light mobility, and steam bath.",
+      "- **Day 4 (Legs & Abs)**: Barbell Back Squats (4x6), Romanian Deadlifts (3x8), Walking Dumbbell Lunges (3x12 each), Hanging Leg Raises (4x15).",
+      "- **Day 5 (Upper Body Hypertrophy)**: Incline Dumbbell Press (3x10), Lat Pulldowns (3x10), Cable Lateral Raises (4x15), Overhead Rope Triceps Extensions (3x12).",
+      "- **Day 6 & 7 (Rest & Meal Prep)**: Deep rest and sleep.",
+      "### Golden Rules for Progression:",
+      "Always track your weights in a logbook. Aim to add 1 repetition or 1kg-2.5kg to your primary compound movement every two weeks. When your strength on the big compound lifts moves up progressively with clean technique, muscle growth is an inevitable biological response."
+    ]
+  },
+  {
+    "id": "calculating-calories-protein",
+    "title": "Demystifying Nutrition: How to Calculate Calories & Protein Accurately",
+    "slug": "calories-and-protein-calculation-guide",
+    "category": "Nutrition Science",
+    "readTime": "6 min read",
+    "date": "September 2026",
+    "author": "Coach Rahul Verma",
+    "image": "https://images.unsplash.com/photo-1490645935967-10de6ba17061?auto=format&fit=crop&w=800&q=80",
+    "summary": "Stop guessing your diet. Here is the step-by-step mathematical blueprint to calculate your Basal Metabolic Rate, daily energy expenditure, and target macros.",
+    "content": [
+      "No amount of heavy lifting can overcome an uncalibrated diet. Whether your primary goal is rapid fat loss or building lean muscle mass, energy balance is ruled by thermodynamics.",
+      "### Step 1: Calculate Your Basal Metabolic Rate (BMR)",
+      "A simple and reliable formula for active lifters is the Mifflin-St Jeor equation, or simplified:",
+      "- **Male BMR approx**: `(10 x weight in kg) + (6.25 x height in cm) - (5 x age in years) + 5`",
+      "- **Female BMR approx**: `(10 x weight in kg) + (6.25 x height in cm) - (5 x age in years) - 161`",
+      "### Step 2: Multiply by Activity Multiplier (TDEE)",
+      "If you train intensely 4-5 days a week at Iron Spirit Gym, your multiplier is approximately **1.55**.",
+      "`TDEE = BMR x 1.55`",
+      "- **For Fat Loss**: Eat at a 300-500 kcal deficit below your TDEE.",
+      "- **For Lean Muscle Gain**: Eat at a modest 250-350 kcal surplus above your TDEE.",
+      "### Step 3: Set Your Daily Protein Target",
+      "Scientific research consistently indicates that **1.6g to 2.2g of protein per kilogram of body weight** is the sweet spot for natural lifters. For a 70kg person, that translates to 120g – 150g of high-quality protein divided across 3 to 4 meals daily (eggs, paneer/tofu, chicken breast, whey protein, lentils, and Greek yogurt)."
+    ]
+  },
+  {
+    "id": "warmup-and-mobility",
+    "title": "5 Crucial Warm-up Drills to Protect Your Shoulders & Lower Back",
+    "slug": "bulletproof-mobility-warmup-guide",
+    "category": "Injury Prehab",
+    "readTime": "4 min read",
+    "date": "September 2026",
+    "author": "Coach Ananya Sharma",
+    "image": "https://images.unsplash.com/photo-1518611012118-696072aa579a?auto=format&fit=crop&w=800&q=80",
+    "summary": "Eliminate stiff hips, clicking shoulders, and lower-back tightness with this 7-minute pre-workout dynamic activation routine.",
+    "content": [
+      "Static stretching before heavy lifting can reduce force production. What you need before touching a barbell is **dynamic joint lubrication and neurological activation**.",
+      "### The 7-Minute Pre-Workout Protocol:",
+      "1. **Cat-Cow to Bird-Dog (2 minutes)**: Gentle spinal flexion and extension paired with cross-body anti-rotation glute reaches. Awakens the deep multifidus muscles protecting your lumbar spine.",
+      "2. **World's Greatest Stretch (90 seconds)**: Deep lunge with an elbow-to-instep drop, followed by thoracic spine rotation towards the ceiling. Opens up hip flexors, groin, and mid-back simultaneously.",
+      "3. **Banded Face-Pulls & External Rotations (2 minutes)**: Using a light resistance band, pull towards eye level while externally rotating forearms. Fires up the rotator cuff (infraspinatus, teres minor) and rear delts.",
+      "4. **Deep Goblet Squat Pries (90 seconds)**: Hold a light 10kg kettlebell or dumbbell against your chest, sink into a full deep squat, and use elbows to gently push knees outward while keeping the chest high.",
+      "Do this routine before every workout at Iron Spirit Gym, and you will immediately notice smoother lifts and zero post-gym nagging aches."
+    ]
+  },
+  {
+    "id": "supplements-science",
+    "title": "Supplements 101: Which Ones Actually Work and What to Avoid",
+    "slug": "evidence-based-supplements-guide",
+    "category": "Science & Nutrition",
+    "readTime": "5 min read",
+    "date": "September 2026",
+    "author": "Coach Vikram Singh",
+    "image": "https://images.unsplash.com/photo-1579722820308-d74e571900a9?auto=format&fit=crop&w=800&q=80",
+    "summary": "An honest, no-nonsense breakdown of the supplement industry. Learn the only 3 supplements that have gold-standard clinical backing.",
+    "content": [
+      "The supplement market is flooded with fancy packaging and overhyped promises. As natural athletes, 90% of your results will stem from consistent training, whole food nutrition, and 8 hours of sleep. However, these 3 supplements genuinely work:",
+      "### 1. Creatine Monohydrate (The King of Ergogenics)",
+      "Creatine monohydrate is the most extensively researched sports supplement on the planet. It replenishes intramuscular phosphocreatine stores, enabling you to squeeze out 1-2 extra repetitions during heavy sets and drawing intracellular water into muscle fibers for enhanced protein synthesis. Take **3g to 5g daily**, every single day, with water. No complex loading phase is necessary.",
+      "### 2. Whey Protein Isolate / Concentrate",
+      "Whey is not magic—it is simply a convenient, highly bioavailable food source extracted from dairy during cheesemaking. If your busy lifestyle makes it tough to hit 140g of daily protein from whole foods, a single scoop post-workout easily gives you 24g-27g of complete essential amino acids with high leucine content.",
+      "### 3. Electrolytes & Vitamin D3 / K2",
+      "In Indian climatic conditions, sweating during intense training depletes sodium, potassium, and magnesium rapidly. Adding an electrolyte pinch to your workout water bottle prevents cramps and lethargy. Furthermore, optimizing Vitamin D3 levels supports healthy testosterone production and bone density."
+    ]
+  }
+]

@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  
+  <title>Privacy Policy | Iron Spirit Gym - Kokar, Ranchi</title>
+  <meta name="description" content="Privacy Policy for Iron Spirit Gym, Kokar, Ranchi. We respect your privacy and do not collect personal data on this website." />
+  <meta name="theme-color" content="#080a0d" />
+  <link rel="icon" type="image/png" href="logo.png" />
+
+  <!-- Preconnect Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+  <!-- Main Stylesheet -->
+  <link rel="stylesheet" href="css/style.css" />
+
+  <style>
+    /* Strict Dark Canvas Override - Eliminates any white body gaps or mobile padding */
+    html,
+    body {
+      background: #080a0d !important;
+      background-color: #080a0d !important;
+      padding-bottom: 0 !important;
+      margin: 0 !important;
+      color: #cbd5e1;
+    }
+
+    /* Completely Disable Mobile Bottom Nav on Privacy Policy */
+    .mobile-bottom-nav {
+      display: none !important;
+    }
+
+    /* Top Navbar Layout on Privacy Policy */
+    .privacy-header-bar {
+      background: rgba(8, 10, 13, 0.94) !important;
+      backdrop-filter: blur(20px) !important;
+      -webkit-backdrop-filter: blur(20px) !important;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
+    }
+
+    .policy-navbar-row {
+      display: flex !important;
+      align-items: center !important;
+      justify-content: space-between !important;
+      height: 64px;
+      gap: 14px;
+    }
+
+    .policy-top-back-icon {
+      display: inline-flex !important;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      color: #ffffff !important;
+      text-decoration: none;
+      flex-shrink: 0;
+      transition: all 0.22s ease;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    .policy-top-back-icon svg {
+      stroke: #ffffff !important;
+      color: #ffffff !important;
+    }
+
+    .policy-top-back-icon:hover,
+    .policy-top-back-icon:active {
+      background: var(--red, #e82b35);
+      border-color: var(--red, #e82b35);
+      transform: translateX(-2px);
+    }
+
+    .policy-page-wrap {
+      min-height: calc(100vh - 120px);
+      background: #080a0d !important;
+      color: #cbd5e1;
+      padding-top: 86px;
+      padding-bottom: 40px;
+      position: relative;
+    }
+
+    .policy-container {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 0 16px;
+    }
+
+    .policy-card {
+      background: rgba(18, 22, 27, 0.85);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 20px;
+      padding: 34px 28px;
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
+    }
+
+    .policy-header {
+      margin-bottom: 24px;
+      padding-bottom: 18px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .policy-title {
+      font-family: 'Manrope', var(--font-heading), sans-serif;
+      font-size: clamp(1.75rem, 3.2vw, 2.2rem);
+      font-weight: 850;
+      color: #ffffff;
+      line-height: 1.2;
+      margin-bottom: 8px;
+    }
+
+    .policy-meta {
+      font-size: 0.80rem;
+      color: #94a3b8;
+    }
+
+    .policy-content section {
+      margin-bottom: 22px;
+    }
+
+    .policy-content h2 {
+      font-family: 'Manrope', var(--font-heading), sans-serif;
+      font-size: 1.12rem;
+      font-weight: 800;
+      color: #ffffff;
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .policy-content h2::before {
+      content: '';
+      display: inline-block;
+      width: 4px;
+      height: 16px;
+      background: var(--red, #e82b35);
+      border-radius: 2px;
+    }
+
+    .policy-content p {
+      font-size: 0.88rem;
+      line-height: 1.7;
+      color: #94a3b8;
+      margin-bottom: 10px;
+    }
+
+    .policy-content strong {
+      color: #f1f5f9;
+    }
+
+    .policy-content a {
+      color: var(--red, #e82b35);
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+
+    .policy-contact-box {
+      background: rgba(232, 43, 53, 0.05);
+      border: 1px solid rgba(232, 43, 53, 0.2);
+      border-radius: 12px;
+      padding: 18px;
+      margin-top: 16px;
+    }
+
+    .policy-contact-box p {
+      margin-bottom: 6px;
+      color: #e2e8f0;
+    }
+
+    .site-footer {
+      background: #080a0d !important;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      padding: 28px 0 24px 0 !important;
+    }
+
+    @media (max-width: 640px) {
+      .policy-page-wrap {
+        padding-top: 76px;
+        padding-bottom: 28px;
+      }
+      .policy-card {
+        padding: 24px 16px;
+        border-radius: 16px;
+      }
+      .policy-title {
+        font-size: 1.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- FIXED TOP NAVBAR -->
+  <div class="fixed-top-header-group">
+    <header class="site-header privacy-header-bar">
+      <div class="container policy-navbar-row">
+        <!-- Clean Back Icon Button on Top Left -->
+        <a href="index.html" class="policy-top-back-icon" aria-label="Return to Homepage">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="19" y1="12" x2="5" y2="12"></line>
+            <polyline points="12 19 5 12 12 5"></polyline>
+          </svg>
+        </a>
+
+        <!-- Brand Identity -->
+        <a href="index.html#hero" class="brand-logo" aria-label="Iron Spirit Gym Homepage">
+          <div class="brand-text">
+            <span class="brand-name">iron <span class="red-text">spirit</span></span>
+            <span class="brand-sub">Unisex Gym, Ranchi</span>
+          </div>
+          <img src="top_logo.png" alt="Iron Spirit Gym Logo" class="header-logo-img" />
+        </a>
+      </div>
+    </header>
+  </div>
+
+  <!-- PRIVACY POLICY CONTENT BODY -->
+  <main class="policy-page-wrap">
+    <div class="policy-container">
+      <div class="policy-card">
+        
+        <div class="policy-header">
+          <h1 class="policy-title">Privacy Policy</h1>
+          <p class="policy-meta">Effective: 2026 • Iron Spirit Gym (Kokar, Ranchi)</p>
+        </div>
+
+        <div class="policy-content">
+          <section>
+            <h2>1. Overview</h2>
+            <p>
+              <strong>Iron Spirit Gym</strong> is an informational website created solely to showcase our gym facilities, certified trainer details, membership plans, and location in Kokar, Ranchi.
+            </p>
+          </section>
+
+          <section>
+            <h2>2. No Personal Data Collection</h2>
+            <p>
+              We <strong>do not collect, store, or process any personal data</strong> on this website:
+            </p>
+            <p>
+              • There are no registration forms, logins, user accounts, or newsletters.<br>
+              • We do not process online payments or store credit/debit card numbers on this site.<br>
+              • We do not track individual visitor identities or sell any data to third parties.
+            </p>
+          </section>
+
+          <section>
+            <h2>3. Direct Contact (WhatsApp & Phone)</h2>
+            <p>
+              When you click our WhatsApp button or call our front desk, you connect directly to Iron Spirit Gym through standard apps on your device. Any discussion is strictly between you and gym management to assist with your gym queries.
+            </p>
+          </section>
+
+          <section>
+            <h2>4. Third-Party Links</h2>
+            <p>
+              Our website provides direct links to Google Maps (for directions) and WhatsApp (for chatting). We do not control these third-party platforms.
+            </p>
+          </section>
+
+          <section>
+            <h2>5. Contact Us</h2>
+            <p>For any inquiries regarding this policy or our gym facilities, reach out to our front desk:</p>
+            <div class="policy-contact-box">
+              <p><strong>Iron Spirit Gym</strong> (Unisex Gym)</p>
+              <p>📍 Plot No. 42, Near Kokar Industrial Area, Kokar Chowk, Ranchi, Jharkhand - 834001</p>
+              <p>📞 Phone: <a href="tel:+919835124789">+91 98351 24789</a></p>
+              <p>💬 WhatsApp: <a href="https://wa.me/919835124789" target="_blank" rel="noopener">+91 98351 24789</a></p>
+            </div>
+          </section>
+        </div>
+
+      </div>
+    </div>
+  </main>
+
+  <!-- SITE FOOTER -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-minimal-wrap">
+        <a href="index.html#hero" class="footer-brand" aria-label="Iron Spirit Gym">
+          <img src="top_logo.png" alt="Iron Spirit Gym Logo" class="footer-logo-img" />
+          <div class="footer-brand-text">
+            <span class="brand-name">iron <span class="red-text">spirit</span></span>
+            <span class="brand-sub">Unisex Gym • Kokar, Ranchi</span>
+          </div>
+        </a>
+        <div class="footer-copyright-text">
+          © 2026 Iron Spirit Gym. All Rights Reserved. Kokar, Ranchi, Jharkhand.
+        </div>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

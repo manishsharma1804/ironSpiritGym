@@ -1,0 +1,101 @@
+[
+  {
+    "id": "gal-1",
+    "type": "image",
+    "category": "gym",
+    "title": "Heavy Dumbbell & Free Weights Deck",
+    "description": "Precision calibrated urethane dumbbells ranging up to 60kg with customized heavy-duty benches.",
+    "image": "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=1200&q=85"
+  },
+  {
+    "id": "gal-2",
+    "type": "video",
+    "category": "videos",
+    "title": "Heavy Deadlift PR Day - 240kg Pull",
+    "description": "Iron Spirit athlete pushing past limits on our dedicated deadlift lifting platform.",
+    "videoUrl": "hero.mp4",
+    "thumbnail": "https://images.unsplash.com/photo-1517838277536-f5f99be501cd?auto=format&fit=crop&w=1200&q=85"
+  },
+  {
+    "id": "gal-3",
+    "type": "image",
+    "category": "achievements",
+    "title": "Jharkhand State Powerlifting Trophy 2025",
+    "description": "Iron Spirit competitive team securing 1st Place overall championship at the State Open.",
+    "image": "https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?auto=format&fit=crop&w=1200&q=85"
+  },
+  {
+    "id": "gal-4",
+    "type": "image",
+    "category": "gym",
+    "title": "HIIT & Commercial Cardio Deck",
+    "description": "Commercial curved treadmills, assault bikes, rowers, and stairmasters with dedicated airflow cooling.",
+    "image": "https://images.unsplash.com/photo-1540497077202-7c8a3999166f?auto=format&fit=crop&w=1200&q=85"
+  },
+  {
+    "id": "gal-5",
+    "type": "video",
+    "category": "videos",
+    "title": "Full Facility 4K Virtual Walkthrough",
+    "description": "Experience the vibe, high-energy lighting, sound system, and spacious strength zones at Iron Spirit Kokar.",
+    "videoUrl": "hero.mp4",
+    "thumbnail": "https://images.unsplash.com/photo-1574680096145-d05b474e2155?auto=format&fit=crop&w=1200&q=85"
+  },
+  {
+    "id": "gal-6",
+    "type": "image",
+    "category": "achievements",
+    "title": "Eastern India Classic Mens Physique - Top 3",
+    "description": "Proud moment as our mentored athlete takes home podium finish with 8 months contest prep.",
+    "image": "https://images.unsplash.com/photo-1579758629938-03607ccdbaba?auto=format&fit=crop&w=1200&q=85"
+  },
+  {
+    "id": "gal-7",
+    "type": "image",
+    "category": "events",
+    "title": "Biomechanics & Squat Depth Masterclass",
+    "description": "Over 60 lifters attended the interactive workshop led by certified biomechanics specialists.",
+    "image": "https://images.unsplash.com/photo-1571902943202-507ec2618e8f?auto=format&fit=crop&w=1200&q=85"
+  },
+  {
+    "id": "gal-8",
+    "type": "image",
+    "category": "gym",
+    "title": "Competition Olympic Racks & Bumper Plates",
+    "description": "High-density shock-absorbing rubber drop zones with IWF-spec barbells and calibrated plates.",
+    "image": "https://images.unsplash.com/photo-1526506118085-60ce8714f8c5?auto=format&fit=crop&w=1200&q=85"
+  },
+  {
+    "id": "gal-9",
+    "type": "video",
+    "category": "videos",
+    "title": "Rahul's 90-Day Fat Loss & Muscle Build Reel",
+    "description": "From 94kg to 76kg shredded — strict nutrition periodization & coach-led training.",
+    "videoUrl": "hero.mp4",
+    "thumbnail": "https://images.unsplash.com/photo-1581009146145-b5ef050c2e1e?auto=format&fit=crop&w=1200&q=85"
+  },
+  {
+    "id": "gal-10",
+    "type": "image",
+    "category": "achievements",
+    "title": "Ranchi District Bench Press Open - 165kg Record",
+    "description": "Iron Spirit lifter clinches highest bench press in the under-83kg category.",
+    "image": "https://images.unsplash.com/photo-1584735935682-2f2b69dff9d2?auto=format&fit=crop&w=1200&q=85"
+  },
+  {
+    "id": "gal-11",
+    "type": "image",
+    "category": "events",
+    "title": "Iron Spirit Annual Lifters Meet & Celebration",
+    "description": "Celebrating brotherhood, sweat, personal bests, and community consistency in Ranchi.",
+    "image": "https://images.unsplash.com/photo-1528605248644-14dd04022da1?auto=format&fit=crop&w=1200&q=85"
+  },
+  {
+    "id": "gal-12",
+    "type": "image",
+    "category": "gym",
+    "title": "Post-Workout Recovery & Hydration Bar",
+    "description": "Pure electrolyte replenishment, clean protein shakes, and steam relaxation lounge.",
+    "image": "https://images.unsplash.com/photo-1517836357463-d25dfeac3438?auto=format&fit=crop&w=1200&q=85"
+  }
+]

@@ -1,0 +1,72 @@
+{
+  "days": [
+    {
+      "day": "Monday",
+      "tag": "Chest & Heavy Compounds",
+      "classes": [
+        { "time": "06:30 AM – 07:30 AM", "name": "Powerlifting Fundamentals", "coach": "Vikram Singh", "category": "Strength", "intensity": "High" },
+        { "time": "08:00 AM – 09:00 AM", "name": "Metabolic Fat Burn Circuit", "coach": "Ananya Sharma", "category": "Cardio", "intensity": "Medium" },
+        { "time": "06:00 PM – 07:00 PM", "name": "Hypertrophy Push Session", "coach": "Vikram Singh", "category": "Strength", "intensity": "High" },
+        { "time": "07:30 PM – 08:30 PM", "name": "Functional Core & Posture", "coach": "Rahul Verma", "category": "Mobility", "intensity": "Low" }
+      ]
+    },
+    {
+      "day": "Tuesday",
+      "tag": "Back & Kinetic Chains",
+      "classes": [
+        { "time": "06:30 AM – 07:30 AM", "name": "Deadlift & Pull Mechanics", "coach": "Vikram Singh", "category": "Strength", "intensity": "High" },
+        { "time": "08:00 AM – 09:00 AM", "name": "Calisthenics & Ring Foundations", "coach": "Ananya Sharma", "category": "Functional", "intensity": "Medium" },
+        { "time": "06:00 PM – 07:00 PM", "name": "HIIT Row & Assault Deck", "coach": "Ananya Sharma", "category": "Cardio", "intensity": "High" },
+        { "time": "07:30 PM – 08:30 PM", "name": "Spine & Hip Decompression", "coach": "Rahul Verma", "category": "Mobility", "intensity": "Low" }
+      ]
+    },
+    {
+      "day": "Wednesday",
+      "tag": "Leg Day & Lower Body Power",
+      "classes": [
+        { "time": "06:30 AM – 07:30 AM", "name": "Barbell Squats & Quad Lab", "coach": "Vikram Singh", "category": "Strength", "intensity": "Extreme" },
+        { "time": "08:00 AM – 09:00 AM", "name": "Kettlebell Flow & Glute Burn", "coach": "Ananya Sharma", "category": "Functional", "intensity": "Medium" },
+        { "time": "06:00 PM – 07:00 PM", "name": "Posterior Chain Mastery", "coach": "Vikram Singh", "category": "Strength", "intensity": "High" },
+        { "time": "07:30 PM – 08:30 PM", "name": "Knee Health & Ankle Mobility", "coach": "Rahul Verma", "category": "Mobility", "intensity": "Low" }
+      ]
+    },
+    {
+      "day": "Thursday",
+      "tag": "Shoulders & Core Stability",
+      "classes": [
+        { "time": "06:30 AM – 07:30 AM", "name": "Overhead Press & Deltoids", "coach": "Vikram Singh", "category": "Strength", "intensity": "High" },
+        { "time": "08:00 AM – 09:00 AM", "name": "Athletic Speed & Agility", "coach": "Ananya Sharma", "category": "Functional", "intensity": "High" },
+        { "time": "06:00 PM – 07:00 PM", "name": "Battle Ropes & Turf Sled", "coach": "Ananya Sharma", "category": "Cardio", "intensity": "High" },
+        { "time": "07:30 PM – 08:30 PM", "name": "Rotator Cuff Prehab Routine", "coach": "Rahul Verma", "category": "Mobility", "intensity": "Low" }
+      ]
+    },
+    {
+      "day": "Friday",
+      "tag": "Arms & High Volume Pump",
+      "classes": [
+        { "time": "06:30 AM – 07:30 AM", "name": "Biceps, Triceps & Forearms", "coach": "Vikram Singh", "category": "Strength", "intensity": "Medium" },
+        { "time": "08:00 AM – 09:00 AM", "name": "Animal Flow & Core Dynamics", "coach": "Ananya Sharma", "category": "Functional", "intensity": "Medium" },
+        { "time": "06:00 PM – 07:00 PM", "name": "CrossFit Team WOD", "coach": "Ananya Sharma", "category": "Cardio", "intensity": "Extreme" },
+        { "time": "07:30 PM – 08:30 PM", "name": "Guided Deep Stretch & Breathwork", "coach": "Rahul Verma", "category": "Mobility", "intensity": "Low" }
+      ]
+    },
+    {
+      "day": "Saturday",
+      "tag": "Full Body Conditioning & Testing",
+      "classes": [
+        { "time": "07:00 AM – 08:30 AM", "name": "Iron Spirit Saturday Gauntlet", "coach": "Vikram Singh & Ananya", "category": "Strength", "intensity": "Extreme" },
+        { "time": "09:00 AM – 10:00 AM", "name": "Beginner Lifting Clinic", "coach": "Rahul Verma", "category": "Functional", "intensity": "Low" },
+        { "time": "05:30 PM – 06:30 PM", "name": "Weekend Burn Bootcamp", "coach": "Ananya Sharma", "category": "Cardio", "intensity": "High" }
+      ]
+    },
+    {
+      "day": "Sunday",
+      "tag": "Active Recovery & Open Floor",
+      "classes": [
+        { "time": "08:00 AM – 09:30 AM", "name": "Restorative Yoga & Deep Foam Rolling", "coach": "Rahul Verma", "category": "Mobility", "intensity": "Low" },
+        { "time": "10:00 AM – 01:00 PM", "name": "Open Gym Floor & Technique Clinic", "coach": "Coaching Team", "category": "Strength", "intensity": "Self-Paced" },
+        { "time": "05:00 PM – 07:00 PM", "name": "Guided Sauna & Thermal Recovery", "coach": "Recovery Desk", "category": "Recovery", "intensity": "Rest" }
+      ]
+    }
+  ]
+}

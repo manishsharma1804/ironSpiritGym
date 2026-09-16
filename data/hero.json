@@ -1,0 +1,25 @@
+{
+  "title": "Transform Your",
+  "titleHighlight": "Fitness",
+  "description": "Ranchi's dedicated unisex fitness gym in Kokar. Fully equipped with free weights, guided machines, cardio stations, and helpful trainers for your daily workouts.",
+  "cta": {
+    "text": "Explore Memberships",
+    "link": "#memberships"
+  },
+  "secondaryCta": {
+    "text": "Talk to Us",
+    "link": "https://wa.me/919835124789"
+  },
+  "slides": [
+    {
+      "type": "logo",
+      "src": "main_logo.png",
+      "alt": "Iron Spirit Gym Official Emblem"
+    },
+    {
+      "type": "video",
+      "src": "hero.mp4",
+      "alt": "Olympic Barbells & Power Racks"
+    }
+  ]
+}

@@ -1,0 +1,45 @@
+{
+  "name": "Iron Spirit Gym",
+  "tagline": "Transform Your Fitness",
+  "subTagline": "Unisex Fitness & Strength Gym in Kokar, Ranchi",
+  "description": "A dedicated unisex fitness gym in Kokar, Ranchi. Equipped with quality free weights, muscle-building machines, cardio stations, and helpful trainers to guide your daily workout routine.",
+  "type": "Unisex Fitness Gym",
+  "location": {
+    "shortAddress": "Kokar, Ranchi, Jharkhand",
+    "fullAddress": "Plot No. 42, Near Kokar Industrial Area, Kokar Chowk, Ranchi, Jharkhand - 834001",
+    "landmark": "Opposite Kokar Plaza",
+    "mapCoordinates": {
+      "lat": 23.3768,
+      "lng": 85.3524
+    },
+    "mapEmbedUrl": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14652.876541289196!2d85.345!3d23.3768!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39f4e19515555555%3A0x6b4a2d8a4365cf86!2sKokar%2C%20Ranchi%2C%20Jharkhand!5e0!3m2!1sen!2sin!4v1710400000000!5m2!1sen!2sin"
+  },
+  "contact": {
+    "phone": "+91 98351 24789",
+    "phoneDisplay": "+91 98351 24789",
+    "whatsapp": "+919835124789",
+    "whatsappMessage": "Hi Iron Spirit Gym! I am interested in joining the gym in Kokar. Please share fee and timing details.",
+    "email": "contact@ironspiritgym.com"
+  },
+  "timings": {
+    "weekdays": {
+      "days": "Monday – Saturday",
+      "slots": "5:30 AM – 10:00 PM"
+    },
+    "sunday": {
+      "days": "Sunday",
+      "slots": "6:00 AM – 12:00 PM (Morning Session)"
+    }
+  },
+  "socials": {
+    "instagram": "https://instagram.com",
+    "facebook": "https://facebook.com",
+    "youtube": "https://youtube.com"
+  },
+  "metrics": [
+    { "value": "100% Unisex", "label": "Safe & Welcoming for All" },
+    { "value": "Full Equipment", "label": "Free Weights & Machines" },
+    { "value": "Floor Guidance", "label": "Helpful Workout Support" },
+    { "value": "4.9 ★", "label": "Rated by Local Lifters" }
+  ]
+}

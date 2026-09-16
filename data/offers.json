@@ -1,0 +1,23 @@
+{
+  "isActive": true,
+  "showBanner": true,
+  "bannerText": "GRAND OPENING PRIVILEGE: Flat 35% OFF Annual Membership for First 50 Members • Code: KOKAR35",
+  "popup": {
+    "badge": "Grand Opening Exclusive",
+    "title": "Founding Member Privilege",
+    "subtitle": "Kokar's Newest High-Performance Gym",
+    "discountBadge": "35% OFF",
+    "planTarget": "Annual Elite Tier",
+    "couponCode": "KOKAR35",
+    "description": "Be one of the first 50 athletes to step into Iron Spirit Gym Kokar. Unlock a flat 35% discount on our Annual Elite Pass plus 2 complimentary one-on-one nutrition & posture assessments.",
+    "perks": [
+      "Zero admission / registration fee",
+      "Complimentary dedicated locker access",
+      "2 Free 1-on-1 Fitness Assessment Sessions",
+      "Priority access to all group HIIT classes"
+    ],
+    "validity": "Limited to the first 50 registrations",
+    "ctaText": "Claim Offer on WhatsApp",
+    "whatsappPrefill": "Hi Iron Spirit Gym! I want to claim the 35% Grand Opening launch offer (Code: KOKAR35) for Kokar branch."
+  }
+}

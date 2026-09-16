@@ -1,0 +1,71 @@
+[
+  {
+    "id": "starter-monthly",
+    "name": "Monthly Access",
+    "period": "Monthly",
+    "billingCycle": "Billed Monthly",
+    "price": "1,499",
+    "currency": "₹",
+    "originalPrice": "1,999",
+    "popular": false,
+    "badge": "No Long-Term Lock-in",
+    "description": "Perfect for beginners or lifters looking for flexible monthly workout access.",
+    "features": [
+      { "text": "Unlimited access during gym hours (Mon-Sun)", "included": true },
+      { "text": "Full access to all free weights & dumbbells", "included": true },
+      { "text": "Access to strength & selectorized machines", "included": true },
+      { "text": "Cardio machines (Treadmills & cycles)", "included": true },
+      { "text": "Floor trainer guidance on exercise form", "included": true },
+      { "text": "Basic beginner workout routine plan", "included": true },
+      { "text": "Monthly body weight & progress tracking", "included": false }
+    ],
+    "ctaText": "Join Monthly Plan",
+    "whatsappPrefill": "Hi Iron Spirit Gym! I want to join the Monthly Plan at your Kokar gym. Please share details."
+  },
+  {
+    "id": "pro-quarterly",
+    "name": "3-Month Transformation",
+    "period": "Quarterly",
+    "billingCycle": "Billed every 3 Months (₹1,166/mo)",
+    "price": "3,499",
+    "currency": "₹",
+    "originalPrice": "4,499",
+    "popular": true,
+    "badge": "Most Popular Choice",
+    "description": "The ideal commitment for building a consistent habit and seeing real physical progress.",
+    "features": [
+      { "text": "Full 90 days unlimited gym access", "included": true },
+      { "text": "Full access to all free weights & machines", "included": true },
+      { "text": "Cardio & fat loss equipment access", "included": true },
+      { "text": "Helpful floor trainer assistance daily", "included": true },
+      { "text": "Structured 3-month workout split chart", "included": true },
+      { "text": "Monthly body weight & progress tracking", "included": true },
+      { "text": "Basic home-food diet & protein tips", "included": true }
+    ],
+    "ctaText": "Claim 3-Month Plan",
+    "whatsappPrefill": "Hi Iron Spirit Gym! I am interested in the 3-Month Transformation Plan at Kokar."
+  },
+  {
+    "id": "elite-annual",
+    "name": "Annual Fitness Pass",
+    "period": "Annual",
+    "billingCycle": "Billed Annually (₹799/mo)",
+    "price": "9,599",
+    "currency": "₹",
+    "originalPrice": "14,999",
+    "popular": false,
+    "badge": "Best Value (Save 45%)",
+    "description": "Year-round fitness commitment at our lowest monthly rate with maximum value.",
+    "features": [
+      { "text": "365 Days unlimited access to the gym", "included": true },
+      { "text": "Full access to all weights, machines & cardio", "included": true },
+      { "text": "Regular floor guidance & exercise correction", "included": true },
+      { "text": "Progressive workout charts updated as you grow", "included": true },
+      { "text": "Ongoing body weight & fitness monitoring", "included": true },
+      { "text": "Personalized diet suggestions based on goals", "included": true },
+      { "text": "Membership freeze option (up to 30 days free)", "included": true }
+    ],
+    "ctaText": "Get Annual Pass",
+    "whatsappPrefill": "Hi Iron Spirit Gym! I want to get the Annual Fitness Pass at your Kokar gym."
+  }
+]

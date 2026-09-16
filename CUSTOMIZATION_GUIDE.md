@@ -86,23 +86,34 @@ File: `data/hero.json`
 
 ---
 
-## 📞 2. Gym Address, Phone & WhatsApp (`data/gym-info.json`)
+## 📞 2. Gym Address, Phone, WhatsApp, Email & Socials (`data/gym-info.json`)
 
 File: `data/gym-info.json`
 
-- **Phone Number badalna ho:** `"phone"` aur `"phoneDisplay"` change karein.
-- **WhatsApp Message change karna ho:** `"whatsappMessage"` me apna text likhein.
-- **Gym Timings update karni ho:**
+- **Address update:** `"location.fullAddress"` change karein.
+- **Phone Numbers (Multiple or Single):**
   ```json
-  "timings": {
-    "weekdays": {
-      "days": "Monday – Saturday",
-      "slots": "5:30 AM – 10:00 PM"
-    },
-    "sunday": {
-      "days": "Sunday",
-      "slots": "6:00 AM – 12:00 PM (Morning Session)"
-    }
+  "phones": [
+    { "number": "+91 98351 24789", "label": "Front Desk & Enquiries" },
+    { "number": "+91 98351 24790", "label": "Trainer & Support Desk" }
+  ]
+  ```
+  *(Note: User kisi bhi phone number pe click karega toh usse **"Call Now"** aur **"Copy Number"** ka interactive option sheet milega).*
+- **WhatsApp Lines (Multiple or Single):**
+  ```json
+  "whatsapps": [
+    { "number": "919835124789", "label": "Membership Enquiries", "message": "Hi Iron Spirit Gym! I am interested in joining." },
+    { "number": "919835124790", "label": "Trainer & Timings Support", "message": "Hi Iron Spirit Gym! I want information regarding gym slots." }
+  ]
+  ```
+- **Email:** `"email": "contact@ironspiritgym.com"` *(Click karne par Open Mail / Copy Email prompt milta hai)*.
+- **Gym Timings:** `"timings.weekdays.slots"` aur `"timings.sunday.slots"`.
+- **Social Links (Footer & Hero):**
+  ```json
+  "socials": {
+    "instagram": "https://instagram.com",
+    "facebook": "https://facebook.com",
+    "youtube": "https://youtube.com"
   }
   ```
 

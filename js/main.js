@@ -209,7 +209,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // Helper: Fetch JSON with graceful fallback
   async function loadJSON(url) {
     try {
-      const response = await fetch(url);
+      const response = await fetch(url, { cache: 'no-cache' });
       if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
       return await response.json();
     } catch (err) {
@@ -222,7 +222,7 @@ document.addEventListener('DOMContentLoaded', () => {
   async function initApp() {
     initHeroAnimations();
 
-    // Parallel fetch with a graceful cross-fade delay so the user experiences the real skeleton shimmer
+    // Parallel fetch (instant JSON resolution without artificial delay)
     const [
       hero,
       gymInfo,
@@ -244,8 +244,7 @@ document.addEventListener('DOMContentLoaded', () => {
       loadJSON('data/why-us.json'),
       loadJSON('data/faqs.json'),
       loadJSON('data/testimonials.json'),
-      loadJSON('data/gallery.json'),
-      new Promise(resolve => setTimeout(resolve, 450)) // Smooth cross-fade interval
+      loadJSON('data/gallery.json')
     ]);
 
     state.hero = hero;

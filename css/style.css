@@ -2845,12 +2845,12 @@ a {
 /* Authentic Matte Black Inked Rubber Stamp for Certified Coaches */
 .mag-verified-stamp {
   position: absolute;
-  right: 28px;
-  bottom: 84px;
-  width: 84px;
-  height: 84px;
+  right: 22px;
+  bottom: 68px;
+  width: 108px;
+  height: 108px;
   color: #1a1e24;
-  opacity: 0.92;
+  opacity: 0.94;
   transform: rotate(-12deg);
   pointer-events: none;
   z-index: 1;
@@ -2866,16 +2866,6 @@ a {
 
 .mag-stamp-logo-img {
   filter: contrast(120%) brightness(1.05);
-}
-
-@media (max-width: 768px) {
-  .mag-verified-stamp {
-    position: relative;
-    right: auto;
-    bottom: auto;
-    width: 68px;
-    height: 68px;
-  }
 }
 
 .mag-action-row {

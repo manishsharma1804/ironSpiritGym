@@ -1521,9 +1521,6 @@ document.addEventListener('DOMContentLoaded', () => {
           <ul class="mag-list">
             ${(coach.certifications || []).map(c => `<li><span class="check-mark">✓</span> ${c}</li>`).join('')}
           </ul>
-          <div style="display: flex; justify-content: center; margin-top: 14px;">
-            ${renderVerifiedStamp('drawer')}
-          </div>
         `;
       }
       backdrop.classList.add('active');

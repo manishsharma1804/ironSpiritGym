@@ -6091,26 +6091,6 @@ ul#card-list li .card:hover {
   border-color: rgba(0, 0, 0, 0.22);
 }
 
-@media (min-width: 769px) {
-  .contact-modal-backdrop {
-    align-items: center;
-    justify-content: center;
-  }
-  .contact-modal-sheet {
-    border-radius: 24px;
-    transform: scale(0.95);
-    opacity: 0;
-    transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.28s ease;
-  }
-  .contact-modal-sheet.active {
-    transform: scale(1);
-    opacity: 1;
-  }
-  .contact-modal-handle {
-    display: none;
-  }
-}
-
 .map-container {
   position: relative;
   background: var(--surface);

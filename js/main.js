@@ -1365,9 +1365,6 @@ document.addEventListener('DOMContentLoaded', () => {
             <h3 class="mag-coach-name">${t.name}</h3>
             <div class="mag-coach-role-wrap">
               <span class="mag-coach-role">${t.role}</span>
-              <span class="mag-inline-info-icon" title="View Credentials & Bio" aria-label="View Info">
-                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
-              </span>
             </div>
             <div class="mag-coach-branch">📍 Kokar, Ranchi</div>
           </div>
@@ -1494,7 +1491,6 @@ document.addEventListener('DOMContentLoaded', () => {
     function openCoachModal(coach) {
       if (!backdrop || !sheet || !coach) return;
       isModalActive = true;
-      if (coachInfiniteHandler) coachInfiniteHandler.stopAutoScroll();
       if (titleEl) titleEl.textContent = `${coach.name}`;
       if (contentEl) {
         contentEl.innerHTML = `
@@ -1541,9 +1537,6 @@ document.addEventListener('DOMContentLoaded', () => {
         sheet.classList.remove('active');
         isModalActive = false;
         ModalManager.close('coach-modal', opts);
-        if (coachInfiniteHandler) {
-          setTimeout(() => coachInfiniteHandler.startAutoScroll(), 1000);
-        }
       }
     }
 
@@ -1608,7 +1601,6 @@ document.addEventListener('DOMContentLoaded', () => {
       });
 
       mobileTrack.addEventListener('click', (e) => {
-        if (coachInfiniteHandler && coachInfiniteHandler.isSwiping()) return;
         const card = e.target.closest('.coach-card-mobile');
         if (!card) return;
         const idx = parseInt(card.dataset.idx, 10);

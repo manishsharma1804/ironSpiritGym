@@ -12,6 +12,7 @@ document.addEventListener('DOMContentLoaded', () => {
     whyUs: null,
     faqs: [],
     testimonials: [],
+    quotes: [],
     activeDay: 'Monday'
   };
 
@@ -61,7 +62,7 @@ document.addEventListener('DOMContentLoaded', () => {
         } else if (slide.type === 'video') {
           return `
             <div class="hero-slide ${isActive}" data-slide="${idx}">
-              <video class="hero-bg-media hero-bg-video" loop muted playsinline preload="auto">
+              <video class="hero-bg-media hero-bg-video" muted playsinline preload="auto">
                 <source src="${slide.src}" type="video/mp4" />
               </video>
             </div>
@@ -84,7 +85,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  // 1. Hero Media Slider Controller (Supports HD Images & Videos, Next/Prev Controls)
+  // 1. Hero Media Slider Controller (Supports HD Images & Dynamic Video Duration)
   function initHeroMediaSlider() {
     const slides = document.querySelectorAll('.hero-slide');
     const heroSection = document.getElementById('hero');
@@ -95,49 +96,77 @@ document.addEventListener('DOMContentLoaded', () => {
 
     let currentIndex = 0;
     let slideTimer = null;
+    let activeVideo = null;
+    let videoEndHandler = null;
+
+    function cleanupCurrent() {
+      if (slideTimer) {
+        clearTimeout(slideTimer);
+        slideTimer = null;
+      }
+      if (activeVideo) {
+        if (videoEndHandler) {
+          activeVideo.removeEventListener('ended', videoEndHandler);
+          videoEndHandler = null;
+        }
+        try {
+          activeVideo.pause();
+        } catch (e) {}
+        activeVideo = null;
+      }
+    }
+
+    function scheduleSlide() {
+      cleanupCurrent();
+      const currentSlide = slides[currentIndex];
+      if (!currentSlide) return;
+
+      const video = currentSlide.querySelector('video');
+      if (video) {
+        activeVideo = video;
+        videoEndHandler = () => {
+          nextSlide();
+        };
+        video.addEventListener('ended', videoEndHandler, { once: true });
+        video.currentTime = 0;
+        const playPromise = video.play();
+        if (playPromise !== undefined) {
+          playPromise.catch(() => {
+            // Fallback if autoplay was blocked: transition after standard duration
+            if (!slideTimer) {
+              slideTimer = setTimeout(nextSlide, 7000);
+            }
+          });
+        }
+      } else {
+        // Image or logo slide - 7 seconds display
+        slideTimer = setTimeout(nextSlide, 7000);
+      }
+    }
 
     function showSlide(index) {
-      // Pause video on previous slide if any
-      const currentSlide = slides[currentIndex];
-      const currentVideo = currentSlide ? currentSlide.querySelector('video') : null;
-      if (currentVideo) {
-        try {
-          currentVideo.pause();
-        } catch (e) {}
-      }
+      cleanupCurrent();
 
       slides.forEach(s => s.classList.remove('active'));
 
       currentIndex = (index + slides.length) % slides.length;
-      const nextSlide = slides[currentIndex];
-      nextSlide.classList.add('active');
+      const targetSlide = slides[currentIndex];
+      if (targetSlide) targetSlide.classList.add('active');
 
       // Update interactive dots
       dots.forEach((dot, dIdx) => {
         dot.classList.toggle('active', dIdx === currentIndex);
       });
 
-      // Play video on next slide if any
-      const nextVideo = nextSlide.querySelector('video');
-      if (nextVideo) {
-        nextVideo.currentTime = 0;
-        nextVideo.play().catch(() => {});
-      }
+      scheduleSlide();
     }
 
     function nextSlide() {
       showSlide(currentIndex + 1);
-      resetAutoSlide();
     }
 
     function prevSlide() {
       showSlide(currentIndex - 1);
-      resetAutoSlide();
-    }
-
-    function resetAutoSlide() {
-      if (slideTimer) clearInterval(slideTimer);
-      slideTimer = setInterval(nextSlide, 30000);
     }
 
     // Dot click listeners
@@ -148,7 +177,6 @@ document.addEventListener('DOMContentLoaded', () => {
         const idx = parseInt(dot.dataset.index, 10);
         if (!isNaN(idx)) {
           showSlide(idx);
-          resetAutoSlide();
         }
       });
     });
@@ -173,10 +201,21 @@ document.addEventListener('DOMContentLoaded', () => {
     // Pause auto-slide on hover, resume on mouse leave
     if (heroSection) {
       heroSection.addEventListener('mouseenter', () => {
-        if (slideTimer) clearInterval(slideTimer);
+        if (slideTimer) {
+          clearTimeout(slideTimer);
+          slideTimer = null;
+        }
+        if (activeVideo) {
+          try { activeVideo.pause(); } catch (e) {}
+        }
       });
+
       heroSection.addEventListener('mouseleave', () => {
-        resetAutoSlide();
+        if (activeVideo) {
+          activeVideo.play().catch(() => {});
+        } else if (!slideTimer) {
+          slideTimer = setTimeout(nextSlide, 7000);
+        }
       });
 
       // Touch swipe support on mobile
@@ -185,7 +224,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
       heroSection.addEventListener('touchstart', (e) => {
         touchStartX = e.changedTouches[0].screenX;
-        if (slideTimer) clearInterval(slideTimer);
+        cleanupCurrent();
       }, { passive: true });
 
       heroSection.addEventListener('touchend', (e) => {
@@ -198,12 +237,13 @@ document.addEventListener('DOMContentLoaded', () => {
             prevSlide();
           }
         } else {
-          resetAutoSlide();
+          scheduleSlide();
         }
       }, { passive: true });
     }
 
-    resetAutoSlide();
+    // Start with the initial slide
+    scheduleSlide();
   }
 
   // Helper: Fetch JSON with graceful fallback
@@ -216,6 +256,50 @@ document.addEventListener('DOMContentLoaded', () => {
       console.warn(`Could not load ${url}:`, err);
       return null;
     }
+  }
+
+  // Helper: Dynamically preloads any initial slide media (image, video, logo) from JSON
+  async function preloadSlideMedia(slide) {
+    if (!slide || !slide.src) return;
+    try {
+      if (slide.type === 'video') {
+        await new Promise((resolve) => {
+          const video = document.createElement('video');
+          video.preload = 'auto';
+          video.muted = true;
+          video.playsInline = true;
+          let resolved = false;
+          const finish = () => {
+            if (!resolved) {
+              resolved = true;
+              resolve();
+            }
+          };
+          video.onloadeddata = finish;
+          video.oncanplay = finish;
+          video.onerror = finish;
+          video.src = slide.src;
+          // Safe fallback for video metadata/frame
+          setTimeout(finish, 1200);
+        });
+      } else {
+        // Image or logo slide
+        await new Promise((resolve) => {
+          const img = new Image();
+          img.src = slide.src;
+          if (img.complete) {
+            resolve();
+          } else if (img.decode) {
+            img.decode().then(resolve).catch(resolve);
+          } else {
+            img.onload = resolve;
+            img.onerror = resolve;
+          }
+          // Safe fallback for image decoding
+          setTimeout(resolve, 1500);
+        });
+      }
+    } catch (e) {}
   }
 
   // Master Initializer
@@ -233,7 +317,8 @@ document.addEventListener('DOMContentLoaded', () => {
       whyUs,
       faqs,
       testimonials,
-      gallery
+      gallery,
+      quotes
     ] = await Promise.all([
       loadJSON('data/hero.json'),
       loadJSON('data/gym-info.json'),
@@ -244,7 +329,8 @@ document.addEventListener('DOMContentLoaded', () => {
       loadJSON('data/why-us.json'),
       loadJSON('data/faqs.json'),
       loadJSON('data/testimonials.json'),
-      loadJSON('data/gallery.json')
+      loadJSON('data/gallery.json'),
+      loadJSON('data/quotes.json')
     ]);
 
     state.hero = hero;
@@ -300,6 +386,13 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     ];
     state.gallery = (gallery && gallery.length) ? gallery : [];
+    state.quotes = (quotes && quotes.length) ? quotes : [];
+
+    // Dynamically preload the first hero media defined in data/hero.json (any image/video/logo)
+    const firstSlide = hero && hero.slides && hero.slides[0];
+    if (firstSlide) {
+      await preloadSlideMedia(firstSlide);
+    }
 
     // Smoothly render and cross-fade content into containers
     renderHero();
@@ -323,6 +416,12 @@ document.addEventListener('DOMContentLoaded', () => {
     initHorizontalCarousels();
     initDesktopMap();
     initFloatingFeedbackTab();
+    initFooterQuotes();
+
+    // Dismiss preloader now that first hero slide is decoded & fully ready in browser memory
+    if (typeof window.dismissPreloader === 'function') {
+      window.dismissPreloader();
+    }
 
     // Trigger GSAP ScrollTrigger animations on all sections and cards
     setTimeout(initScrollAnimations, 100);
@@ -371,16 +470,16 @@ document.addEventListener('DOMContentLoaded', () => {
     if (headers.length) {
       headers.forEach(header => {
         gsap.fromTo(header,
-          { opacity: 0, y: 28 },
+          { opacity: 0, y: 12 },
           {
             opacity: 1,
             y: 0,
-            duration: 0.7,
+            duration: 0.35,
             ease: 'power2.out',
             force3D: true,
             scrollTrigger: {
               trigger: header,
-              start: 'top 88%',
+              start: 'top 92%',
               toggleActions: 'play none none none',
               once: true
             }
@@ -390,20 +489,20 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // Staggered Container Helper
-    function animateGrid(containerId, itemSelector, startOffset = 'top 85%') {
+    function animateGrid(containerId, itemSelector, startOffset = 'top 92%') {
       const container = document.getElementById(containerId);
       if (!container) return;
       const items = container.querySelectorAll(itemSelector);
       if (!items.length) return;
 
       gsap.fromTo(items,
-        { opacity: 0, y: 32, scale: 0.98 },
+        { opacity: 0, y: 14, scale: 0.99 },
         {
           opacity: 1,
           y: 0,
           scale: 1,
-          duration: 0.7,
-          stagger: 0.06,
+          duration: 0.35,
+          stagger: 0.04,
           ease: 'power2.out',
           force3D: true,
           scrollTrigger: {
@@ -423,16 +522,16 @@ document.addEventListener('DOMContentLoaded', () => {
     const magStage = document.querySelector('.magazine-stage');
     if (magStage && typeof gsap !== 'undefined') {
       gsap.fromTo(magStage,
-        { opacity: 0, y: 30 },
+        { opacity: 0, y: 12 },
         {
           opacity: 1,
           y: 0,
-          duration: 0.75,
+          duration: 0.35,
           ease: 'power2.out',
           force3D: true,
           scrollTrigger: {
             trigger: magStage,
-            start: 'top 85%',
+            start: 'top 92%',
             toggleActions: 'play none none none',
             once: true
           }
@@ -445,16 +544,16 @@ document.addEventListener('DOMContentLoaded', () => {
     if (whyUsGrid) {
       if (document.querySelector('.why-us-content')) {
         gsap.fromTo('.why-us-content',
-          { opacity: 0, x: -20 },
+          { opacity: 0, x: -10 },
           {
             opacity: 1,
             x: 0,
-            duration: 0.7,
+            duration: 0.35,
             ease: 'power2.out',
             force3D: true,
             scrollTrigger: {
               trigger: whyUsGrid,
-              start: 'top 85%',
+              start: 'top 92%',
               toggleActions: 'play none none none',
               once: true
             }
@@ -463,18 +562,18 @@ document.addEventListener('DOMContentLoaded', () => {
       }
       if (document.querySelectorAll('.why-gallery-card').length) {
         gsap.fromTo('.why-gallery-card',
-          { opacity: 0, scale: 0.96, y: 18 },
+          { opacity: 0, scale: 0.98, y: 10 },
           {
             opacity: 1,
             scale: 1,
             y: 0,
-            duration: 0.7,
-            stagger: 0.06,
+            duration: 0.35,
+            stagger: 0.04,
             ease: 'power2.out',
             force3D: true,
             scrollTrigger: {
               trigger: whyUsGrid,
-              start: 'top 85%',
+              start: 'top 92%',
               toggleActions: 'play none none none',
               once: true
             }
@@ -483,18 +582,16 @@ document.addEventListener('DOMContentLoaded', () => {
       }
       if (document.querySelector('.why-center-badge')) {
         gsap.fromTo('.why-center-badge',
-          { opacity: 0, scale: 0.75, rotate: -10 },
+          { opacity: 0, scale: 0.85 },
           {
             opacity: 1,
             scale: 1,
-            rotate: 0,
-            duration: 0.75,
-            delay: 0.1,
-            ease: 'back.out(1.4)',
+            duration: 0.4,
+            ease: 'power2.out',
             force3D: true,
             scrollTrigger: {
               trigger: whyUsGrid,
-              start: 'top 85%',
+              start: 'top 92%',
               toggleActions: 'play none none none',
               once: true
             }
@@ -506,16 +603,16 @@ document.addEventListener('DOMContentLoaded', () => {
     const contactGrid = document.querySelector('.contact-grid');
     if (contactGrid) {
       gsap.fromTo(contactGrid,
-        { opacity: 0, y: 30 },
+        { opacity: 0, y: 12 },
         {
           opacity: 1,
           y: 0,
-          duration: 0.75,
+          duration: 0.35,
           ease: 'power2.out',
           force3D: true,
           scrollTrigger: {
             trigger: contactGrid,
-            start: 'top 85%',
+            start: 'top 92%',
             toggleActions: 'play none none none',
             once: true
           }
@@ -526,16 +623,16 @@ document.addEventListener('DOMContentLoaded', () => {
     const testSlider = document.querySelector('.testimonial-slider');
     if (testSlider) {
       gsap.fromTo(testSlider,
-        { opacity: 0, y: 28 },
+        { opacity: 0, y: 12 },
         {
           opacity: 1,
           y: 0,
-          duration: 0.75,
+          duration: 0.35,
           ease: 'power2.out',
           force3D: true,
           scrollTrigger: {
             trigger: testSlider,
-            start: 'top 88%',
+            start: 'top 92%',
             toggleActions: 'play none none none',
             once: true
           }
@@ -985,46 +1082,22 @@ document.addEventListener('DOMContentLoaded', () => {
   })();
 
   // =========================================================================
-  // UNIVERSAL SEAMLESS INFINITE MOBILE CAROUSEL ENGINE (STATIONARY AUTO-SCROLL)
+  // UNIVERSAL SEAMLESS INFINITE MOBILE CAROUSEL ENGINE (MANUAL SWIPE + ACTIVE SPY)
   // =========================================================================
-  // Global Page Scroll Idle Tracker (Ensures auto-scroll only triggers when stationary on section)
-  let isPageScrolling = false;
-  let pageScrollEndTimer = null;
   const registeredCarousels = [];
-
-  function handleGlobalPageScroll() {
-    isPageScrolling = true;
-    registeredCarousels.forEach(c => {
-      if (c && c.onPageScroll) c.onPageScroll();
-    });
-    clearTimeout(pageScrollEndTimer);
-    pageScrollEndTimer = setTimeout(() => {
-      isPageScrolling = false;
-      registeredCarousels.forEach(c => {
-        if (c && c.onPageIdle) c.onPageIdle();
-      });
-    }, 700);
-  }
-
-  window.addEventListener('scroll', handleGlobalPageScroll, { passive: true });
 
   function setupInfiniteMobileTrack(track, totalCount, options = {}) {
     if (!track || totalCount <= 0) return null;
 
     let isUserTouching = false;
-    let autoScrollInterval = null;
     let isBoundaryAdjusting = false;
-    let isSectionInView = false;
     let isSwiping = false;
     let touchStartX = 0;
     let touchStartY = 0;
     let scrollTimeout = null;
-    let stationaryTimer = null;
 
     const {
       onActiveChange,
-      autoScroll = true,
-      autoScrollDelay = 3500,
       sectionId
     } = options;
 
@@ -1059,7 +1132,6 @@ document.addEventListener('DOMContentLoaded', () => {
           const target = getCenterScroll(middleFirstCard);
           track.style.scrollBehavior = 'auto';
           track.scrollLeft = Math.max(0, target);
-          track.style.scrollBehavior = 'smooth';
           if (onActiveChange) {
             onActiveChange(0);
           }
@@ -1068,7 +1140,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function checkBoundaryLoop() {
-      if (window.innerWidth > 768 || isBoundaryAdjusting || isUserTouching || isPageScrolling) return;
+      if (window.innerWidth > 768 || isBoundaryAdjusting || isUserTouching) return;
       const cards = track.children;
       if (cards.length < totalCount * 3) return;
 
@@ -1086,7 +1158,6 @@ document.addEventListener('DOMContentLoaded', () => {
           const target = getCenterScroll(targetCard);
           track.style.scrollBehavior = 'auto';
           track.scrollLeft = target;
-          track.style.scrollBehavior = 'smooth';
         }
         setTimeout(() => { isBoundaryAdjusting = false; }, 80);
       }
@@ -1098,64 +1169,14 @@ document.addEventListener('DOMContentLoaded', () => {
           const target = getCenterScroll(targetCard);
           track.style.scrollBehavior = 'auto';
           track.scrollLeft = target;
-          track.style.scrollBehavior = 'smooth';
         }
         setTimeout(() => { isBoundaryAdjusting = false; }, 80);
-      }
-    }
-
-    function stepForward() {
-      if (window.innerWidth > 768 || isUserTouching || !isSectionInView || isPageScrolling || isBoundaryAdjusting) return;
-      const cards = track.children;
-      if (!cards.length) return;
-      const current = getClosestIndex();
-      const nextCard = cards[current + 1];
-      if (nextCard) {
-        track.scrollTo({ left: getCenterScroll(nextCard), behavior: 'smooth' });
-      }
-    }
-
-    function startAutoScroll() {
-      stopAutoScroll();
-      if (!autoScroll || window.innerWidth > 768 || isUserTouching || !isSectionInView || isPageScrolling) return;
-      autoScrollInterval = setInterval(stepForward, autoScrollDelay);
-    }
-
-    function stopAutoScroll() {
-      if (autoScrollInterval) {
-        clearInterval(autoScrollInterval);
-        autoScrollInterval = null;
-      }
-      if (stationaryTimer) {
-        clearTimeout(stationaryTimer);
-        stationaryTimer = null;
-      }
-    }
-
-    function scheduleStationaryAutoScroll(delay = 1200) {
-      stopAutoScroll();
-      if (!autoScroll || window.innerWidth > 768 || isUserTouching || !isSectionInView || isPageScrolling) return;
-      stationaryTimer = setTimeout(() => {
-        if (!isUserTouching && isSectionInView && !isPageScrolling) {
-          startAutoScroll();
-        }
-      }, delay);
-    }
-
-    function onPageScroll() {
-      stopAutoScroll();
-    }
-
-    function onPageIdle() {
-      if (isSectionInView && !isUserTouching && !isPageScrolling) {
-        scheduleStationaryAutoScroll(1000);
       }
     }
 
     track.addEventListener('touchstart', (e) => {
       isUserTouching = true;
       isSwiping = false;
-      stopAutoScroll();
       if (e.touches && e.touches.length === 1) {
         touchStartX = e.touches[0].clientX;
         touchStartY = e.touches[0].clientY;
@@ -1176,10 +1197,9 @@ document.addEventListener('DOMContentLoaded', () => {
       isUserTouching = false;
       setTimeout(() => {
         isSwiping = false;
-      }, 80);
-      if (isSectionInView && !isPageScrolling) {
-        scheduleStationaryAutoScroll(2500);
-      }
+      }, 100);
+      clearTimeout(scrollTimeout);
+      scrollTimeout = setTimeout(checkBoundaryLoop, 200);
     }, { passive: true });
 
     track.addEventListener('scroll', () => {
@@ -1188,43 +1208,11 @@ document.addEventListener('DOMContentLoaded', () => {
       if (onActiveChange) {
         onActiveChange(realIdx);
       }
-      clearTimeout(scrollTimeout);
-      scrollTimeout = setTimeout(checkBoundaryLoop, 150);
-      if (!isPageScrolling && !isUserTouching && isSectionInView) {
-        scheduleStationaryAutoScroll(3000);
+      if (!isUserTouching) {
+        clearTimeout(scrollTimeout);
+        scrollTimeout = setTimeout(checkBoundaryLoop, 200);
       }
     }, { passive: true });
-
-    track.addEventListener('mouseenter', () => {
-      isUserTouching = true;
-      stopAutoScroll();
-    });
-
-    track.addEventListener('mouseleave', () => {
-      isUserTouching = false;
-      if (isSectionInView && !isPageScrolling) {
-        scheduleStationaryAutoScroll(1200);
-      }
-    });
-
-    if (sectionId) {
-      const sec = document.getElementById(sectionId);
-      if (sec && 'IntersectionObserver' in window) {
-        const observer = new IntersectionObserver((entries) => {
-          entries.forEach(entry => {
-            isSectionInView = entry.isIntersecting && entry.intersectionRatio >= 0.35;
-            if (isSectionInView) {
-              if (!isPageScrolling && !isUserTouching) {
-                scheduleStationaryAutoScroll(1200);
-              }
-            } else {
-              stopAutoScroll();
-            }
-          });
-        }, { threshold: [0, 0.35, 0.7] });
-        observer.observe(sec);
-      }
-    }
 
     setTimeout(initPosition, 100);
     setTimeout(initPosition, 400);
@@ -1237,12 +1225,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const handler = {
       initPosition,
-      stepForward,
-      isSwiping: () => isSwiping,
-      stopAutoScroll,
-      startAutoScroll,
-      onPageScroll,
-      onPageIdle
+      isSwiping: () => isSwiping
     };
 
     registeredCarousels.push(handler);
@@ -1617,8 +1600,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
       coachInfiniteHandler = setupInfiniteMobileTrack(mobileTrack, totalCoaches, {
         sectionId: 'coaches',
-        autoScroll: true,
-        autoScrollDelay: 3500,
         onActiveChange: (realIdx) => {
           if (mobileCounterBadge) {
             mobileCounterBadge.textContent = `${realIdx + 1} / ${totalCoaches}`;
@@ -2100,8 +2081,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
       const faqInfiniteHandler = setupInfiniteMobileTrack(mobileTrack, state.faqs.length, {
         sectionId: 'faqs',
-        autoScroll: true,
-        autoScrollDelay: 4200,
         onActiveChange: (realIdx) => {
           if (mobileCounter) {
             mobileCounter.textContent = `${realIdx + 1} / ${state.faqs.length}`;
@@ -2398,106 +2377,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
       });
     }
-
-    // Mobile Auto-Scroll Mechanism (Stationary Only)
-    let isGalleryInView = false;
-    let galleryStationaryTimer = null;
-
-    function stepMobileAutoScroll() {
-      if (window.innerWidth > 768 || isUserInteracting || currentPreviewItemsCount <= 1 || isPageScrolling || !isGalleryInView) return;
-      const firstCard = previewGrid.querySelector('.gallery-card');
-      if (!firstCard) return;
-
-      const cardWidth = firstCard.offsetWidth + 14;
-      const maxScroll = previewGrid.scrollWidth - previewGrid.clientWidth;
-
-      if (previewGrid.scrollLeft >= maxScroll - 10) {
-        // Loop back to start smoothly
-        previewGrid.scrollTo({ left: 0, behavior: 'smooth' });
-      } else {
-        previewGrid.scrollBy({ left: cardWidth, behavior: 'smooth' });
-      }
-    }
-
-    function startMobileAutoScroll() {
-      stopMobileAutoScroll();
-      if (window.innerWidth <= 768 && !isUserInteracting && !isPageScrolling && isGalleryInView) {
-        mobileAutoScrollTimer = setInterval(stepMobileAutoScroll, 3500);
-      }
-    }
-
-    function stopMobileAutoScroll() {
-      if (mobileAutoScrollTimer) {
-        clearInterval(mobileAutoScrollTimer);
-        mobileAutoScrollTimer = null;
-      }
-      if (galleryStationaryTimer) {
-        clearTimeout(galleryStationaryTimer);
-        galleryStationaryTimer = null;
-      }
-    }
-
-    function scheduleGalleryStationaryAutoScroll(delay = 1200) {
-      stopMobileAutoScroll();
-      if (window.innerWidth > 768 || isUserInteracting || isPageScrolling || !isGalleryInView) return;
-      galleryStationaryTimer = setTimeout(() => {
-        if (!isUserInteracting && !isPageScrolling && isGalleryInView) {
-          startMobileAutoScroll();
-        }
-      }, delay);
-    }
-
-    // User touch / interaction handlers (pauses on swipe, resumes after idle)
-    previewGrid.addEventListener('touchstart', () => {
-      isUserInteracting = true;
-      stopMobileAutoScroll();
-      if (resumeTimeout) clearTimeout(resumeTimeout);
-    }, { passive: true });
-
-    previewGrid.addEventListener('touchend', () => {
-      if (resumeTimeout) clearTimeout(resumeTimeout);
-      resumeTimeout = setTimeout(() => {
-        isUserInteracting = false;
-        if (isGalleryInView && !isPageScrolling) {
-          scheduleGalleryStationaryAutoScroll(2500);
-        }
-      }, 80);
-    }, { passive: true });
-
-    // IntersectionObserver to only auto-scroll when section is in viewport
-    if ('IntersectionObserver' in window) {
-      const gallerySection = document.getElementById('gallery');
-      if (gallerySection) {
-        const observer = new IntersectionObserver((entries) => {
-          entries.forEach(entry => {
-            isGalleryInView = entry.isIntersecting && entry.intersectionRatio >= 0.3;
-            if (isGalleryInView) {
-              if (!isPageScrolling && !isUserInteracting) {
-                scheduleGalleryStationaryAutoScroll(1200);
-              }
-            } else {
-              stopMobileAutoScroll();
-            }
-          });
-        }, { threshold: [0, 0.3, 0.7] });
-        observer.observe(gallerySection);
-      }
-    }
-
-    registeredCarousels.push({
-      onPageScroll: () => stopMobileAutoScroll(),
-      onPageIdle: () => {
-        if (isGalleryInView && !isUserInteracting && !isPageScrolling) {
-          scheduleGalleryStationaryAutoScroll(1000);
-        }
-      }
-    });
-
-    window.addEventListener('resize', () => {
-      if (window.innerWidth > 768) {
-        stopMobileAutoScroll();
-      }
-    }, { passive: true });
 
     populateFilterCounts();
     renderPreviewItems();
@@ -3059,18 +2938,14 @@ document.addEventListener('DOMContentLoaded', () => {
     const amenitiesTrack = document.getElementById('amenities-container');
     if (amenitiesTrack && state.amenities.length) {
       setupInfiniteMobileTrack(amenitiesTrack, state.amenities.length, {
-        sectionId: 'amenities',
-        autoScroll: true,
-        autoScrollDelay: 3800
+        sectionId: 'facilities'
       });
     }
 
     const plansTrack = document.getElementById('plans-container');
     if (plansTrack && state.plans.length) {
       setupInfiniteMobileTrack(plansTrack, state.plans.length, {
-        sectionId: 'membership',
-        autoScroll: true,
-        autoScrollDelay: 4200
+        sectionId: 'memberships'
       });
     }
 
@@ -3188,6 +3063,74 @@ document.addEventListener('DOMContentLoaded', () => {
         }
       }, { passive: true });
     }
+  }
+
+  // 18. Dynamic Motivational Gym Quotes (Random Pick & Smooth Cross-Fade Rotation)
+  function initFooterQuotes() {
+    const wrap = document.getElementById('footer-quote-wrap');
+    const textEl = document.getElementById('footer-quote-text');
+    const authorEl = document.getElementById('footer-quote-author');
+    if (!wrap || !textEl) return;
+
+    const quotes = (state.quotes && state.quotes.length) ? state.quotes : [
+      { quote: "The body achieves what the mind believes.", author: "Napoleon Hill" },
+      { quote: "Discipline is choosing between what you want now and what you want most.", author: "Abraham Lincoln" },
+      { quote: "We don't stop when we're tired, we stop when we're done.", author: "David Goggins" },
+      { quote: "Small daily improvements over time lead to stunning long-term results.", author: "Robin Sharma" },
+      { quote: "Strength does not come from physical capacity. It comes from an indomitable will.", author: "Mahatma Gandhi" },
+      { quote: "Your only real limit is the one you set in your mind.", author: "Iron Spirit" },
+      { quote: "Pain is temporary. Quitting lasts forever.", author: "Lance Armstrong" },
+      { quote: "The only bad workout is the one that didn't happen.", author: "Fitness Proverb" },
+      { quote: "Success starts with unwavering self-discipline.", author: "Dwayne Johnson" }
+    ];
+
+    let lastIndex = -1;
+
+    function getRandomIndex() {
+      if (quotes.length <= 1) return 0;
+      let newIdx;
+      do {
+        newIdx = Math.floor(Math.random() * quotes.length);
+      } while (newIdx === lastIndex);
+      lastIndex = newIdx;
+      return newIdx;
+    }
+
+    function displayQuote(index, isInitial = false) {
+      const item = quotes[index];
+      if (!item) return;
+
+      if (isInitial) {
+        textEl.textContent = `“${item.quote}”`;
+        if (authorEl) {
+          authorEl.textContent = item.author ? `— ${item.author}` : '';
+        }
+        wrap.style.opacity = '1';
+        return;
+      }
+
+      // Smooth Crossfade Transition
+      wrap.style.opacity = '0';
+      wrap.style.transform = 'translateY(3px)';
+
+      setTimeout(() => {
+        textEl.textContent = `“${item.quote}”`;
+        if (authorEl) {
+          authorEl.textContent = item.author ? `— ${item.author}` : '';
+        }
+        wrap.style.opacity = '1';
+        wrap.style.transform = 'translateY(0)';
+      }, 400);
+    }
+
+    // Pick a random quote immediately on start
+    const initialIdx = getRandomIndex();
+    displayQuote(initialIdx, true);
+
+    // Auto-rotate smoothly every 30 seconds
+    setInterval(() => {
+      displayQuote(getRandomIndex());
+    }, 30000);
   }
 
   // Master Boot

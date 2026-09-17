@@ -1,28 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-  
+
   <script>
     if (window.location.hash === '#gallery-vault') {
       document.documentElement.classList.add('init-vault-open');
     }
   </script>
-  
+
   <!-- SEO Best Practices & Meta Information -->
   <title>Iron Spirit Gym | Unisex Fitness & Strength Gym in Kokar, Ranchi</title>
-  <meta name="description" content="Iron Spirit Gym is a dedicated unisex fitness and strength gym in Kokar, Ranchi. Equipped with quality free weights, strength machines, cardio stations, and helpful trainer guidance." />
-  <meta name="keywords" content="Iron Spirit Gym, Unisex Gym Kokar Ranchi, Gyms in Ranchi, Best Unisex Gym in Kokar, Fitness Gym Ranchi, Weightlifting Kokar" />
+  <meta name="description"
+    content="Iron Spirit Gym is a dedicated unisex fitness and strength gym in Kokar, Ranchi. Equipped with quality free weights, strength machines, cardio stations, and helpful trainer guidance." />
+  <meta name="keywords"
+    content="Iron Spirit Gym, Unisex Gym Kokar Ranchi, Gyms in Ranchi, Best Unisex Gym in Kokar, Fitness Gym Ranchi, Weightlifting Kokar" />
   <meta name="author" content="Iron Spirit Gym" />
   <meta name="theme-color" content="#0b0c10" />
   <link rel="icon" type="image/png" href="logo.png" />
 
   <!-- OpenGraph Social Sharing -->
   <meta property="og:title" content="Iron Spirit Gym | Unisex Fitness & Strength Gym in Kokar, Ranchi" />
-  <meta property="og:description" content="Dedicated unisex fitness gym in Kokar, Ranchi with complete free weights, machines, cardio stations, and daily workout guidance." />
+  <meta property="og:description"
+    content="Dedicated unisex fitness gym in Kokar, Ranchi with complete free weights, machines, cardio stations, and daily workout guidance." />
   <meta property="og:type" content="website" />
-  <meta property="og:image" content="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=1200&q=80" />
+  <meta property="og:image"
+    content="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=1200&q=80" />
 
   <!-- Schema.org JSON-LD LocalBusiness -->
   <script type="application/ld+json">
@@ -52,10 +57,11 @@
   <!-- Google Fonts: Outfit & Plus Jakarta Sans -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  
+
   <!-- Stylesheet -->
   <link rel="stylesheet" href="css/style.css" />
 </head>
+
 <body>
 
   <!-- FIXED AMBIENT BACKGROUND CANVAS (ZERO MOBILE SCROLL LAG) -->
@@ -80,9 +86,9 @@
       </div>
     </div>
   </div>
-  <!-- Smooth Natural Preloader Dismissal (Zero Artificial Timer, Instant on Ready) -->
+  <!-- Smooth Natural Preloader Dismissal (Synchronized with JSON Media Readiness in main.js) -->
   <script>
-    (function(){
+    (function () {
       const preloader = document.getElementById("preloader");
       if (!preloader) return;
 
@@ -95,7 +101,7 @@
 
       let hasDismissed = false;
 
-      function dismissPreloader(){
+      function dismissPreloader() {
         if (hasDismissed) return;
         hasDismissed = true;
 
@@ -107,12 +113,10 @@
         }, 500);
       }
 
-      if (document.readyState === "complete" || document.readyState === "interactive") {
-        dismissPreloader();
-      } else {
-        document.addEventListener("DOMContentLoaded", dismissPreloader, { once: true });
-        window.addEventListener("load", dismissPreloader, { once: true });
-      }
+      window.dismissPreloader = dismissPreloader;
+
+      // Safety maximum fallback timeout (3s) so screen is never permanently blocked if network fails
+      setTimeout(dismissPreloader, 3000);
     })();
   </script>
 
@@ -120,7 +124,8 @@
   <!-- Fixed Top Header Group (Marquee Announcement Bar + Frosted Glass Navbar) -->
   <div class="fixed-top-header-group">
     <!-- Top Announcement Bar (Only for Announcement with smooth continuous horizontal scrolling, click/tap to pause) -->
-    <div id="top-announcement-bar" class="top-announcement" style="display: none;" title="Click / Tap to Pause Scrolling" role="region" aria-label="Announcements">
+    <div id="top-announcement-bar" class="top-announcement" style="display: none;"
+      title="Click / Tap to Pause Scrolling" role="region" aria-label="Announcements">
       <div class="announcement-marquee-wrapper">
         <div class="announcement-marquee-track" id="announcement-marquee-track">
           <!-- Dynamically populated with continuous looping announcement text -->
@@ -151,11 +156,15 @@
 
         <div class="nav-actions">
           <a href="#" target="_blank" class="nav-whatsapp-cta whatsapp-link" aria-label="Talk to Us on WhatsApp">
-            <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path
+                d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z" />
+            </svg>
             <span>Talk to Us</span>
           </a>
           <button id="hamburger-btn" class="hamburger-btn" aria-label="Open Navigation Sidebar">
-            <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"
+              stroke-linejoin="round">
               <line x1="3" y1="12" x2="21" y2="12"></line>
               <line x1="3" y1="6" x2="21" y2="6"></line>
               <line x1="3" y1="18" x2="21" y2="18"></line>
@@ -178,7 +187,11 @@
         </div>
       </a>
       <button id="sidebar-close-btn" class="sidebar-close-btn" aria-label="Close Navigation Sidebar">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+          stroke-linecap="round" stroke-linejoin="round">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
       </button>
     </div>
 
@@ -188,7 +201,11 @@
           <li>
             <a href="#hero" class="sidebar-link">
               <span class="sidebar-link-icon">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                  stroke-linecap="round" stroke-linejoin="round">
+                  <path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
+                  <polyline points="9 22 9 12 15 12 15 22" />
+                </svg>
               </span>
               <span class="sidebar-link-text">Home</span>
             </a>
@@ -196,7 +213,11 @@
           <li>
             <a href="#why-us" class="sidebar-link">
               <span class="sidebar-link-icon">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                  stroke-linecap="round" stroke-linejoin="round">
+                  <polygon
+                    points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+                </svg>
               </span>
               <span class="sidebar-link-text">Why Us</span>
             </a>
@@ -204,7 +225,16 @@
           <li>
             <a href="#facilities" class="sidebar-link">
               <span class="sidebar-link-icon">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6.5 6.5 11 11"/><path d="m21 21-1-1"/><path d="m3 3 1 1"/><path d="m18 22 4-4"/><path d="m2 6 4-4"/><path d="m3 10 7-7"/><path d="m14 21 7-7"/></svg>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                  stroke-linecap="round" stroke-linejoin="round">
+                  <path d="m6.5 6.5 11 11" />
+                  <path d="m21 21-1-1" />
+                  <path d="m3 3 1 1" />
+                  <path d="m18 22 4-4" />
+                  <path d="m2 6 4-4" />
+                  <path d="m3 10 7-7" />
+                  <path d="m14 21 7-7" />
+                </svg>
               </span>
               <span class="sidebar-link-text">Training Zones</span>
             </a>
@@ -212,7 +242,11 @@
           <li>
             <a href="#memberships" class="sidebar-link">
               <span class="sidebar-link-icon">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="14" x="2" y="5" rx="2"/><line x1="2" x2="22" y1="10" y2="10"/></svg>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                  stroke-linecap="round" stroke-linejoin="round">
+                  <rect width="20" height="14" x="2" y="5" rx="2" />
+                  <line x1="2" x2="22" y1="10" y2="10" />
+                </svg>
               </span>
               <span class="sidebar-link-text">Memberships</span>
             </a>
@@ -220,7 +254,13 @@
           <li>
             <a href="#coaches" class="sidebar-link">
               <span class="sidebar-link-icon">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                  stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
+                  <circle cx="9" cy="7" r="4" />
+                  <path d="M22 21v-2a4 4 0 0 0-3-3.87" />
+                  <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+                </svg>
               </span>
               <span class="sidebar-link-text">Coaches</span>
             </a>
@@ -228,7 +268,12 @@
           <li>
             <a href="#gallery" class="sidebar-link">
               <span class="sidebar-link-icon">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="3" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                  stroke-linecap="round" stroke-linejoin="round">
+                  <rect width="18" height="18" x="3" y="3" rx="2" ry="2" />
+                  <circle cx="8.5" cy="8.5" r="1.5" />
+                  <polyline points="21 15 16 10 5 21" />
+                </svg>
               </span>
               <span class="sidebar-link-text">Photo & Video Gallery</span>
             </a>
@@ -236,7 +281,10 @@
           <li>
             <a href="#testimonials" class="sidebar-link">
               <span class="sidebar-link-icon">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                  stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
+                </svg>
               </span>
               <span class="sidebar-link-text">Stories</span>
             </a>
@@ -244,7 +292,11 @@
           <li>
             <a href="#contact" class="sidebar-link">
               <span class="sidebar-link-icon">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                  stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z" />
+                  <circle cx="12" cy="10" r="3" />
+                </svg>
               </span>
               <span class="sidebar-link-text">Location & Contact</span>
             </a>
@@ -255,11 +307,19 @@
       <div class="sidebar-cta-section">
         <div class="sidebar-contact-buttons">
           <a href="#" target="_blank" class="btn btn-whatsapp sidebar-wa-btn whatsapp-link">
-            <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path
+                d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z" />
+            </svg>
             WhatsApp
           </a>
           <a href="#" class="btn btn-outline-light sidebar-call-btn call-link">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round">
+              <path
+                d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z">
+              </path>
+            </svg>
             Call Desk
           </a>
         </div>
@@ -287,15 +347,22 @@
             Transform Your <span class="gold-gradient">Fitness</span>
           </h1>
 
-          <p class="hero-description">Ranchi's premier unisex gym in Kokar with free weights, advanced machines, cardio & dedicated trainers.</p>
+          <p class="hero-description">Ranchi's premier unisex gym in Kokar with free weights, advanced machines, cardio
+            & dedicated trainers.</p>
 
           <div class="hero-cta-group">
             <a href="#memberships" class="btn btn-primary hero-btn-main">
               <span>Explore Memberships</span>
-              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+                <polyline points="12 5 19 12 12 19"></polyline>
+              </svg>
             </a>
-            <a href="#" target="_blank" rel="noopener noreferrer" class="hero-btn-insta" id="hero-instagram-link" aria-label="Iron Spirit Gym on Instagram" title="Follow us on Instagram">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <a href="#" target="_blank" rel="noopener noreferrer" class="hero-btn-insta" id="hero-instagram-link"
+              aria-label="Iron Spirit Gym on Instagram" title="Follow us on Instagram">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
+                stroke-linecap="round" stroke-linejoin="round">
                 <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
                 <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
                 <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
@@ -329,7 +396,9 @@
                 <span>THE RIGHT</span> APPROACH
               </h2>
               <p class="why-main-desc" id="why-desc-text">
-                We create a fitness experience built around your goals, guided by expert trainers and a motivating community. Whether it's fat loss, strength gains, or better wellness, our focused approach helps you train with clarity, consistency, and real progress.
+                We create a fitness experience built around your goals, guided by expert trainers and a motivating
+                community. Whether it's fat loss, strength gains, or better wellness, our focused approach helps you
+                train with clarity, consistency, and real progress.
               </p>
             </div>
 
@@ -342,7 +411,8 @@
                 </div>
                 <div class="why-step-content">
                   <h4>Tailored Training Plans</h4>
-                  <p>We build every workout around your goals and fitness level, helping you train with purpose, structure, confidence, and consistency.</p>
+                  <p>We build every workout around your goals and fitness level, helping you train with purpose,
+                    structure, confidence, and consistency.</p>
                 </div>
               </div>
 
@@ -354,7 +424,8 @@
                 </div>
                 <div class="why-step-content">
                   <h4>Goal-Focused Results</h4>
-                  <p>Everything we do is designed to keep you progressing, whether you're aiming for fat loss, strength, endurance, or overall fitness.</p>
+                  <p>Everything we do is designed to keep you progressing, whether you're aiming for fat loss, strength,
+                    endurance, or overall fitness.</p>
                 </div>
               </div>
 
@@ -362,10 +433,11 @@
               <div class="why-feature-item">
                 <div class="why-step-col">
                   <div class="why-step-circle">03</div>
-                  </div>
+                </div>
                 <div class="why-step-content">
                   <h4>Advanced Equipment</h4>
-                  <p>We offer modern gym equipment, from cardio machines to free weights, built to support every style of training.</p>
+                  <p>We offer modern gym equipment, from cardio machines to free weights, built to support every style
+                    of training.</p>
                 </div>
               </div>
             </div>
@@ -392,14 +464,18 @@
           </div>
           <h2 class="section-title">TRAINING: <span>EQUIPMENT & ZONES</span></h2>
           <p class="section-subtitle">
-            Spacious workout floor in Kokar, Ranchi equipped with complete free weights, guided muscle machines, and cardio stations.
+            Spacious workout floor in Kokar, Ranchi equipped with complete free weights, guided muscle machines, and
+            cardio stations.
           </p>
         </div>
 
         <!-- Single-Row Carousel Track with Clean Next & Previous Controls -->
         <div class="carousel-wrapper" data-carousel="amenities">
           <button class="carousel-nav-btn prev" aria-label="Previous Zone" data-target="amenities-container">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+              stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="15 18 9 12 15 6"></polyline>
+            </svg>
           </button>
           <div id="amenities-container" class="carousel-track">
             <div class="skeleton-card">
@@ -425,7 +501,10 @@
             </div>
           </div>
           <button class="carousel-nav-btn next" aria-label="Next Zone" data-target="amenities-container">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+              stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="9 18 15 12 9 6"></polyline>
+            </svg>
           </button>
         </div>
       </div>
@@ -440,14 +519,18 @@
           </div>
           <h2 class="section-title">MEMBERSHIP: <span>PLANS & FEES</span></h2>
           <p class="section-subtitle">
-            Honest pricing with no hidden charges. All memberships grant full access to free weights, machines, cardio, and daily floor guidance.
+            Honest pricing with no hidden charges. All memberships grant full access to free weights, machines, cardio,
+            and daily floor guidance.
           </p>
         </div>
 
         <!-- Single-Row Carousel Track with Clean Next & Previous Controls -->
         <div class="carousel-wrapper" data-carousel="plans">
           <button class="carousel-nav-btn prev" aria-label="Previous Plan" data-target="plans-container">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+              stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="15 18 9 12 15 6"></polyline>
+            </svg>
           </button>
           <div id="plans-container" class="carousel-track pricing-track">
             <div class="skeleton-card">
@@ -476,7 +559,10 @@
             </div>
           </div>
           <button class="carousel-nav-btn next" aria-label="Next Plan" data-target="plans-container">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+              stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="9 18 15 12 9 6"></polyline>
+            </svg>
           </button>
         </div>
       </div>
@@ -491,17 +577,20 @@
           </div>
           <h2 class="section-title">COACHES WHO CARE: <span>THE MENTORS</span></h2>
           <p class="section-subtitle">
-            Credentialed instruction with zero casual bro-science. Our certified coaches hold ACE, K11, and CSCS credentials with a proven safety record.
+            Credentialed instruction with zero casual bro-science. Our certified coaches hold ACE, K11, and CSCS
+            credentials with a proven safety record.
           </p>
         </div>
 
         <!-- Pure CSS 3D Modern Magazine Spread (High-Definition Athletic Dossier) -->
         <div class="magazine-stage">
-          <div class="magazine-spread" id="magazine-spread" tabindex="0" role="region" aria-label="Coaches Magazine Dossier">
+          <div class="magazine-spread" id="magazine-spread" tabindex="0" role="region"
+            aria-label="Coaches Magazine Dossier">
             <!-- Left Static Page (Cover Portrait) -->
             <div class="magazine-page page-left" id="mag-left-page">
               <div class="mag-left-content">
-                <img src="https://images.unsplash.com/photo-1567013127542-490d757e51fc?auto=format&fit=crop&w=800&q=85" alt="Arjun Mehta" class="mag-full-photo" loading="eager" />
+                <img src="https://images.unsplash.com/photo-1567013127542-490d757e51fc?auto=format&fit=crop&w=800&q=85"
+                  alt="Arjun Mehta" class="mag-full-photo" loading="eager" />
                 <div class="mag-photo-overlay"></div>
                 <div class="mag-photo-top-badge">
                   <span class="mag-badge-exp">8+ Years Experience</span>
@@ -511,7 +600,12 @@
                   <div class="mag-coach-role-wrap">
                     <span class="mag-coach-role">Strength &amp; Conditioning Coach</span>
                     <span class="mag-inline-info-icon" title="View Credentials &amp; Bio" aria-label="View Info">
-                      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
+                      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2.5">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <line x1="12" y1="16" x2="12" y2="12"></line>
+                        <line x1="12" y1="8" x2="12.01" y2="8"></line>
+                      </svg>
                     </span>
                   </div>
                   <div class="mag-coach-branch">📍 Kokar, Ranchi</div>
@@ -528,11 +622,18 @@
                 <div class="mag-watermark-logo" aria-hidden="true"></div>
                 <div class="mag-meta-top">
                   <span class="mag-tag-accent">CREDENTIALS &amp; SPECIALTIES</span>
-                  <a href="#" class="mag-insta-icon" target="_blank" rel="noopener" title="Arjun Mehta on Instagram" aria-label="Instagram">
-                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+                  <a href="#" class="mag-insta-icon" target="_blank" rel="noopener" title="Arjun Mehta on Instagram"
+                    aria-label="Instagram">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                      stroke-width="2.3">
+                      <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                      <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                      <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                    </svg>
                   </a>
                 </div>
-                <p class="mag-coach-bio">Specialized in natural bodybuilding mechanics and heavy compound lifts. Mentored over 300 athletes to hit lifetime PRs safely.</p>
+                <p class="mag-coach-bio">Specialized in natural bodybuilding mechanics and heavy compound lifts.
+                  Mentored over 300 athletes to hit lifetime PRs safely.</p>
                 <div class="mag-block-title"><span>🎯</span> Core Specialties</div>
                 <ul class="mag-list">
                   <li>Powerlifting &amp; Squat/Bench/Deadlift</li>
@@ -547,12 +648,19 @@
                 </ul>
                 <div class="mag-action-row">
                   <div class="mag-pagination-controls">
-                    <button class="mag-page-arrow-btn prev" data-dir="prev" aria-label="Previous Coach" disabled title="Previous Coach">
-                      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"></polyline></svg>
+                    <button class="mag-page-arrow-btn prev" data-dir="prev" aria-label="Previous Coach" disabled
+                      title="Previous Coach">
+                      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2.5">
+                        <polyline points="15 18 9 12 15 6"></polyline>
+                      </svg>
                     </button>
                     <span class="mag-coach-counter">1/4</span>
                     <button class="mag-page-arrow-btn next" data-dir="next" aria-label="Next Coach" title="Next Coach">
-                      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2.5">
+                        <polyline points="9 18 15 12 9 6"></polyline>
+                      </svg>
                     </button>
                   </div>
                 </div>
@@ -593,14 +701,18 @@
           </div>
           <h2 class="section-title">INSIDE IRON SPIRIT: <span>PHOTO & VIDEO VAULT</span></h2>
           <p class="section-subtitle">
-            Explore our state-of-the-art training floor, heavy iron racks, real athlete workout reels, and championship wins in Ranchi.
+            Explore our state-of-the-art training floor, heavy iron racks, real athlete workout reels, and championship
+            wins in Ranchi.
           </p>
         </div>
 
         <!-- Filter Category Tabs with Transparent Next/Prev Scroll Chevrons -->
         <div class="gallery-filter-wrapper">
           <button class="gallery-filter-arrow prev" id="gallery-filter-prev" aria-label="Previous Category">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"
+              stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="15 18 9 12 15 6"></polyline>
+            </svg>
           </button>
           <div class="gallery-filter-bar" id="gallery-filter-bar">
             <button class="gallery-filter-btn active" data-filter="all">All Media</button>
@@ -610,7 +722,10 @@
             <button class="gallery-filter-btn" data-filter="events">Community & Events</button>
           </div>
           <button class="gallery-filter-arrow next" id="gallery-filter-next" aria-label="Next Category">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"
+              stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="9 18 15 12 9 6"></polyline>
+            </svg>
           </button>
         </div>
 
@@ -632,7 +747,11 @@
           <button class="btn btn-primary gallery-view-more-btn" id="open-full-gallery-btn">
             <span class="btn-text-desktop">Explore Full Media Vault (12+)</span>
             <span class="btn-text-mobile">View Full Gallery (12+)</span>
-            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"
+              stroke-linecap="round" stroke-linejoin="round">
+              <line x1="7" y1="17" x2="17" y2="7"></line>
+              <polyline points="7 7 17 7 17 17"></polyline>
+            </svg>
           </button>
         </div>
       </div>
@@ -674,7 +793,8 @@
                         </div>
                       </div>
                       <div class="card-stars">★★★★★</div>
-                      <p class="card-quote">"The trainers make you feel comfortable from day one. Lost 8kg and love my workouts!"</p>
+                      <p class="card-quote">"The trainers make you feel comfortable from day one. Lost 8kg and love my
+                        workouts!"</p>
                     </div>
                   </div>
                 </li>
@@ -689,7 +809,8 @@
                         </div>
                       </div>
                       <div class="card-stars">★★★★★</div>
-                      <p class="card-quote">"Unisex community is motivating and Olympic equipment is unmatched in Ranchi."</p>
+                      <p class="card-quote">"Unisex community is motivating and Olympic equipment is unmatched in
+                        Ranchi."</p>
                     </div>
                   </div>
                 </li>
@@ -704,7 +825,8 @@
                         </div>
                       </div>
                       <div class="card-stars">★★★★★</div>
-                      <p class="card-quote">"Certified coaches helped correct my posture and build real strength safely."</p>
+                      <p class="card-quote">"Certified coaches helped correct my posture and build real strength
+                        safely."</p>
                     </div>
                   </div>
                 </li>
@@ -734,7 +856,8 @@
                         </div>
                       </div>
                       <div class="card-stars">★★★★★</div>
-                      <p class="card-quote">"Safe, empowering, and respectful environment. The steam room is pure bliss."</p>
+                      <p class="card-quote">"Safe, empowering, and respectful environment. The steam room is pure
+                        bliss."</p>
                     </div>
                   </div>
                 </li>
@@ -749,7 +872,8 @@
                         </div>
                       </div>
                       <div class="card-stars">★★★★★</div>
-                      <p class="card-quote">"Desk job was killing my lower back. 4 months here and I'm totally pain-free!"</p>
+                      <p class="card-quote">"Desk job was killing my lower back. 4 months here and I'm totally
+                        pain-free!"</p>
                     </div>
                   </div>
                 </li>
@@ -781,7 +905,8 @@
           </div>
           <h2 class="section-title">CLEAR ANSWERS: <span>EVERYTHING TO KNOW</span></h2>
           <p class="section-subtitle">
-            Key details about our unisex community, membership freeze policies, private amenities, and beginner guidance.
+            Key details about our unisex community, membership freeze policies, private amenities, and beginner
+            guidance.
           </p>
         </div>
 
@@ -822,49 +947,86 @@
           <div class="contact-details-box">
             <div class="contact-item-row">
               <div class="contact-icon-clean">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                  stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                  <circle cx="12" cy="10" r="3"></circle>
+                </svg>
               </div>
               <div class="contact-item-text">
                 <h4>Facility Location</h4>
                 <p id="contact-address-display">
                   Plot No. 42, Near Kokar Industrial Area, Kokar Chowk, Ranchi, Jharkhand - 834001
                 </p>
-                <small style="color: var(--red); font-weight: 600;">Opposite Kokar Plaza • Dedicated Parking Available</small>
+                <small style="color: var(--red); font-weight: 600;">Opposite Kokar Plaza • Dedicated Parking
+                  Available</small>
               </div>
             </div>
 
             <div class="contact-item-row">
               <div class="contact-icon-clean">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                  stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="12" cy="12" r="10"></circle>
+                  <polyline points="12 6 12 12 16 14"></polyline>
+                </svg>
               </div>
               <div class="contact-item-text">
                 <h4>Continuous Operating Hours</h4>
                 <p><strong>Mon – Sat:</strong> <span id="timings-weekday-display">5:30 AM – 10:30 PM</span></p>
-                <p><strong>Sunday:</strong> <span id="timings-sunday-display">6:00 AM – 1:00 PM & 4:00 PM – 8:00 PM</span></p>
+                <p><strong>Sunday:</strong> <span id="timings-sunday-display">6:00 AM – 1:00 PM & 4:00 PM – 8:00
+                    PM</span></p>
               </div>
             </div>
 
             <div class="contact-item-row">
               <div class="contact-icon-clean">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"></path><path d="M2 12h20"></path></svg>
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                  stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="12" cy="12" r="10"></circle>
+                  <path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"></path>
+                  <path d="M2 12h20"></path>
+                </svg>
               </div>
               <div class="contact-item-text">
                 <h4>Social Channels & Email</h4>
                 <div class="contact-socials-grid">
-                  <a href="https://instagram.com" target="_blank" rel="noopener" class="contact-social-chip" id="contact-instagram-link" aria-label="Follow us on Instagram">
-                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+                  <a href="https://instagram.com" target="_blank" rel="noopener" class="contact-social-chip"
+                    id="contact-instagram-link" aria-label="Follow us on Instagram">
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
+                      stroke-linecap="round" stroke-linejoin="round">
+                      <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                      <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                      <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                    </svg>
                     <span>Instagram</span>
                   </a>
-                  <a href="https://facebook.com" target="_blank" rel="noopener" class="contact-social-chip" id="contact-facebook-link" aria-label="Follow us on Facebook">
-                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
+                  <a href="https://facebook.com" target="_blank" rel="noopener" class="contact-social-chip"
+                    id="contact-facebook-link" aria-label="Follow us on Facebook">
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
+                      stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+                    </svg>
                     <span>Facebook</span>
                   </a>
-                  <a href="https://youtube.com" target="_blank" rel="noopener" class="contact-social-chip" id="contact-youtube-link" aria-label="Subscribe on YouTube">
-                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"></path><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon></svg>
+                  <a href="https://youtube.com" target="_blank" rel="noopener" class="contact-social-chip"
+                    id="contact-youtube-link" aria-label="Subscribe on YouTube">
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
+                      stroke-linecap="round" stroke-linejoin="round">
+                      <path
+                        d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z">
+                      </path>
+                      <polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon>
+                    </svg>
                     <span>YouTube</span>
                   </a>
-                  <a href="mailto:contact@ironspiritgym.com" class="contact-social-chip" id="contact-email-link" title="contact@ironspiritgym.com" aria-label="Send us an Email">
-                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"></rect><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path></svg>
+                  <a href="mailto:contact@ironspiritgym.com" class="contact-social-chip" id="contact-email-link"
+                    title="contact@ironspiritgym.com" aria-label="Send us an Email">
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
+                      stroke-linecap="round" stroke-linejoin="round">
+                      <rect width="20" height="16" x="2" y="4" rx="2"></rect>
+                      <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
+                    </svg>
                     <span id="contact-email-display">Email</span>
                   </a>
                 </div>
@@ -874,31 +1036,58 @@
             <div class="contact-actions-row">
               <button type="button" class="btn btn-whatsapp" id="contact-main-whatsapp-btn">
                 <span>Chat on WhatsApp</span>
-                <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                  <path
+                    d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z" />
+                </svg>
               </button>
               <button type="button" class="btn btn-outline" id="contact-main-call-btn">
                 <span>Call Front Desk</span>
-                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+                  <path
+                    d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z">
+                  </path>
+                </svg>
               </button>
             </div>
           </div>
 
           <!-- Stylized Map View with Interactive Overlay (Desktop Dynamic Iframe / Mobile Zero-Data Link) -->
-          <div class="map-container" id="map-container" data-map-src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14652.884144673752!2d85.3458!3d23.3768!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39f4e195748807d9%3A0x86131499e90bf824!2sKokar%2C%20Ranchi%2C%20Jharkhand!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin">
-            <a href="https://maps.google.com/?q=Kokar+Chowk+Ranchi+Jharkhand" target="_blank" rel="noopener" class="map-overlay-layer" aria-label="Open Iron Spirit Gym location in Google Maps">
+          <div class="map-container" id="map-container"
+            data-map-src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14652.884144673752!2d85.3458!3d23.3768!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39f4e195748807d9%3A0x86131499e90bf824!2sKokar%2C%20Ranchi%2C%20Jharkhand!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin">
+            <a href="https://maps.google.com/?q=Kokar+Chowk+Ranchi+Jharkhand" target="_blank" rel="noopener"
+              class="map-overlay-layer" aria-label="Open Iron Spirit Gym location in Google Maps">
               <span class="map-overlay-pill">
-                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4">
+                  <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                  <circle cx="12" cy="10" r="3"></circle>
+                </svg>
                 <span>Open in Google Maps</span>
-                <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+                <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4">
+                  <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                  <polyline points="15 3 21 3 21 9"></polyline>
+                  <line x1="10" y1="14" x2="21" y2="3"></line>
+                </svg>
               </span>
             </a>
+          </div>
+        </div>
+
+        <!-- Motivational Gym Quote (Bottom of Contact Section, Clean & Borderless) -->
+        <div class="contact-quote-strip" id="footer-quote-wrap" style="opacity: 0;">
+          <svg class="contact-quote-icon" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"/>
+          </svg>
+          <div class="contact-quote-content">
+            <span class="contact-quote-text" id="footer-quote-text">“Discipline is choosing between what you want now and what you want most.”</span>
+            <span class="contact-quote-author" id="footer-quote-author">— Abraham Lincoln</span>
           </div>
         </div>
       </div>
     </section>
   </main>
 
-  <!-- SITE FOOTER (ULTRA-MINIMAL COPYRIGHT FOOTER) -->
+  <!-- SITE FOOTER (ULTRA-MINIMAL CLEAN COPYRIGHT FOOTER) -->
   <footer class="site-footer">
     <div class="container">
       <div class="footer-minimal-wrap">
@@ -912,12 +1101,16 @@
 
   <!-- CONTACT LINE SELECTION BOTTOM SHEET DRAWER (MOBILE & DESKTOP) -->
   <div class="contact-modal-backdrop" id="contact-modal-backdrop" aria-hidden="true">
-    <div class="contact-modal-sheet" id="contact-modal-sheet" role="dialog" aria-modal="true" aria-label="Contact Options">
+    <div class="contact-modal-sheet" id="contact-modal-sheet" role="dialog" aria-modal="true"
+      aria-label="Contact Options">
       <div class="contact-modal-handle"></div>
       <div class="contact-modal-header">
         <div class="contact-modal-title" id="contact-modal-title">Choose Line</div>
         <button class="contact-modal-close" id="contact-modal-close" aria-label="Close Contact Options">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
         </button>
       </div>
       <div class="contact-modal-content" id="contact-modal-content"></div>
@@ -926,18 +1119,25 @@
 
   <!-- ULTRA-CLEAN COPY TOAST NOTIFICATION -->
   <div id="copy-toast-notification" class="copy-toast" role="status" aria-live="polite">
-    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+      stroke-linecap="round" stroke-linejoin="round">
+      <polyline points="20 6 9 17 4 12"></polyline>
+    </svg>
     <span id="copy-toast-text">Copied to clipboard!</span>
   </div>
 
   <!-- COACH INFO / CREDENTIALS BOTTOM SHEET DRAWER (MOBILE & DESKTOP) -->
   <div class="coach-modal-backdrop" id="coach-modal-backdrop" aria-hidden="true">
-    <div class="coach-modal-sheet" id="coach-modal-sheet" role="dialog" aria-modal="true" aria-label="Coach Credentials">
+    <div class="coach-modal-sheet" id="coach-modal-sheet" role="dialog" aria-modal="true"
+      aria-label="Coach Credentials">
       <div class="coach-modal-handle"></div>
       <div class="coach-modal-header">
         <div class="coach-modal-title" id="coach-modal-title">Coach Profile</div>
         <button class="coach-modal-close" id="coach-modal-close" aria-label="Close Details">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
         </button>
       </div>
       <div class="coach-modal-content" id="coach-modal-content"></div>
@@ -946,24 +1146,32 @@
 
   <!-- MEMBER REVIEW DETAIL BOTTOM SHEET DRAWER (MOBILE & DESKTOP) -->
   <div class="review-modal-backdrop" id="review-modal-backdrop" aria-hidden="true">
-    <div class="review-modal-sheet" id="review-modal-sheet" role="dialog" aria-modal="true" aria-label="Member Review Details">
+    <div class="review-modal-sheet" id="review-modal-sheet" role="dialog" aria-modal="true"
+      aria-label="Member Review Details">
       <div class="review-modal-handle"></div>
       <div class="review-modal-header">
         <div class="review-modal-title">Member Story</div>
         <button class="review-modal-close" id="review-modal-close" aria-label="Close Review">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
         </button>
       </div>
       <div class="review-modal-content" id="review-modal-content"></div>
       <div class="review-modal-nav">
         <button class="review-modal-nav-btn prev-btn" id="review-modal-prev" aria-label="Previous Review">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><polyline points="15 18 9 12 15 6"></polyline></svg>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4">
+            <polyline points="15 18 9 12 15 6"></polyline>
+          </svg>
           <span>Previous</span>
         </button>
         <span class="review-modal-counter" id="review-modal-counter">1/6</span>
         <button class="review-modal-nav-btn next-btn" id="review-modal-next" aria-label="Next Review">
           <span>Next</span>
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><polyline points="9 18 15 12 9 6"></polyline></svg>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4">
+            <polyline points="9 18 15 12 9 6"></polyline>
+          </svg>
         </button>
       </div>
     </div>
@@ -976,34 +1184,44 @@
       <div class="faq-modal-header">
         <div class="faq-modal-title">FAQ Details</div>
         <button class="faq-modal-close" id="faq-modal-close" aria-label="Close FAQ">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
         </button>
       </div>
       <div class="faq-modal-content" id="faq-modal-content"></div>
       <div class="faq-modal-nav">
         <button class="faq-modal-nav-btn prev-btn" id="faq-modal-prev" aria-label="Previous FAQ">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><polyline points="15 18 9 12 15 6"></polyline></svg>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4">
+            <polyline points="15 18 9 12 15 6"></polyline>
+          </svg>
           <span>Previous</span>
         </button>
         <span class="faq-modal-counter" id="faq-modal-counter">1/6</span>
         <button class="faq-modal-nav-btn next-btn" id="faq-modal-next" aria-label="Next FAQ">
           <span>Next</span>
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><polyline points="9 18 15 12 9 6"></polyline></svg>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4">
+            <polyline points="9 18 15 12 9 6"></polyline>
+          </svg>
         </button>
       </div>
     </div>
   </div>
 
   <!-- PROMOTIONAL LAUNCH OFFER MODAL (RESPONSIVE IMAGE POSTER POPUP) -->
-  <div id="offer-modal" class="modal-backdrop offer-image-modal-backdrop" role="dialog" aria-modal="true" aria-label="Special Offer">
+  <div id="offer-modal" class="modal-backdrop offer-image-modal-backdrop" role="dialog" aria-modal="true"
+    aria-label="Special Offer">
     <div class="offer-image-dialog">
       <button class="modal-close-btn offer-image-close-btn" aria-label="Close Promo Modal">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+          stroke-linecap="round" stroke-linejoin="round">
           <line x1="18" y1="6" x2="6" y2="18"></line>
           <line x1="6" y1="6" x2="18" y2="18"></line>
         </svg>
       </button>
-      <a id="offer-popup-link" href="#" target="_blank" rel="noopener noreferrer" class="offer-image-wrapper" aria-label="Claim Special Gym Offer">
+      <a id="offer-popup-link" href="#" target="_blank" rel="noopener noreferrer" class="offer-image-wrapper"
+        aria-label="Claim Special Gym Offer">
         <picture id="offer-popup-picture">
           <source id="offer-popup-source-desktop" media="(min-width: 769px)" srcset="" />
           <img id="offer-popup-img" src="" alt="Special Gym Offer Banner" class="offer-poster-img" />
@@ -1012,10 +1230,9 @@
     </div>
   </div>
 
-
-
   <!-- IMMERSIVE FULL-SCREEN GALLERY VAULT VIEWER -->
-  <div id="full-gallery-modal" class="fullscreen-vault-view" role="dialog" aria-modal="true" aria-label="Full Media Gallery">
+  <div id="full-gallery-modal" class="fullscreen-vault-view" role="dialog" aria-modal="true"
+    aria-label="Full Media Gallery">
     <!-- Top App Navigation Header with Cut Button on Right (No border/bg) -->
     <header class="vault-view-header">
       <div class="vault-header-left">
@@ -1027,7 +1244,8 @@
 
       <div class="vault-header-right">
         <button class="vault-back-cut-btn" id="close-full-gallery-btn" aria-label="Close Gallery View">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3"
+            stroke-linecap="round" stroke-linejoin="round">
             <line x1="18" y1="6" x2="6" y2="18"></line>
             <line x1="6" y1="6" x2="18" y2="18"></line>
           </svg>
@@ -1063,13 +1281,17 @@
       <!-- Native Pagination Bar -->
       <div class="vault-pagination-wrap" id="vault-pagination-wrap" style="display: none;">
         <button class="vault-page-nav-btn prev" id="vault-prev-page-btn" aria-label="Previous Page">
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"></polyline></svg>
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <polyline points="15 18 9 12 15 6"></polyline>
+          </svg>
           <span>Prev</span>
         </button>
         <div class="vault-page-numbers" id="vault-page-numbers"></div>
         <button class="vault-page-nav-btn next" id="vault-next-page-btn" aria-label="Next Page">
           <span>Next</span>
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <polyline points="9 18 15 12 9 6"></polyline>
+          </svg>
         </button>
       </div>
     </main>
@@ -1085,7 +1307,8 @@
 
       <div class="lightbox-top-right">
         <button class="lightbox-top-cut-btn" id="lightbox-close-btn" aria-label="Close Preview">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3"
+            stroke-linecap="round" stroke-linejoin="round">
             <line x1="18" y1="6" x2="6" y2="18"></line>
             <line x1="6" y1="6" x2="18" y2="18"></line>
           </svg>
@@ -1095,10 +1318,16 @@
 
     <!-- Previous & Next Floating Navigation Chevrons -->
     <button class="lightbox-side-arrow prev" id="lightbox-prev-btn" aria-label="Previous Media">
-      <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
+      <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+        stroke-linecap="round" stroke-linejoin="round">
+        <polyline points="15 18 9 12 15 6"></polyline>
+      </svg>
     </button>
     <button class="lightbox-side-arrow next" id="lightbox-next-btn" aria-label="Next Media">
-      <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+      <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+        stroke-linecap="round" stroke-linejoin="round">
+        <polyline points="9 18 15 12 9 6"></polyline>
+      </svg>
     </button>
 
     <!-- Main Fullscreen Media Viewport -->
@@ -1118,7 +1347,8 @@
       <div class="bottom-nav-scroll-track">
         <a href="#hero" class="bottom-nav-item active" data-section="hero">
           <div class="bottom-nav-icon">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"
+              stroke-linecap="round" stroke-linejoin="round">
               <path d="M3 9.5L12 3l9 6.5V20a1 1 0 0 1-1 1h-5v-6h-6v6H4a1 1 0 0 1-1-1V9.5z"></path>
             </svg>
           </div>
@@ -1127,7 +1357,8 @@
 
         <a href="#why-us" class="bottom-nav-item" data-section="why-us">
           <div class="bottom-nav-icon">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"
+              stroke-linecap="round" stroke-linejoin="round">
               <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
               <path d="m9 12 2 2 4-4"></path>
             </svg>
@@ -1137,7 +1368,8 @@
 
         <a href="#facilities" class="bottom-nav-item" data-section="facilities">
           <div class="bottom-nav-icon">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"
+              stroke-linecap="round" stroke-linejoin="round">
               <rect width="7" height="7" x="3" y="3" rx="1.5"></rect>
               <rect width="7" height="7" x="14" y="3" rx="1.5"></rect>
               <rect width="7" height="7" x="14" y="14" rx="1.5"></rect>
@@ -1149,7 +1381,8 @@
 
         <a href="#memberships" class="bottom-nav-item" data-section="memberships">
           <div class="bottom-nav-icon">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"
+              stroke-linecap="round" stroke-linejoin="round">
               <rect width="20" height="14" x="2" y="5" rx="2.5"></rect>
               <line x1="2" x2="22" y1="10" y2="10"></line>
             </svg>
@@ -1159,7 +1392,8 @@
 
         <a href="#coaches" class="bottom-nav-item" data-section="coaches">
           <div class="bottom-nav-icon">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"
+              stroke-linecap="round" stroke-linejoin="round">
               <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"></path>
               <circle cx="12" cy="7" r="4"></circle>
             </svg>
@@ -1169,7 +1403,8 @@
 
         <a href="#gallery" class="bottom-nav-item" data-section="gallery">
           <div class="bottom-nav-icon">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"
+              stroke-linecap="round" stroke-linejoin="round">
               <rect width="18" height="18" x="3" y="3" rx="3"></rect>
               <circle cx="9" cy="9" r="1.5"></circle>
               <path d="m21 15-5-5L5 21"></path>
@@ -1180,8 +1415,11 @@
 
         <a href="#testimonials" class="bottom-nav-item" data-section="testimonials">
           <div class="bottom-nav-icon">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"
+              stroke-linecap="round" stroke-linejoin="round">
+              <path
+                d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z">
+              </path>
             </svg>
           </div>
           <span class="bottom-nav-label">Stories</span>
@@ -1189,8 +1427,11 @@
 
         <a href="#contact" class="bottom-nav-item" data-section="contact">
           <div class="bottom-nav-icon">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"></path>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"
+              stroke-linecap="round" stroke-linejoin="round">
+              <path
+                d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0">
+              </path>
               <circle cx="12" cy="10" r="3"></circle>
             </svg>
           </div>
@@ -1199,10 +1440,13 @@
       </div>
 
       <!-- Pinned / Fixed WhatsApp Button on the Far Right (Dynamic from gym-info.json) -->
-      <a href="#" target="_blank" rel="noopener" class="bottom-nav-fixed-wa whatsapp-link" aria-label="Talk to Us on WhatsApp">
+      <a href="#" target="_blank" rel="noopener" class="bottom-nav-fixed-wa whatsapp-link"
+        aria-label="Talk to Us on WhatsApp">
         <div class="bottom-nav-icon">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"></path>
+            <path
+              d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z">
+            </path>
           </svg>
         </div>
         <span class="bottom-nav-label">Talk to Us</span>
@@ -1211,7 +1455,8 @@
   </nav>
 
   <!-- FLOATING SIDE FEEDBACK / GOOGLE REVIEW TAB (APPEARS AFTER HERO SECTION) -->
-  <a href="#" id="floating-feedback-tab" class="floating-feedback-tab" target="_blank" rel="noopener noreferrer" aria-label="Feedback & Google Review">
+  <a href="#" id="floating-feedback-tab" class="floating-feedback-tab" target="_blank" rel="noopener noreferrer"
+    aria-label="Feedback & Google Review">
     <span class="feedback-tab-star" aria-hidden="true">★</span>
     <span class="feedback-tab-text">Feedback</span>
   </a>
@@ -1222,4 +1467,5 @@
   <!-- Main Application Logic -->
   <script src="js/main.js"></script>
 </body>
+
 </html>
